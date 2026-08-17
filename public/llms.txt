@@ -1,0 +1,65 @@
+# hashChat
+
+> A shared WhatsApp inbox for teams, with contacts, sales pipelines,
+> broadcasts, automations and AI replies. Built by Buraq Tech in
+> Lahore, Pakistan, for small and medium businesses that run on
+> WhatsApp.
+
+hashChat connects to a business's own WhatsApp Business number through
+the WhatsApp Business API, so several people can work the same number
+at once — something the standard WhatsApp Business app does not allow.
+
+## What it does
+
+- **Shared team inbox** — one WhatsApp number worked by the whole team,
+  with read/assignment state visible to everyone.
+- **Contacts** — custom fields, tags, CSV import, full conversation
+  history per contact.
+- **Sales pipelines** — deals moved through stages, with values.
+- **Broadcasts** — bulk sends using WhatsApp templates approved by Meta,
+  with delivery, read and reply tracking.
+- **Automations** — keyword-triggered auto-replies.
+- **Flows** — a no-code builder for multi-step question/answer
+  sequences, with buttons and handover to a human.
+- **AI replies** — answers drawn from the account's own knowledge base,
+  handing over to the team when a conversation goes beyond it.
+- **Android app** — with push notifications.
+- **Public API** and an MCP server.
+
+## Pricing
+
+Prices are monthly, in Pakistani Rupees. Every plan starts with a
+3-day free trial that does not require a card.
+
+| Plan | Price | Team members | Contacts |
+|---|---|---|---|
+| Basic | PKR 2,000 | 3 | 1,000 |
+| Pro | PKR 3,500 | 10 | 10,000 |
+| Business | PKR 7,000 | 25 | Unlimited |
+
+Pro adds automations, flows, AI replies and API access. Business adds
+unlimited contacts and priority support.
+
+Payment is by bank transfer, JazzCash or Easypaisa, confirmed by
+uploading a receipt.
+
+## Costs that are not ours
+
+WhatsApp broadcast and marketing messages carry a per-conversation
+charge from Meta, not from hashChat — roughly PKR 2-3 per conversation
+in Pakistan. Replying to a customer within 24 hours of their message is
+free, and that includes automated replies.
+
+## Ownership
+
+The WhatsApp number stays on the business's own WhatsApp Business
+account; hashChat connects to it and the connection can be removed at
+any time. Each account's data is isolated — no account can read
+another's contacts or conversations. Contacts can be exported at any
+time.
+
+## Links
+
+- Site: https://hashchat.uk
+- App: https://app.hashchat.uk
+- Company: https://buraqtech.uk

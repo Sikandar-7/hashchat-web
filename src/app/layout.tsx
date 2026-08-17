@@ -39,12 +39,23 @@ export const metadata: Metadata = {
     title: "hashChat — WhatsApp CRM for teams",
     description:
       "Ek shared WhatsApp inbox jise poori team chala sake. Contacts, pipelines, broadcasts aur automations — sab ek jagah.",
+    // A static file, not a generated route: social scrapers fetch once
+    // and do not retry, so an OG endpoint that is cold or erroring at
+    // the moment a link is first shared costs you the preview for good.
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "hashChat — poori team ka ek WhatsApp inbox",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "hashChat — WhatsApp CRM for teams",
-    description:
-      "Ek shared WhatsApp inbox jise poori team chala sake.",
+    description: "Ek shared WhatsApp inbox jise poori team chala sake.",
+    images: ["/og.png"],
   },
   alternates: { canonical: SITE_URL },
 };
