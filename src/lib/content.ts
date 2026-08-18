@@ -17,7 +17,16 @@ export const site = {
   tagline: "WhatsApp CRM for teams",
   company: "Buraq Tech",
   companyUrl: "https://buraqtech.uk",
+  // Every competitor ad in this market closes on a WhatsApp button with
+  // a visible number, not a signup link — buyers here want to ask a
+  // question before they create an account. Digits only for wa.me.
+  whatsapp: "923119407860",
+  whatsappDisplay: "+92 311 9407860",
 } as const;
+
+/** Prefilled so the first message says something useful. */
+export const waLink = (message: string) =>
+  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
 // ------------------------------------------------------------
 // Features — each one is something the product actually does.
@@ -154,6 +163,19 @@ export const faqs = [
   {
     q: "Kya mujhe apna WhatsApp number dena parega?",
     a: "Aapka number aapke apne WhatsApp Business account se juda rehta hai. hashChat us se connect hota hai — number kabhi hamare paas transfer nahi hota, aur aap jab chahein connection hata sakte hain.",
+  },
+  // The question this entire market advertises against. Every Pakistani
+  // competitor leads with the ban; answering it plainly, without the
+  // "anti-ban" language they use, is the honest version of that pitch —
+  // nobody can promise Meta will never act, and the real protection is
+  // being on the official channel in the first place.
+  {
+    q: "Mera WhatsApp number ban ho jata hai — kya yeh us ka hal hai?",
+    a: "Zyada tar aisa tab hota hai jab aap Facebook/Instagram ads chalate hain aur achanak messages ka sailab aata hai — normal WhatsApp Business app usay spam samajh kar number block kar deti hai. hashChat official WhatsApp Business API par chalta hai, jo bulk aur ads ka traffic sambhalne ke liye hi bana hai — yani aap Meta ke apne raaste par hote hain, us ke khilaf nahi. Yeh koi 'anti-ban trick' nahi hai (aur jo koi aisa daawa kare us par shak karein) — farq sirf yeh hai ke aap qanooni channel par ho aur Meta ke qawaid ke andar rehte ho.",
+  },
+  {
+    q: "Kya aap Meta ke message charges par apna markup lagate hain?",
+    a: "Nahi — aur na hi laga sakte hain. hashChat aapke apne WhatsApp Business account se connect hota hai, to Meta ka bill seedha aap ke paas jata hai, hamare paas se ho kar nahi. Bohot se providers Meta se khareed kar aage bechte hain aur us par 12-20% markup lagate hain, isi liye unhein '0% markup' ka daawa karna parta hai. Hum us silsile mein hain hi nahi. Aap se sirf hashChat ki subscription li jati hai.",
   },
   {
     q: "Kya yeh WhatsApp Business app ki jagah lega?",

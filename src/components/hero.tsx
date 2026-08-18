@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { MessageCircle } from "lucide-react";
 
-import { TRIAL_DAYS, site } from "@/lib/content";
+import { TRIAL_DAYS, site, waLink } from "@/lib/content";
 
 export function Hero() {
   return (
@@ -51,16 +52,27 @@ export function Hero() {
             >
               Free trial shuru karein
             </a>
+            {/* A WhatsApp button, not a second in-page link. Every
+                competitor in this market closes on one, with the number
+                visible — buyers here ask a question before they create
+                an account, and sending them to a signup form instead is
+                where the conversation ends. */}
             <a
-              href="#features"
-              className="w-full rounded-xl border border-line bg-surface/60 px-6 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:bg-surface-2 sm:w-auto"
+              href={waLink(
+                "Assalam o alaikum — hashChat ke bare mein maloomat chahiye.",
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-line bg-surface/60 px-6 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:bg-surface-2 sm:w-auto"
             >
-              Pehle dekhein kya hai
+              <MessageCircle className="size-4 text-brand-teal" aria-hidden />
+              WhatsApp par baat karein
             </a>
           </div>
 
           <p className="mt-5 text-sm text-ink-faint">
-            Aapka apna WhatsApp number · Lahore se banaya gaya
+            Aapka apna WhatsApp number · Lahore se banaya gaya ·{" "}
+            <span className="text-ink-muted">{site.whatsappDisplay}</span>
           </p>
         </div>
 

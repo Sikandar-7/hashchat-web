@@ -81,17 +81,51 @@ export function Pricing() {
         ))}
       </div>
 
-      {/* Meta's per-message charge, stated plainly. It is roughly five
-          times what a customer would assume, and finding that out on
-          their first broadcast is how trust in the whole page goes. */}
-      <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-ink-faint">
-        Upar wali qeemat hashChat ki hai. Meta apne messages ka charge alag
-        leta hai — Pakistan mein takreeban{" "}
-        <strong className="text-ink-muted">Rs 13 per marketing message</strong>{" "}
-        (broadcast/offers) aur ~Rs 2.8 per utility message (order update,
-        reminder). Customer ke message ka jawab 24 ghante ke andar dena{" "}
-        <strong className="text-ink-muted">bilkul free</strong> hai.
-      </p>
+      {/* Two things a buyer in this market checks before anything else:
+          what Meta charges, and whether the platform resells it with a
+          margin on top. Most competitors here resell, which is why they
+          all advertise "0% markup". hashChat connects to the customer's
+          own WABA, so it is never in that chain at all — a stronger
+          position, and one the page wasn't making. */}
+      <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-line bg-surface/60 p-6 sm:p-7">
+        <h3 className="font-display text-base font-semibold">
+          Meta ke charges alag hain — aur woh seedha aap ke paas jate hain
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+          hashChat aapke <strong className="text-ink">apne</strong> WhatsApp
+          Business account se connect hota hai. Meta ka bill seedha aap ko
+          jata hai — hamare paas se ho kar nahi. Yani hum us par kuch jor hi
+          nahi sakte. Bohot se providers Meta se khareed kar aage bechte hain
+          aur 12-20% markup lagate hain; isi liye unhein &ldquo;0%
+          markup&rdquo; ka daawa karna parta hai. Hum us silsile mein hain hi
+          nahi.
+        </p>
+        <dl className="mt-5 grid gap-4 border-t border-line pt-5 sm:grid-cols-3">
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-ink-faint">
+              Marketing / broadcast
+            </dt>
+            <dd className="mt-1 text-sm font-semibold">~Rs 13 / message</dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-ink-faint">
+              Utility (order, reminder)
+            </dt>
+            <dd className="mt-1 text-sm font-semibold">~Rs 2.8 / message</dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-ink-faint">
+              Customer ka jawab (24h)
+            </dt>
+            <dd className="mt-1 text-sm font-semibold text-brand-teal">Free</dd>
+          </div>
+        </dl>
+        <p className="mt-4 text-xs text-ink-faint">
+          Yeh Meta ke rates hain aur woh inhein waqtan fauqtan badalta rehta
+          hai. Automations, flows aur team ke jawab — sab 24-ghante wale free
+          hisse mein aate hain.
+        </p>
+      </div>
     </Section>
   );
 }

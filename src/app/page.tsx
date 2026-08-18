@@ -1,3 +1,4 @@
+import { BanProblem } from "@/components/ban-problem";
 import { Cta } from "@/components/cta";
 import { Faq } from "@/components/faq";
 import { Features } from "@/components/features";
@@ -15,6 +16,9 @@ export default function HomePage() {
       <SiteNav />
       <main>
         <Hero />
+        {/* Straight after the hero: it is the problem this market
+            actually searches for, so it earns the position. */}
+        <BanProblem />
         <Features />
         <HowItWorks />
         <Pricing />
