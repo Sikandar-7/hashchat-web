@@ -45,10 +45,13 @@ uploading a receipt.
 
 ## Costs that are not ours
 
-WhatsApp broadcast and marketing messages carry a per-conversation
-charge from Meta, not from hashChat — roughly PKR 2-3 per conversation
-in Pakistan. Replying to a customer within 24 hours of their message is
-free, and that includes automated replies.
+Meta charges per message sent, separately from hashChat's subscription.
+In Pakistan the approximate rates are PKR 13 for a marketing message
+(broadcasts, offers) and PKR 2.8 for a utility message (order updates,
+reminders). Replying to a customer within 24 hours of their own message
+is free, including automated replies, and Meta additionally allows a
+number of free service conversations each month. Meta revises these
+rates periodically, most recently in April 2026.
 
 ## Ownership
 

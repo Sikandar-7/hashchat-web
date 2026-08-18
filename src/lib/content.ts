@@ -161,7 +161,7 @@ export const faqs = [
   },
   {
     q: "Message bhejne ka koi alag kharcha hai?",
-    a: "Haan, aur woh Meta leta hai, hum nahi. Broadcast/marketing messages par Meta apna charge lagata hai (Pakistan mein takreeban Rs 2-3 per conversation). Customer ke message ka jawab 24 ghante ke andar dena free hai — automations aur auto-replies bhi isi mein aate hain.",
+    a: "Haan, aur woh Meta leta hai — hum nahi. Meta har message par charge karta hai aur rate is par hai ke message kis qism ka hai. Pakistan mein takreeban: marketing (broadcast, offers) ~Rs 13 per message; utility (order update, reminder) ~Rs 2.8 per message. Sab se ahem: customer ke apne message ka jawab agar 24 ghante ke andar diya jaye to woh bilkul FREE hai — automations, auto-replies aur team ke jawab sab isi mein aate hain. Yeh rates Meta khud waqtan fauqtan badalta rehta hai.",
   },
   {
     q: "Free trial mein kya milta hai?",

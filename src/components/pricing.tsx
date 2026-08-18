@@ -81,12 +81,16 @@ export function Pricing() {
         ))}
       </div>
 
-      {/* The per-message cost is Meta's, not ours. Better to say it here
-          than to have a customer discover it on their first broadcast. */}
+      {/* Meta's per-message charge, stated plainly. It is roughly five
+          times what a customer would assume, and finding that out on
+          their first broadcast is how trust in the whole page goes. */}
       <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-ink-faint">
-        WhatsApp ke broadcast/marketing messages par Meta apna alag charge
-        lagata hai (Pakistan mein takreeban Rs 2-3 per conversation).
-        Customer ke message ka jawab 24 ghante ke andar dena free hai.
+        Upar wali qeemat hashChat ki hai. Meta apne messages ka charge alag
+        leta hai — Pakistan mein takreeban{" "}
+        <strong className="text-ink-muted">Rs 13 per marketing message</strong>{" "}
+        (broadcast/offers) aur ~Rs 2.8 per utility message (order update,
+        reminder). Customer ke message ka jawab 24 ghante ke andar dena{" "}
+        <strong className="text-ink-muted">bilkul free</strong> hai.
       </p>
     </Section>
   );
