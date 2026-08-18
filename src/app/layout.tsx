@@ -36,6 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "hashChat",
+    // Matches `inLanguage` in the JSON-LD and the page's own `lang`.
+    // Without it some scrapers guess, and a wrong guess changes which
+    // regional preview a platform shows.
+    locale: "en_PK",
     title: "hashChat — WhatsApp CRM for teams",
     description:
       "Ek shared WhatsApp inbox jise poori team chala sake. Contacts, pipelines, broadcasts aur automations — sab ek jagah.",
