@@ -25,9 +25,11 @@ const PAGE_URL = `${site.url}${PAGE_PATH}`;
 const UPDATED = "2026-08-18";
 
 export const metadata: Metadata = {
-  title: "WhatsApp Business API vs Business App — Which One Do You Need?",
+  // Root template appends " — hashChat"; keep this side under ~49 so the
+  // whole title survives without an ellipsis.
+  title: "WhatsApp Business API vs the Business App",
   description:
-    "The free WhatsApp Business app is enough for most small businesses. Here is exactly where it stops working, what the API adds, and what switching actually costs you.",
+    "The free WhatsApp Business app is enough for most small businesses. Here is where it stops working, what the API adds, and what switching costs.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "article",

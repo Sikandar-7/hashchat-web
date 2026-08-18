@@ -24,9 +24,11 @@ const PAGE_URL = `${site.url}${PAGE_PATH}`;
 const UPDATED = "2026-08-18";
 
 export const metadata: Metadata = {
-  title: "WhatsApp Business API Pricing in Pakistan (2026) — Real Costs",
+  // The root template appends " — hashChat" (11 chars), so anything past
+  // ~49 here gets an ellipsis in results. Keyword stays at the front.
+  title: "WhatsApp Business API Pricing in Pakistan (2026)",
   description:
-    "What WhatsApp Business API actually costs in Pakistan: Meta's per-message rates, what platforms charge on top, and which messages are free. Updated August 2026.",
+    "What WhatsApp Business API really costs in Pakistan: Meta's per-message rates, what platforms add on top, and which messages are free.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "article",
