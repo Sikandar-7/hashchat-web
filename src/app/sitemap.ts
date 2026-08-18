@@ -5,9 +5,9 @@ import { site } from "@/lib/content";
 /**
  * Served at /sitemap.xml.
  *
- * One page today. The section anchors are not listed: they are
- * fragments of this same URL, and submitting them as separate entries
- * tells a crawler there are five pages when there is one.
+ * Only real pages. The landing page's section anchors are deliberately
+ * absent — they are fragments of one URL, and listing them would tell a
+ * crawler there are five pages where there is one.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${site.url}/whatsapp-business-api-pricing-pakistan`,
+      lastModified: new Date("2026-08-18"),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 }

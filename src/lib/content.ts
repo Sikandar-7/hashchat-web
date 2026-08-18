@@ -63,8 +63,12 @@ export const features = [
     icon: "flow",
   },
   {
-    title: "AI jawab",
-    body: "AI aapke apne knowledge base se jawab deta hai. Jab baat aage barhe to khud team ko handover kar deta hai.",
+    // The language line is verifiable: the AI's system prompt tells it
+    // to answer in whatever language the customer wrote in. A
+    // competitor in this market sells exactly this as a headline
+    // feature, and hashChat already does it.
+    title: "AI jawab — customer ki apni zubaan mein",
+    body: "AI aapke apne knowledge base se jawab deta hai, aur usi zubaan mein jis mein customer ne likha — Roman Urdu, Urdu ya English. Baat aage barhe to khud team ko handover kar deta hai.",
     icon: "ai",
   },
   {
