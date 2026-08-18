@@ -304,6 +304,17 @@ export default function PricingGuidePage() {
             </div>
           </section>
 
+          <p className="text-sm leading-relaxed text-ink-faint">
+            Still deciding whether you need the API at all?{" "}
+            <Link
+              href="/whatsapp-business-api-vs-business-app"
+              className="text-brand-sky hover:underline"
+            >
+              Compare it with the free WhatsApp Business app
+            </Link>{" "}
+            — for a lot of businesses the free app is still the right answer.
+          </p>
+
           <section className="rounded-2xl border border-line bg-surface/60 p-7">
             <h2 className="font-display text-xl font-bold">
               How hashChat handles this

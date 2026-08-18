@@ -61,8 +61,17 @@ any time. Each account's data is isolated — no account can read
 another's contacts or conversations. Contacts can be exported at any
 time.
 
+## Guides
+
+- WhatsApp Business API pricing in Pakistan — Meta's per-message rates,
+  what platforms charge on top, which messages are free:
+  https://hashchat.uk/whatsapp-business-api-pricing-pakistan
+- WhatsApp Business API vs the Business app — where the free app stops
+  working and what switching costs:
+  https://hashchat.uk/whatsapp-business-api-vs-business-app
+
 ## Links
 
 - Site: https://hashchat.uk
-- App: https://app.hashchat.uk
+- App: https://personal-wa-crm.vercel.app (app.hashchat.uk once attached)
 - Company: https://buraqtech.uk

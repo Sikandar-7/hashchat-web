@@ -23,5 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${site.url}/whatsapp-business-api-vs-business-app`,
+      lastModified: new Date("2026-08-18"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }
