@@ -13,13 +13,8 @@
 export const site = {
   name: "hashChat",
   url: "https://hashchat.uk",
-  // Every CTA on the site points here. `app.hashchat.uk` is the intended
-  // address and its DNS already points at Vercel, but the domain is not
-  // attached to the app's project yet, so it answers DEPLOYMENT_NOT_FOUND.
-  // A signup button that 404s costs more than an unpolished URL, so this
-  // stays on the working deployment until the domain is attached — then
-  // it flips back to https://app.hashchat.uk and nothing else changes.
-  appUrl: "https://personal-wa-crm.vercel.app",
+  // Every CTA on the site reads this one value.
+  appUrl: "https://app.hashchat.uk",
   tagline: "WhatsApp CRM for teams",
   company: "Buraq Tech",
   companyUrl: "https://buraqtech.uk",

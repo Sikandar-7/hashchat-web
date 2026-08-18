@@ -73,5 +73,5 @@ time.
 ## Links
 
 - Site: https://hashchat.uk
-- App: https://personal-wa-crm.vercel.app (app.hashchat.uk once attached)
+- App: https://app.hashchat.uk
 - Company: https://buraqtech.uk
