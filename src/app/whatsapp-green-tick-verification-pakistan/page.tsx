@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   // so the full title survives in results without an ellipsis.
   title: "WhatsApp Green Tick in Pakistan: What It Takes",
   description:
-    "The green tick cannot be bought, is not required to use the API, and is not even green any more. What the badge is, both routes to it, and what you control.",
+    "The green tick cannot be bought, is not required to use the API, and is not even green any more. What the badge is, and both routes to it.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "article",
