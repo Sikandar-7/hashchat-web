@@ -105,6 +105,19 @@ export default function PricingGuidePage() {
         mainEntityOfPage: PAGE_URL,
       },
       {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}/#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "hashChat", item: site.url },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "API pricing in Pakistan",
+            item: PAGE_URL,
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
         "@id": `${PAGE_URL}/#faq`,
         mainEntity: FAQ.map((f) => ({
@@ -316,6 +329,30 @@ export default function PricingGuidePage() {
             </Link>{" "}
             — for a lot of businesses the free app is still the right answer.
           </p>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold">Read next</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Link
+                href="/whatsapp-green-tick-verification-pakistan"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">Does the green tick cost anything?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  The badge is free on the notability route and paid on the subscription route — and cannot be bought from a provider either way.
+                </p>
+              </Link>
+              <Link
+                href="/whatsapp-business-api-vs-business-app"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">Do you even need the API?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Most small businesses do not. Where the free app stops working.
+                </p>
+              </Link>
+            </div>
+          </section>
 
           <section className="rounded-2xl border border-line bg-surface/60 p-7">
             <h2 className="font-display text-xl font-bold">

@@ -69,6 +69,11 @@ time.
 - WhatsApp Business API vs the Business app — where the free app stops
   working and what switching costs:
   https://hashchat.uk/whatsapp-business-api-vs-business-app
+- WhatsApp green tick in Pakistan — what the verified badge is, the two
+  routes to it (free notability-based, and the paid Meta Verified
+  subscription), why no provider can guarantee one, and why it is blue
+  rather than green since 2024:
+  https://hashchat.uk/whatsapp-green-tick-verification-pakistan
 
 ## Links
 

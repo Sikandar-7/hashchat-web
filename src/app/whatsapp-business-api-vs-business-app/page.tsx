@@ -125,6 +125,19 @@ export default function ApiVsAppPage() {
         mainEntityOfPage: PAGE_URL,
       },
       {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}/#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "hashChat", item: site.url },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "API vs Business app",
+            item: PAGE_URL,
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
         "@id": `${PAGE_URL}/#faq`,
         mainEntity: FAQ.map((f) => ({
@@ -311,6 +324,31 @@ export default function ApiVsAppPage() {
                   </p>
                 </details>
               ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold">Read next</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Link
+                href="/whatsapp-green-tick-verification-pakistan"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">What about the green tick?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Optional, not purchasable, and blue rather than green since 2024. What the badge actually takes.
+                </p>
+              </Link>
+              <Link
+                href="/whatsapp-business-api-pricing-pakistan"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">What does it cost to run?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Meta&rsquo;s per-message rates in Pakistan, and what
+                  platforms add on top.
+                </p>
+              </Link>
             </div>
           </section>
 
