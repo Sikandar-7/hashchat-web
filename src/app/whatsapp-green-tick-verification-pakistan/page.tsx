@@ -368,6 +368,42 @@ export default function GreenTickPage() {
             </div>
           </section>
 
+          <section>
+            <h2 className="font-display text-2xl font-bold">Read next</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <Link
+                href="/whatsapp-business-api-pricing-pakistan"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">What does it all cost?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Meta&rsquo;s per-message rates in Pakistan, and what platforms
+                  add on top.
+                </p>
+              </Link>
+              <Link
+                href="/whatsapp-business-api-vs-business-app"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">Do you even need the API?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Most small businesses do not. Where the free app stops
+                  working.
+                </p>
+              </Link>
+              <Link
+                href="/how-to-send-whatsapp-broadcast-pakistan"
+                className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-brand-sky"
+              >
+                <p className="font-medium text-ink">How do I send a broadcast?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Template approval, daily limits, and why most broadcasts reach
+                  almost nobody.
+                </p>
+              </Link>
+            </div>
+          </section>
+
           <section className="rounded-2xl border border-line bg-surface/60 p-7">
             <h2 className="font-display text-xl font-bold">
               Where hashChat fits

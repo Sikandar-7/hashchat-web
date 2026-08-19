@@ -74,6 +74,11 @@ time.
   subscription), why no provider can guarantee one, and why it is blue
   rather than green since 2024:
   https://hashchat.uk/whatsapp-green-tick-verification-pakistan
+- How to send a WhatsApp broadcast in Pakistan — why broadcasts in the
+  free app only reach people who saved your number, how template
+  approval and categories work, how the daily messaging tier is earned
+  rather than bought, and what 1,000 messages cost:
+  https://hashchat.uk/how-to-send-whatsapp-broadcast-pakistan
 
 ## Links
 
