@@ -25,6 +25,27 @@ export const site = {
   whatsappDisplay: "+92 311 9407860",
 } as const;
 
+/**
+ * The named human behind the product.
+ *
+ * Until now every piece of structured data on this site credited an
+ * organisation and nobody in particular. Search engines and answer
+ * engines both weight who wrote something, not just which company
+ * published it -- a page attributable to a person with a traceable
+ * history is a stronger thing to cite than an anonymous brand.
+ *
+ * `url` points at the portfolio rather than this site, because that is
+ * where the person exists independently of the product. `sameAs` is for
+ * other profiles of the SAME entity, so the company site does not belong
+ * in it -- that relationship is `worksFor` / `founder` instead.
+ */
+export const founder = {
+  name: "Sikandar Abbas",
+  jobTitle: "Founder & Full Stack Developer",
+  url: "https://portfolio-five-black-18.vercel.app",
+  sameAs: ["https://github.com/Sikandar-7"],
+} as const;
+
 /** Prefilled so the first message says something useful. */
 export const waLink = (message: string) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;

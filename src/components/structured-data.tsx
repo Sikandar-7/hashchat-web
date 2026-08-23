@@ -1,4 +1,4 @@
-import { CURRENCY, faqs, plans, site } from "@/lib/content";
+import { CURRENCY, faqs, founder, plans, site } from "@/lib/content";
 
 /**
  * JSON-LD for search engines and AI answer engines.
@@ -30,6 +30,27 @@ export function StructuredData() {
       addressLocality: "Lahore",
       addressCountry: "PK",
     },
+    // Names the human, so the brand is not the only entity on the page.
+    founder: { "@id": `${site.url}/#person` },
+    // The number in the header is the one buyers here actually use --
+    // in this market a WhatsApp button gets a question a contact form
+    // never would. Declaring it makes that reachable to assistants too.
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: `+${site.whatsapp}`,
+      availableLanguage: ["en", "ur"],
+    },
+  };
+
+  const person = {
+    "@type": "Person",
+    "@id": `${site.url}/#person`,
+    name: founder.name,
+    jobTitle: founder.jobTitle,
+    url: founder.url,
+    sameAs: [...founder.sameAs],
+    worksFor: { "@id": `${site.url}/#organization` },
   };
 
   const software = {
@@ -78,7 +99,7 @@ export function StructuredData() {
   // references above only resolve if the nodes share a document.
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [organization, website, software, faqPage],
+    "@graph": [organization, person, website, software, faqPage],
   };
 
   return (

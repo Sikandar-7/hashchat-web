@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { site, waLink } from "@/lib/content";
+import { founder, site, waLink } from "@/lib/content";
 
 /**
  * The decision every buyer makes before they shop for a platform.
@@ -120,7 +120,15 @@ export default function ApiVsAppPage() {
         datePublished: UPDATED,
         dateModified: UPDATED,
         inLanguage: "en-PK",
-        author: { "@type": "Organization", name: site.company },
+        // Attributed to the person, not just the brand. The @id resolves
+        // to the Person node on the homepage graph -- the same pattern
+        // `publisher` already uses -- while the inline name keeps this
+        // document readable on its own.
+        author: {
+          "@id": `${site.url}/#person`,
+          "@type": "Person",
+          name: founder.name,
+        },
         publisher: { "@id": `${site.url}/#organization` },
         mainEntityOfPage: PAGE_URL,
       },
