@@ -30,6 +30,11 @@ export function StructuredData() {
       addressLocality: "Lahore",
       addressCountry: "PK",
     },
+    // The LinkedIn page is what lets a search engine tie this name to a
+    // real, verifiable organisation rather than treating "hashChat" as a
+    // string that happens to appear on a website. Without a sameAs there
+    // is nothing to corroborate the entity against.
+    sameAs: ["https://www.linkedin.com/company/hashchatuk"],
     // Names the human, so the brand is not the only entity on the page.
     founder: { "@id": `${site.url}/#person` },
     // The number in the header is the one buyers here actually use --
