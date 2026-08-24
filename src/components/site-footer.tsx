@@ -56,6 +56,23 @@ export function SiteFooter() {
           ka
         </p>
       </div>
+
+      {/* Meta ki business verification website par legal entity ka naam
+          dhoondti hai -- 2026-08-23 ki refusal ki wajah yehi thi: "your
+          legal business name must be present on the website". Address bhi
+          saath hai kyunki usi refusal ka doosra hissa naam aur address ko
+          jorne ka mutalba tha. SECP ke incorporation documents se liya
+          gaya, haraf-ba-haraf -- ise "theek" karne ki koshish mat karna. */}
+      <div className="mx-auto mt-6 max-w-6xl border-t border-line/60 px-5 pt-6 text-xs leading-relaxed text-ink-faint">
+        <p>
+          {site.name} ko{" "}
+          <span className="text-ink-muted">LOVE &amp; JOY (SMC-PRIVATE) LIMITED</span>{" "}
+          chalati hai — Pakistan mein registered company, CUIN 0324937.
+        </p>
+        <p className="mt-1">
+          h#22 st#06 BS winner gulshan bund road, Lahore, Punjab 54000, Pakistan
+        </p>
+      </div>
     </footer>
   );
 }
