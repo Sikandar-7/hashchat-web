@@ -39,7 +39,7 @@ export function Pricing() {
               <span className="font-display text-4xl font-extrabold tracking-tight">
                 {fmt.format(p.price)}
               </span>
-              <span className="text-sm text-ink-muted">/mahina</span>
+              <span className="text-sm text-ink-muted">/month</span>
             </p>
 
             <dl className="mt-6 grid grid-cols-2 gap-3 border-y border-line py-4 text-sm">
@@ -54,7 +54,7 @@ export function Pricing() {
                 </dd>
               </div>
               <div className="col-span-2">
-                <dt className="text-ink-faint">Broadcast messages / mahina</dt>
+                <dt className="text-ink-faint">Broadcast messages / month</dt>
                 <dd className="mt-0.5 font-semibold">
                   {p.broadcasts === null
                     ? "Unlimited"
