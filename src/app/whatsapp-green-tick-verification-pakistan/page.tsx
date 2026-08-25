@@ -428,7 +428,7 @@ export default function GreenTickPage() {
               >
                 Meta bills you directly
               </Link>{" "}
-              with nothing added on top. From PKR 2,000 a month, 3 days free.
+              with nothing added on top. From PKR 1,500 a month, 3 days free.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a

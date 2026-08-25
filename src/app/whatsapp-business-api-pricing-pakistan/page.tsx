@@ -381,7 +381,7 @@ export default function PricingGuidePage() {
               Meta&rsquo;s bill goes straight to you and we never sit in the middle
               of it. You pay us for the software — a shared team inbox,
               contacts, pipelines, broadcasts and automations — starting at
-              PKR 2,000 a month, with a {""}
+              PKR 1,500 a month, with a {""}
               <Link href="/#pricing" className="text-brand-sky hover:underline">
                 3-day free trial
               </Link>

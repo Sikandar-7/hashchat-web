@@ -134,7 +134,7 @@ export const plans = [
   {
     slug: "basic",
     name: "Basic",
-    price: 2000,
+    price: 1500,
     tagline: "Chhote setups ke liye",
     members: 3,
     contacts: 1000,
