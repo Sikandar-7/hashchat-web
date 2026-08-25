@@ -53,6 +53,14 @@ export function Pricing() {
                   {p.contacts === null ? "Unlimited" : fmt.format(p.contacts)}
                 </dd>
               </div>
+              <div className="col-span-2">
+                <dt className="text-ink-faint">Broadcast messages / mahina</dt>
+                <dd className="mt-0.5 font-semibold">
+                  {p.broadcasts === null
+                    ? "Unlimited"
+                    : fmt.format(p.broadcasts)}
+                </dd>
+              </div>
             </dl>
 
             <ul className="mt-5 flex-1 space-y-2.5 text-sm">

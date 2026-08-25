@@ -124,11 +124,17 @@ export const steps = [
 // ------------------------------------------------------------
 // Pricing — from the product's own `plans` table.
 //
-// Member and contact ceilings are listed because the database enforces
-// them (migration 047). The per-month broadcast cap is NOT listed: the
-// column exists but nothing enforces it yet, and advertising a limit
-// that isn't applied is a promise the product doesn't keep. It goes in
-// once the usage counter ships.
+// Every ceiling here is enforced by the database, not merely displayed.
+// Three statement triggers raise on the row that would cross the line:
+// enforce_member_limit_on_insert on profiles, enforce_contact_limit_on_insert
+// on contacts, and enforce_broadcast_msg_limit_on_insert on
+// broadcast_recipients. That is exactly why they belong on a public page
+// — a Basic customer sending their 2,001st broadcast message this month
+// gets a hard error, and send time is the worst moment to learn that.
+//
+// NB: read prices off the live `plans` table, never from memory. This
+// file said 2,000 for Basic from launch until Aug 2026; the product had
+// always charged 1,500.
 // ------------------------------------------------------------
 export const plans = [
   {
@@ -138,6 +144,7 @@ export const plans = [
     tagline: "Chhote setups ke liye",
     members: 3,
     contacts: 1000,
+    broadcasts: 2000,
     highlight: false,
     includes: [
       "Shared inbox",
@@ -154,6 +161,7 @@ export const plans = [
     tagline: "Barhti hui teams ke liye",
     members: 10,
     contacts: 10000,
+    broadcasts: 10000,
     highlight: true,
     includes: [
       "Basic ka sab kuch",
@@ -170,10 +178,11 @@ export const plans = [
     tagline: "Bari teams ke liye",
     members: 25,
     contacts: null, // unlimited
+    broadcasts: null, // unlimited
     highlight: false,
     includes: [
       "Pro ka sab kuch",
-      "Unlimited contacts",
+      "Unlimited contacts aur broadcasts",
       "Priority support",
     ],
   },
