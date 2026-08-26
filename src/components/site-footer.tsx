@@ -59,18 +59,22 @@ export function SiteFooter() {
 
       {/* Meta ki business verification website par legal entity ka naam
           dhoondti hai -- 2026-08-23 ki refusal ki wajah yehi thi: "your
-          legal business name must be present on the website". Address bhi
-          saath hai kyunki usi refusal ka doosra hissa naam aur address ko
-          jorne ka mutalba tha. SECP ke incorporation documents se liya
-          gaya, haraf-ba-haraf -- ise "theek" karne ki koshish mat karna. */}
+          legal business name must be present on the website". SECP ke
+          incorporation documents se haraf-ba-haraf liya gaya naam -- ise
+          "theek" karne ki koshish mat karna.
+
+          Registered address yahan JAAN BUJH KAR nahi hai. Woh kuch der
+          laga raha, is soch par ke usi refusal mein address ka bhi zikr
+          tha -- magar refusal ka woh hissa upload kiye gaye *document*
+          ke baare mein tha ("The document submitted to verify the
+          business address ... isn't an accepted type"), website ke baare
+          mein nahi. Aur woh ghar ka pata hai. Kisi verification ne waqai
+          site par maanga to /terms par jaye, footer par nahi. */}
       <div className="mx-auto mt-6 max-w-6xl border-t border-line/60 px-5 pt-6 text-xs leading-relaxed text-ink-faint">
         <p>
           {site.name} ko{" "}
           <span className="text-ink-muted">LOVE &amp; JOY (SMC-PRIVATE) LIMITED</span>{" "}
           chalati hai — Pakistan mein registered company, CUIN 0324937.
-        </p>
-        <p className="mt-1">
-          h#22 st#06 BS winner gulshan bund road, Lahore, Punjab 54000, Pakistan
         </p>
       </div>
     </footer>
