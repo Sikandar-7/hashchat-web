@@ -23,6 +23,18 @@ export const site = {
   // question before they create an account. Digits only for wa.me.
   whatsapp: "923119407860",
   whatsappDisplay: "+92 311 9407860",
+  // The Android app the "Phone par bhi" feature and every plan's list
+  // already promise. Until now the site claimed it and gave no way to
+  // get it.
+  //
+  // Served from /public rather than a store link because it is not on
+  // Play yet. That makes the version and size part of the claim: a
+  // sideloaded APK never auto-updates, so a reader has to be able to
+  // tell whether the one on their phone is the current one, and a
+  // 5 MB download over mobile data deserves a warning before the tap.
+  androidApk: "/hashChat.apk",
+  androidApkVersion: "1.1",
+  androidApkSize: "5.3 MB",
 } as const;
 
 /**

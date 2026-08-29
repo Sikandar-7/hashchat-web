@@ -32,6 +32,22 @@ export function SiteFooter() {
           <a href="#faq" className="text-ink-muted hover:text-ink">
             FAQ
           </a>
+          {/* The features list and every plan already promise an Android
+              app; until now nothing on the site handed it over. Not a
+              store link because it is not on Play yet — so the version
+              and the size are stated rather than hidden: a sideloaded
+              APK never auto-updates, and 5 MB on mobile data is worth
+              knowing before the tap. */}
+          <a
+            href={site.androidApk}
+            download
+            className="text-ink-muted hover:text-ink"
+          >
+            Android app{" "}
+            <span className="text-ink-faint">
+              ({site.androidApkVersion} · {site.androidApkSize})
+            </span>
+          </a>
           <a
             href={`${site.appUrl}/login`}
             className="text-ink-muted hover:text-ink"
