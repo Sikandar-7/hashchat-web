@@ -1,6 +1,6 @@
 import { ArrowRight, BadgeCheck, Building2, Info } from "lucide-react";
 
-import { site, waLink } from "@/lib/content";
+import { metaLimits, site, waLink } from "@/lib/content";
 import { t, type Locale } from "@/lib/i18n";
 
 /**
@@ -20,6 +20,8 @@ import { t, type Locale } from "@/lib/i18n";
  * can promise it; you do not need it) are the parts that make the rest
  * believable.
  */
+const fmt = new Intl.NumberFormat("en-PK");
+
 export function Verification({ locale }: { locale: Locale }) {
   const c = t(locale).verify;
 
@@ -74,6 +76,71 @@ export function Verification({ locale }: { locale: Locale }) {
               {c.bBody}
             </p>
           </div>
+        </div>
+
+        {/* The number people are really asking for when they ask about
+            the tick. "Will I get verified" is almost always "how many
+            people can I actually message" wearing a different hat, and
+            that one has a precise answer. */}
+        <div className="mx-auto mt-6 max-w-4xl rounded-2xl border border-line bg-surface/60 p-6 sm:p-7">
+          <h3 className="font-display text-base font-semibold">
+            {c.limitsTitle}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+            {c.limitsLead}
+          </p>
+
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-line bg-surface-2/60 p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">
+                {c.limitsWithoutLabel}
+              </p>
+              <p className="mt-2 font-display text-3xl font-extrabold" dir="ltr">
+                {fmt.format(metaLimits.unverified)}
+              </p>
+              <p className="mt-1 text-xs text-ink-muted">{c.limitsUnit}</p>
+            </div>
+            <div className="rounded-xl border border-brand-teal/30 bg-brand-teal/5 p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal">
+                {c.limitsWithLabel}
+              </p>
+              <p className="mt-2 font-display text-3xl font-extrabold" dir="ltr">
+                {fmt.format(metaLimits.verified)}
+              </p>
+              <p className="mt-1 text-xs text-ink-muted">{c.limitsUnit}</p>
+            </div>
+          </div>
+
+          <p className="mt-5 text-sm leading-relaxed text-ink-muted">
+            {c.limitsLadder}
+          </p>
+
+          {/* The distinction that decides whether the number means
+              anything: it counts people reached cold, not messages. */}
+          <p className="mt-4 rounded-xl border border-line bg-surface-2/60 p-4 text-sm leading-relaxed text-ink-muted">
+            {c.limitsNote}
+          </p>
+
+          <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-faint">
+            {c.limitsExtras.map((e) => (
+              <li key={e} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-ink-faint" />
+                <span>{e}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-5 border-t border-line pt-4 text-xs text-ink-faint">
+            {c.limitsSource} —{" "}
+            <a
+              href={metaLimits.docsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-muted underline-offset-4 hover:text-ink hover:underline"
+            >
+              developers.facebook.com
+            </a>
+          </p>
         </div>
 
         <div className="mx-auto mt-6 max-w-4xl rounded-2xl border border-line bg-surface/60 p-6 sm:p-7">

@@ -149,6 +149,16 @@ interface Copy {
     bTag: string;
     routesTitle: string;
     routes: readonly string[];
+    /** What verification actually buys, in Meta's own numbers. */
+    limitsTitle: string;
+    limitsLead: string;
+    limitsWithoutLabel: string;
+    limitsWithLabel: string;
+    limitsUnit: string;
+    limitsLadder: string;
+    limitsNote: string;
+    limitsExtras: readonly string[];
+    limitsSource: string;
     honest: string;
     guideLink: string;
     cta: string;
@@ -287,6 +297,21 @@ const roman: Copy = {
       "Notability — asli news coverage jo aapke business ke bare mein ho. Paid ya sponsored articles nahi ginte.",
       "Meta Verified — paid subscription jis mein notability nahi chahiye, magar yeh har mulk mein available nahi. Apne Business Manager mein khud dekhein ke aap ko offer ho raha hai ya nahi.",
     ],
+    limitsTitle: "Verification se asal mein kya milta hai",
+    limitsLead:
+      "Badge nahi — limit. Meta har number par ginta hai ke aap ek din mein kitne ALAG logon ko khud se message bhej sakte hain. Verification se pehle aur baad ka farq yeh hai:",
+    limitsWithoutLabel: "Verification ke baghair",
+    limitsWithLabel: "Business Verification ke baad",
+    limitsUnit: "alag log / 24 ghante",
+    limitsLadder:
+      "Is ke baad khud barhta jata hai — 10,000, phir 100,000, phir unlimited. Shart: templates ki quality achi rahe aur pichle 7 din mein aap apni maujooda limit ka kam az kam aadha istemaal kar rahe hon. Barhne mein 6 ghante lagte hain.",
+    limitsNote:
+      "Ahem: yeh MESSAGES ki nahi, ALAG LOGON ki ginti hai — aur sirf wo jo 24-ghante wali service window ke BAHAR jate hain, yani broadcast aur template. Customer ke apne message ka jawab is mein ginta hi nahi.",
+    limitsExtras: [
+      "Verification ke baghair ek portfolio par sirf 2 number lag sakte hain; verification (ya 2,000 wali limit) ke baad Meta khud 20 kar deta hai.",
+      "Templates: verification ke baghair 250 per WhatsApp account. Portfolio verified ho aur kisi number ka display name approved ho to 6,000.",
+    ],
+    limitsSource: "Yeh numbers Meta ke apne developer docs se hain",
     honest:
       "Koi bhi provider — hum bhi nahi — badge ka waada nahi kar sakta, kyunki koi provider us faisle mein shamil hi nahi hota. Jo “green tick guaranteed” beche, woh ya to process nahi jaanta ya samajhta hai ke aap nahi jaante.",
     guideLink: "Poori tafseel parhein — green tick guide",
@@ -545,6 +570,21 @@ const en: Copy = {
       "Notability — genuine news coverage about your business. Paid or sponsored placements do not count.",
       "Meta Verified — a paid subscription that skips the notability test, but is not switched on in every country. Check your own Business Manager to see whether it is offered to you.",
     ],
+    limitsTitle: "What verification actually buys you",
+    limitsLead:
+      "Not the badge — the limit. Meta caps how many DIFFERENT people each number can message first in a day. Here is the difference verification makes:",
+    limitsWithoutLabel: "Without verification",
+    limitsWithLabel: "After Business Verification",
+    limitsUnit: "unique people / 24 hours",
+    limitsLadder:
+      "After that it climbs on its own — 10,000, then 100,000, then unlimited. The conditions: template quality stays high, and you used at least half your current limit in the last 7 days. Each step lands within 6 hours.",
+    limitsNote:
+      "Important: this counts PEOPLE, not messages — and only the ones you reach OUTSIDE the 24-hour customer service window, meaning broadcasts and templates. Replying to a customer's own message does not count against it at all.",
+    limitsExtras: [
+      "Without verification a portfolio can register only 2 phone numbers; once verified (or once you hit the 2,000 limit) Meta raises that cap to 20.",
+      "Templates: 250 per WhatsApp Business Account while unverified. With a verified portfolio and an approved display name on a number, 6,000.",
+    ],
+    limitsSource: "These numbers come from Meta's own developer documentation",
     honest:
       "No provider — us included — can promise you the badge, because no provider is part of that decision. Anyone selling a “guaranteed green tick” either misunderstands the process or is counting on you not knowing it.",
     guideLink: "Read the full guide on the green tick",
@@ -803,6 +843,21 @@ const ur: Copy = {
       "نوٹیبلٹی — آپ کے کاروبار کے بارے میں اصل خبری کوریج۔ پیڈ یا سپانسرڈ مضامین شمار نہیں ہوتے۔",
       "میٹا ویریفائیڈ — ادائیگی والی سبسکرپشن جس میں نوٹیبلٹی کی شرط نہیں، مگر یہ ہر ملک میں دستیاب نہیں۔ اپنے بزنس مینیجر میں خود دیکھیں کہ آپ کو پیشکش ہو رہی ہے یا نہیں۔",
     ],
+    limitsTitle: "تصدیق سے اصل میں کیا ملتا ہے",
+    limitsLead:
+      "بیج نہیں — لِمٹ۔ میٹا ہر نمبر پر گنتا ہے کہ آپ ایک دن میں کتنے الگ لوگوں کو خود سے پیغام بھیج سکتے ہیں۔ تصدیق سے پہلے اور بعد کا فرق یہ ہے:",
+    limitsWithoutLabel: "تصدیق کے بغیر",
+    limitsWithLabel: "بزنس ویریفکیشن کے بعد",
+    limitsUnit: "الگ لوگ / 24 گھنٹے",
+    limitsLadder:
+      "اس کے بعد خود بڑھتا جاتا ہے — 10,000، پھر 100,000، پھر لامحدود۔ شرط: ٹیمپلیٹس کی کوالٹی اچھی رہے اور پچھلے 7 دن میں آپ اپنی موجودہ لِمٹ کا کم از کم آدھا استعمال کر رہے ہوں۔ بڑھنے میں 6 گھنٹے لگتے ہیں۔",
+    limitsNote:
+      "اہم: یہ پیغامات کی نہیں، الگ لوگوں کی گنتی ہے — اور صرف وہ جو 24 گھنٹے والی سروس وِنڈو کے باہر جاتے ہیں، یعنی براڈکاسٹ اور ٹیمپلیٹ۔ کسٹمر کے اپنے پیغام کا جواب اس میں گنتا ہی نہیں۔",
+    limitsExtras: [
+      "تصدیق کے بغیر ایک پورٹ فولیو پر صرف 2 نمبر لگ سکتے ہیں؛ تصدیق (یا 2,000 والی لِمٹ) کے بعد میٹا خود 20 کر دیتا ہے۔",
+      "ٹیمپلیٹس: تصدیق کے بغیر 250 فی واٹس ایپ اکاؤنٹ۔ پورٹ فولیو تصدیق شدہ ہو اور کسی نمبر کا ڈسپلے نیم منظور شدہ ہو تو 6,000۔",
+    ],
+    limitsSource: "یہ اعداد میٹا کی اپنی ڈویلپر دستاویزات سے ہیں",
     honest:
       "کوئی بھی فراہم کنندہ — ہم بھی نہیں — بیج کا وعدہ نہیں کر سکتا، کیونکہ کوئی فراہم کنندہ اُس فیصلے میں شامل ہی نہیں ہوتا۔ جو ”گرین ٹک گارنٹی“ بیچے، وہ یا تو عمل نہیں جانتا یا سمجھتا ہے کہ آپ نہیں جانتے۔",
     guideLink: "پوری تفصیل پڑھیں — گرین ٹک گائیڈ (انگریزی)",

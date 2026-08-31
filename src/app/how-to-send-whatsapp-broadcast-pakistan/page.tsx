@@ -72,12 +72,27 @@ const CATEGORIES = [
   },
 ] as const;
 
-/** Meta's messaging ladder — the number of unique customers per 24h. */
+/**
+ * Meta's messaging ladder — unique customers a number can message
+ * OUTSIDE the customer service window in a moving 24 hours.
+ *
+ * Read off Meta's own doc, not off other providers. The rung after
+ * verification is 2,000; the "1,000" nearly every article in this
+ * market quotes is the previous ladder, and this page repeated it until
+ * 2026-08-31. Source:
+ * developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
+ */
 const TIERS = [
-  { tier: "250", when: "Where a new, unverified number starts." },
-  { tier: "1,000", when: "After Business Verification, with a healthy quality rating." },
-  { tier: "10,000", when: "Earned by sending consistently without complaints." },
-  { tier: "100,000", when: "Same ladder, one rung up." },
+  { tier: "250", when: "Where a new, unverified business portfolio starts." },
+  {
+    tier: "2,000",
+    when: "After Business Verification — or after 2,000 delivered high-quality template messages to unique numbers over a moving 30 days.",
+  },
+  {
+    tier: "10,000",
+    when: "Automatic, once quality holds and you have used half your current limit in 7 days.",
+  },
+  { tier: "100,000", when: "Same rule, one rung up." },
   { tier: "Unlimited", when: "The top of the ladder." },
 ] as const;
 
@@ -96,7 +111,7 @@ const FAQ = [
   },
   {
     q: "How many messages can I send in a day?",
-    a: "It depends on your messaging tier, which counts unique customers in a rolling 24 hours. New numbers start low and the ladder climbs as you send consistently without generating complaints. You do not apply for a higher tier; you earn it, and a bad campaign can move you back down.",
+    a: "An unverified business portfolio starts at 250 and Business Verification takes it to 2,000; from there it climbs automatically to 10,000, 100,000 and unlimited. Read the number carefully though: it counts unique people, not messages, and only the ones you reach outside the 24-hour customer service window. Replying to a customer who messaged you does not count against it at all, so a busy support inbox never touches the limit — a cold broadcast list is what does.",
   },
   {
     q: "What does a broadcast to 1,000 people cost?",
@@ -342,8 +357,18 @@ export default function BroadcastGuidePage() {
               </table>
             </div>
             <p className="mt-4 leading-relaxed text-ink-muted">
-              There is no form to request a higher tier. It moves on its own —
-              upward when you send well, and{" "}
+              Read the number carefully: it counts{" "}
+              <strong className="text-ink">unique people</strong>, not
+              messages, and only the ones you reach{" "}
+              <strong className="text-ink">outside</strong> the 24-hour
+              customer service window. Replying to someone who messaged you
+              first never counts against it — a busy support inbox does not
+              touch this limit at all. A cold broadcast list is what does.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Above 2,000 there is no form to fill in. It moves on its own —
+              upward within about six hours when quality holds and you are
+              actually using half of what you have, and{" "}
               <strong className="text-ink">back down</strong> after a campaign
               that draws blocks and reports. This is the mechanism behind most
               of the &ldquo;my number got restricted&rdquo; stories in this

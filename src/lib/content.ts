@@ -134,3 +134,39 @@ export const plans = [
 
 export const TRIAL_DAYS = 3;
 export const CURRENCY = "PKR";
+
+// ------------------------------------------------------------
+// Meta's messaging limits.
+//
+// Read off Meta's own developer docs, not off a competitor's blog —
+// this is the number every provider in this market quotes wrong. The
+// tier after verification is 2,000; the widely-copied "1,000" is the
+// OLD ladder and this site was repeating it until 2026-08-31.
+//
+// The definition matters as much as the number: "the maximum number of
+// unique WhatsApp user phone numbers your business can deliver messages
+// to, outside of a customer service window, within a moving 24-hour
+// period". It counts PEOPLE, not messages, and only the ones reached
+// outside the 24-hour service window — replies to a customer never
+// count against it.
+//
+// Meta revises these. Check the doc before quoting them anywhere new.
+// ------------------------------------------------------------
+export const metaLimits = {
+  /** A new business portfolio starts here. */
+  unverified: 250,
+  /** Reached by verifying the business (or by 2,000 delivered
+   *  high-quality template messages over a moving 30 days). */
+  verified: 2000,
+  /** Automatic from there, if quality holds and you use half your
+   *  current limit in 7 days. */
+  ladder: [10000, 100000] as const,
+  /** Phone numbers a portfolio may register. */
+  numbersUnverified: 2,
+  numbersVerified: 20,
+  /** Message templates per WhatsApp Business Account. */
+  templatesUnverified: 250,
+  templatesVerified: 6000,
+  docsUrl:
+    "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
+} as const;
