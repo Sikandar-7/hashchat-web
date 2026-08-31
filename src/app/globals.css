@@ -34,6 +34,10 @@
 
   --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Urdu readers expect Nastaliq, not Naskh — a Naskh fallback reads as
+     Arabic to them, which is the typographic equivalent of setting an
+     English page in Fraktur. */
+  --font-urdu: var(--font-nastaliq), "Noto Nastaliq Urdu", serif;
 }
 
 /* The three stops as one gradient — used on headline spans, the logo
@@ -89,4 +93,34 @@ body {
 ::selection {
   background: color-mix(in oklab, var(--color-brand-indigo) 40%, transparent);
   color: var(--color-ink);
+}
+
+
+/* Urdu subtree.
+ *
+ * Nastaliq descends steeply from right to left, so glyphs from one line
+ * collide with the next at the line-heights Latin type is comfortable
+ * at. The larger `line-height` here is not styling taste — at the
+ * inherited 1.5 the script is genuinely hard to read.
+ *
+ * Applied by class rather than `[dir=rtl]` so the Latin strings kept
+ * inside the page (prices, the phone number, plan names) can opt back
+ * out with `dir="ltr"` without also inheriting a font built for a
+ * different script. */
+.font-urdu {
+  font-family: var(--font-urdu);
+  line-height: 2;
+}
+
+.font-urdu h1,
+.font-urdu h2,
+.font-urdu h3,
+.font-urdu .font-display {
+  font-family: var(--font-urdu);
+  line-height: 1.7;
+}
+
+.font-urdu [dir="ltr"] {
+  font-family: var(--font-sans);
+  line-height: 1.5;
 }

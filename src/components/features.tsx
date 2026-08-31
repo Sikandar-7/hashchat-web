@@ -10,7 +10,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { features } from "@/lib/content";
+import { featureKeys } from "@/lib/content";
+import { t, type Locale } from "@/lib/i18n";
 import { Section } from "./section";
 
 /** content.ts stays free of component imports; this maps its names. */
@@ -25,20 +26,17 @@ const ICONS: Record<string, LucideIcon> = {
   mobile: Smartphone,
 };
 
-export function Features() {
+export function Features({ locale }: { locale: Locale }) {
+  const c = t(locale).features;
   return (
-    <Section
-      id="features"
-      eyebrow="Features"
-      title="Sab kuch ek jagah"
-      lead="Har cheez jo ek WhatsApp par chalne wale business ko chahiye — bina teen alag tools ke."
-    >
+    <Section id="features" eyebrow={c.eyebrow} title={c.title} lead={c.lead}>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {features.map((f) => {
-          const Icon = ICONS[f.icon] ?? Inbox;
+        {featureKeys.map((key) => {
+          const f = c.items[key];
+          const Icon = ICONS[key] ?? Inbox;
           return (
             <li
-              key={f.title}
+              key={key}
               className="group rounded-2xl border border-line bg-surface/60 p-6 transition-colors hover:border-brand-indigo/40 hover:bg-surface-2/60"
             >
               <span className="inline-flex size-10 items-center justify-center rounded-xl border border-line bg-surface-2 text-brand-sky transition-colors group-hover:border-brand-indigo/40">

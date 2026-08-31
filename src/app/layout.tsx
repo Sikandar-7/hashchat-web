@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Noto_Nastaliq_Urdu, Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -12,6 +12,18 @@ const jakarta = Plus_Jakarta_Sans({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Only the /ur subtree uses this, but the variable is declared on <html>
+// with the others: Tailwind v4 resolves @theme tokens against :root, so
+// a font variable set anywhere lower is out of scope by the time
+// --font-urdu is computed. next/font still only ships the files to
+// pages that reference the class.
+const nastaliq = Noto_Nastaliq_Urdu({
+  variable: "--font-nastaliq",
+  subsets: ["arabic"],
+  weight: ["400", "600"],
   display: "swap",
 });
 
@@ -79,7 +91,7 @@ export default function RootLayout({
     // page silently falls back to system sans.
     <html
       lang="en"
-      className={`${jakarta.variable} ${inter.variable}`}
+      className={`${jakarta.variable} ${inter.variable} ${nastaliq.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh antialiased">{children}</body>

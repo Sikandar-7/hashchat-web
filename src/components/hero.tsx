@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 
-import { TRIAL_DAYS, site, waLink } from "@/lib/content";
+import { site, waLink } from "@/lib/content";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Hero() {
+export function Hero({ locale }: { locale: Locale }) {
+  const c = t(locale).hero;
   return (
     <section className="relative overflow-hidden">
       {/* Aurora bloom behind the headline. Two soft radial washes in the
@@ -31,18 +33,16 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5 text-xs font-medium text-ink-muted">
             <span className="size-1.5 rounded-full bg-brand-teal" />
-            {TRIAL_DAYS} din free — card ki zaroorat nahi
+            {c.badge}
           </p>
 
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl">
-            Poori team ka{" "}
-            <span className="brand-text">ek WhatsApp inbox</span>
+            {c.titleLead}{" "}
+            <span className="brand-text">{c.titleAccent}</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-ink-muted">
-            Customers ke messages ab ek banday ke phone mein nahi atkte.
-            Contacts, sales pipeline, broadcasts aur automations — sab ek
-            jagah, poori team ke liye.
+            {c.lead}
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -50,7 +50,7 @@ export function Hero() {
               href={`${site.appUrl}/signup`}
               className="brand-gradient w-full rounded-xl px-6 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-brand-indigo/25 transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
-              Free trial shuru karein
+              {c.ctaPrimary}
             </a>
             {/* A WhatsApp button, not a second in-page link. Every
                 competitor in this market closes on one, with the number
@@ -58,21 +58,21 @@ export function Hero() {
                 an account, and sending them to a signup form instead is
                 where the conversation ends. */}
             <a
-              href={waLink(
-                "Assalam o alaikum — hashChat ke bare mein maloomat chahiye.",
-              )}
+              href={waLink(c.whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-line bg-surface/60 px-6 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:bg-surface-2 sm:w-auto"
             >
               <MessageCircle className="size-4 text-brand-teal" aria-hidden />
-              WhatsApp par baat karein
+              {c.ctaWhatsapp}
             </a>
           </div>
 
           <p className="mt-5 text-sm text-ink-faint">
-            Aapka apna WhatsApp number · Lahore se banaya gaya ·{" "}
-            <span className="text-ink-muted">{site.whatsappDisplay}</span>
+            {c.footnote}{" "}
+            <span className="text-ink-muted" dir="ltr">
+              {site.whatsappDisplay}
+            </span>
           </p>
         </div>
 

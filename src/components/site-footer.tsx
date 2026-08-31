@@ -1,8 +1,12 @@
 import Image from "next/image";
 
 import { site } from "@/lib/content";
+import { localeMeta, t, type Locale } from "@/lib/i18n";
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const c = t(locale).footer;
+  const home = localeMeta(locale).href;
+  const at = (hash: string) => `${home === "/" ? "" : home}${hash}`;
   return (
     <footer className="border-t border-line/60 py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 sm:flex-row sm:items-center sm:justify-between">
@@ -18,19 +22,19 @@ export function SiteFooter() {
             <span className="font-display font-bold">{site.name}</span>
           </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-faint">
-            {site.tagline}. Lahore, Pakistan se banaya gaya.
+            {c.blurb}
           </p>
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-          <a href="#features" className="text-ink-muted hover:text-ink">
-            Features
+          <a href={at("#features")} className="text-ink-muted hover:text-ink">
+            {c.features}
           </a>
-          <a href="#pricing" className="text-ink-muted hover:text-ink">
-            Pricing
+          <a href={at("#pricing")} className="text-ink-muted hover:text-ink">
+            {c.pricing}
           </a>
-          <a href="#faq" className="text-ink-muted hover:text-ink">
-            FAQ
+          <a href={at("#faq")} className="text-ink-muted hover:text-ink">
+            {c.faq}
           </a>
           {/* The features list and every plan already promise an Android
               app; until now nothing on the site handed it over. Not a
@@ -43,8 +47,8 @@ export function SiteFooter() {
             download
             className="text-ink-muted hover:text-ink"
           >
-            Android app{" "}
-            <span className="text-ink-faint">
+            {c.android}{" "}
+            <span className="text-ink-faint" dir="ltr">
               ({site.androidApkVersion} · {site.androidApkSize})
             </span>
           </a>
@@ -52,7 +56,7 @@ export function SiteFooter() {
             href={`${site.appUrl}/login`}
             className="text-ink-muted hover:text-ink"
           >
-            Sign in
+            {c.signIn}
           </a>
         </nav>
       </div>
@@ -62,14 +66,14 @@ export function SiteFooter() {
           © {new Date().getFullYear()} {site.name}
         </p>
         <p>
-          Ek product{" "}
+          {c.productOfBefore}
           <a
             href={site.companyUrl}
             className="text-ink-muted underline-offset-4 hover:text-ink hover:underline"
           >
             {site.company}
-          </a>{" "}
-          ka
+          </a>
+          {c.productOfAfter}
         </p>
       </div>
 
@@ -88,9 +92,15 @@ export function SiteFooter() {
           site par maanga to /terms par jaye, footer par nahi. */}
       <div className="mx-auto mt-6 max-w-6xl border-t border-line/60 px-5 pt-6 text-xs leading-relaxed text-ink-faint">
         <p>
-          {site.name} ko{" "}
-          <span className="text-ink-muted">LOVE &amp; JOY (SMC-PRIVATE) LIMITED</span>{" "}
-          chalati hai — Pakistan mein registered company, CUIN 0324937.
+          {c.legalBefore}
+          {/* The legal name is never translated: Meta's business
+              verification looks for this exact string on the site, and
+              the 2026-08-23 refusal was for its absence. Taken letter
+              for letter from the SECP incorporation documents. */}
+          <span className="text-ink-muted" dir="ltr">
+            LOVE &amp; JOY (SMC-PRIVATE) LIMITED
+          </span>
+          {c.legalAfter}
         </p>
       </div>
     </footer>

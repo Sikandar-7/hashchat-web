@@ -1,31 +1,18 @@
-import { BanProblem } from "@/components/ban-problem";
-import { Cta } from "@/components/cta";
-import { Faq } from "@/components/faq";
-import { Features } from "@/components/features";
-import { Hero } from "@/components/hero";
-import { HowItWorks } from "@/components/how-it-works";
-import { Pricing } from "@/components/pricing";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteNav } from "@/components/site-nav";
-import { StructuredData } from "@/components/structured-data";
+import type { Metadata } from "next";
+
+import { Landing } from "@/components/landing";
+import { site } from "@/lib/content";
+import { hrefLangs, t } from "@/lib/i18n";
+
+// The root stays Roman Urdu. It is what is already indexed, and it is
+// how this market writes — moving it to /roman for routing symmetry
+// would trade real ranking for tidiness.
+export const metadata: Metadata = {
+  title: t("roman").meta.title,
+  description: t("roman").meta.description,
+  alternates: { canonical: site.url, languages: hrefLangs },
+};
 
 export default function HomePage() {
-  return (
-    <>
-      <StructuredData />
-      <SiteNav />
-      <main>
-        <Hero />
-        {/* Straight after the hero: it is the problem this market
-            actually searches for, so it earns the position. */}
-        <BanProblem />
-        <Features />
-        <HowItWorks />
-        <Pricing />
-        <Faq />
-        <Cta />
-      </main>
-      <SiteFooter />
-    </>
-  );
+  return <Landing locale="roman" />;
 }

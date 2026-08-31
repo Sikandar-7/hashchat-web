@@ -1,17 +1,14 @@
 import { Plus } from "lucide-react";
 
-import { faqs } from "@/lib/content";
+import { t, type Locale } from "@/lib/i18n";
 import { Section } from "./section";
 
-export function Faq() {
+export function Faq({ locale }: { locale: Locale }) {
+  const c = t(locale).faq;
   return (
-    <Section
-      id="faq"
-      eyebrow="FAQ"
-      title="Jo sawaal sab se pehle aate hain"
-    >
+    <Section id="faq" eyebrow={c.eyebrow} title={c.title}>
       <div className="mx-auto max-w-3xl divide-y divide-line rounded-2xl border border-line bg-surface/60">
-        {faqs.map((f) => (
+        {c.items.map((f) => (
           // <details> rather than a JS accordion: keyboard and screen
           // reader behaviour comes free, it works before hydration, and
           // it keeps this whole page a server component.

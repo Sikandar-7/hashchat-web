@@ -1,4 +1,5 @@
-import { CURRENCY, faqs, founder, plans, site } from "@/lib/content";
+import { CURRENCY, founder, plans, site } from "@/lib/content";
+import { localeMeta, t, type Locale } from "@/lib/i18n";
 
 /**
  * JSON-LD for search engines and AI answer engines.
@@ -13,7 +14,13 @@ import { CURRENCY, faqs, founder, plans, site } from "@/lib/content";
  * one is both dishonest and against Google's structured data policy —
  * it earns a manual action, not a rich result.
  */
-export function StructuredData() {
+export function StructuredData({ locale }: { locale: Locale }) {
+  const copy = t(locale);
+  const meta = localeMeta(locale);
+  // Each locale gets its own FAQPage node at its own @id. One shared
+  // node would mean the Urdu page publishing Roman Urdu answers, and an
+  // answer engine quoting whichever it fetched last.
+  const pageUrl = new URL(meta.href, site.url).toString();
   const organization = {
     "@type": "Organization",
     "@id": `${site.url}/#organization`,
@@ -83,8 +90,9 @@ export function StructuredData() {
 
   const faqPage = {
     "@type": "FAQPage",
-    "@id": `${site.url}/#faq`,
-    mainEntity: faqs.map((f) => ({
+    "@id": `${pageUrl}#faq`,
+    inLanguage: meta.htmlLang,
+    mainEntity: copy.faq.items.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },

@@ -164,7 +164,7 @@ export default function BroadcastGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteNav />
+      <SiteNav locale="en" />
 
       <main className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
         <p className="text-sm text-ink-faint">
@@ -497,7 +497,7 @@ export default function BroadcastGuidePage() {
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </>
   );
 }

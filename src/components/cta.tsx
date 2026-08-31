@@ -1,6 +1,8 @@
-import { TRIAL_DAYS, site } from "@/lib/content";
+import { site } from "@/lib/content";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Cta() {
+export function Cta({ locale }: { locale: Locale }) {
+  const c = t(locale).cta;
   return (
     <section className="border-t border-line/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5">
@@ -15,24 +17,23 @@ export function Cta() {
           />
 
           <h2 className="relative font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Aaj hi shuru karein
+            {c.title}
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-lg text-ink-muted">
-            {TRIAL_DAYS} din free. Card ki zaroorat nahi. Setup dus minute ka
-            hai.
+            {c.lead}
           </p>
           <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={`${site.appUrl}/signup`}
               className="brand-gradient w-full rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-indigo/25 transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
-              Free trial shuru karein
+              {c.primary}
             </a>
             <a
               href="#pricing"
               className="w-full rounded-xl border border-line bg-surface-2 px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-line/40 sm:w-auto"
             >
-              Pricing dekhein
+              {c.secondary}
             </a>
           </div>
         </div>
