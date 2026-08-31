@@ -29,7 +29,7 @@ export function Hero({ locale }: { locale: Locale }) {
         />
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-20 sm:pb-28 sm:pt-28">
+      <div className="mx-auto max-w-6xl px-5 pb-20 pt-8 sm:pb-28 sm:pt-10">
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5 text-xs font-medium text-ink-muted">
             <span className="size-1.5 rounded-full bg-brand-teal" />
