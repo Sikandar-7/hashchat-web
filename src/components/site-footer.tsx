@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { site } from "@/lib/content";
 import { localeMeta, t, type Locale } from "@/lib/i18n";
@@ -61,10 +62,33 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </nav>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-line/60 px-5 pt-6 text-sm text-ink-faint sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-4 border-t border-line/60 px-5 pt-6 text-sm text-ink-faint sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>
+
+        {/* Legal links sit in this strip rather than the nav above, and
+            on every page rather than one. Two of the three are the URLs
+            Meta's app settings point at -- the reviewer following them
+            is the reader this row exists for -- and the third is what a
+            customer goes looking for when they want out. Putting them
+            up with Pricing would make them compete with the links that
+            sell; burying them in a single page would fail the check. */}
+        <nav
+          aria-label="Legal"
+          className="flex flex-wrap gap-x-6 gap-y-2 sm:justify-center"
+        >
+          <Link href="/privacy" className="hover:text-ink-muted">
+            {c.privacy}
+          </Link>
+          <Link href="/terms" className="hover:text-ink-muted">
+            {c.terms}
+          </Link>
+          <Link href="/data-deletion" className="hover:text-ink-muted">
+            {c.deletion}
+          </Link>
+        </nav>
+
         <p>
           {c.productOfBefore}
           <a

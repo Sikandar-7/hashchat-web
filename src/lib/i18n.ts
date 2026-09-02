@@ -211,6 +211,9 @@ interface Copy {
     faq: string;
     android: string;
     signIn: string;
+    privacy: string;
+    terms: string;
+    deletion: string;
     productOfBefore: string;
     productOfAfter: string;
     legalBefore: string;
@@ -485,6 +488,9 @@ const roman: Copy = {
     faq: "FAQ",
     android: "Android app",
     signIn: "Sign in",
+    privacy: "Privacy",
+    terms: "Terms",
+    deletion: "Data delete karein",
     productOfBefore: "Ek product ",
     productOfAfter: " ka",
     legalBefore: `${site.name} ko `,
@@ -758,6 +764,9 @@ const en: Copy = {
     faq: "FAQ",
     android: "Android app",
     signIn: "Sign in",
+    privacy: "Privacy",
+    terms: "Terms",
+    deletion: "Delete your data",
     productOfBefore: "A product of ",
     productOfAfter: "",
     legalBefore: `${site.name} is operated by `,
@@ -1031,6 +1040,9 @@ const ur: Copy = {
     faq: "سوالات",
     android: "اینڈرائیڈ ایپ",
     signIn: "سائن اِن",
+    privacy: "پرائیویسی",
+    terms: "شرائط",
+    deletion: "ڈیٹا ڈیلیٹ کریں",
     productOfBefore: "ایک پروڈکٹ ",
     productOfAfter: " کا",
     legalBefore: `${site.name} کو `,

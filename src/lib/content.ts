@@ -58,6 +58,53 @@ export const founder = {
   sameAs: ["https://github.com/Sikandar-7"],
 } as const;
 
+/**
+ * The operating company, letter for letter off the SECP documents.
+ *
+ * `entity` is the same string the footer prints and Meta's business
+ * verification looks for -- it is never translated and never tidied.
+ *
+ * `address` is here because /privacy and /terms have to carry it: a
+ * privacy policy without a postal address for the controller is not one,
+ * and Meta's reviewer follows the URL to check the operator is real. It
+ * is deliberately NOT in the sitewide footer -- see the note in
+ * site-footer.tsx. It is a home address, so it appears on the two pages
+ * that need it and nowhere else.
+ *
+ * `contact` is the mailbox that actually receives mail today. Do not
+ * swap it for a prettier privacy@ or legal@ address until that mailbox
+ * exists -- a dead contact address on a policy page is worse than a
+ * plain one, and it is the address a reviewer may write to.
+ *
+ * `dataRegion` is where the servers actually are. Stated because a
+ * policy has to say where the data lives, and guessed data residency is
+ * how these pages start lying.
+ */
+export const legal = {
+  entity: "LOVE & JOY (SMC-PRIVATE) LIMITED",
+  cuin: "0324937",
+  /** SECP, Companies Act 2017, limited by shares. */
+  incorporated: "30 January 2026",
+  address: {
+    street: "h#22 st#06 BS winner gulshan bund road lahore",
+    city: "Lahore",
+    province: "Punjab",
+    country: "Pakistan",
+  },
+  contact: "admin@hashchat.uk",
+  dataRegion: "Kuala Lumpur, Malaysia",
+  /** Bump when the wording of /privacy or /terms actually changes. */
+  updated: "2026-09-02",
+} as const;
+
+/** One line, for the places that print the address inline. */
+export const legalAddressLine = [
+  legal.address.street,
+  legal.address.city,
+  legal.address.province,
+  legal.address.country,
+].join(", ");
+
 /** Prefilled so the first message says something useful. */
 export const waLink = (message: string) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
