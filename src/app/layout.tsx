@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Nastaliq_Urdu, Plus_Jakarta_Sans } from "next/font/google";
 
+import { legal } from "@/lib/content";
+
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -74,6 +76,13 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   alternates: { canonical: SITE_URL },
+  // Meta's domain-verification tag. `other` is Next's escape hatch for a
+  // plain <meta name=... content=...> with no first-class field, and it
+  // renders server-side into <head> -- which is exactly what Meta checks
+  // for and what a client-injected tag would fail.
+  other: {
+    "facebook-domain-verification": legal.metaDomainVerification,
+  },
 };
 
 export const viewport: Viewport = {

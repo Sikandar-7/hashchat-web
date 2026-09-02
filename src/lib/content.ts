@@ -99,6 +99,25 @@ export const legal = {
   },
   contact: "support@hashchat.uk",
   dataRegion: "Kuala Lumpur, Malaysia",
+  /**
+   * Meta's domain-verification token for hashchat.uk, issued 2026-09-03 in
+   * Business settings → Brand safety and suitability → Domains.
+   *
+   * It proves to Meta that whoever controls the business portfolio also
+   * controls this domain. Not cosmetic: it is a documented unblocker for
+   * Access Verification (Tech Provider), which is the gate Embedded Signup
+   * sits behind.
+   *
+   * Meta rejects the tag if it is outside <head> or injected by client-side
+   * JavaScript, which is why it goes through Next's `metadata` (rendered
+   * server-side into <head>) rather than any runtime script. It must be on
+   * the home page; the root layout puts it on every page, which satisfies
+   * that and costs nothing.
+   *
+   * Once verified, do NOT delete it — Meta re-checks, and removing the tag
+   * un-verifies the domain.
+   */
+  metaDomainVerification: "b2am2s63ti62l1iuhxa7j5e5zvucfu",
   /** Bump when the wording of /privacy or /terms actually changes. */
   updated: "2026-09-03",
 } as const;
