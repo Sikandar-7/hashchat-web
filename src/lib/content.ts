@@ -71,10 +71,16 @@ export const founder = {
  * site-footer.tsx. It is a home address, so it appears on the two pages
  * that need it and nowhere else.
  *
- * `contact` is the mailbox that actually receives mail today. Do not
- * swap it for a prettier privacy@ or legal@ address until that mailbox
- * exists -- a dead contact address on a policy page is worse than a
- * plain one, and it is the address a reviewer may write to.
+ * `contact` is the mailbox that actually receives mail today, and it is
+ * deliberately the SAME one the app's own /privacy, /terms and
+ * /data-deletion print. Both admin@ and support@ are Porkbun forwards to
+ * the same inbox, so either would arrive -- but a customer reading two of
+ * our pages should not be given two addresses, and support@ is the one
+ * the app has carried since July.
+ *
+ * Do not swap it for a prettier privacy@ or legal@ until that forward
+ * actually exists: a dead contact address on a policy page is worse than
+ * a plain one, and it is the address a reviewer may write to.
  *
  * `dataRegion` is where the servers actually are. Stated because a
  * policy has to say where the data lives, and guessed data residency is
@@ -91,10 +97,10 @@ export const legal = {
     province: "Punjab",
     country: "Pakistan",
   },
-  contact: "admin@hashchat.uk",
+  contact: "support@hashchat.uk",
   dataRegion: "Kuala Lumpur, Malaysia",
   /** Bump when the wording of /privacy or /terms actually changes. */
-  updated: "2026-09-02",
+  updated: "2026-09-03",
 } as const;
 
 /** One line, for the places that print the address inline. */
