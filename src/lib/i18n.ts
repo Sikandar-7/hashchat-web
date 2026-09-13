@@ -357,7 +357,7 @@ const roman: Copy = {
       "Assalam o alaikum — WhatsApp business verification aur green tick ke bare mein poochna tha.",
   },
   keepApp: {
-    eyebrow: "Naya · Business plan",
+    eyebrow: "Naya · Pro aur Business plan",
     title: "Apni WhatsApp Business app rakhein — usi number par",
     lead: "hashChat par aane ke liye ab app chhorni nahi parti: wohi number jorein jo aap WhatsApp Business app mein chala rahe hain — Meta ise coexistence kehta hai.",
     points: {
@@ -483,6 +483,7 @@ const roman: Copy = {
           "No-code flows",
           "AI jawab",
           "Public API",
+          "Shared WhatsApp: WhatsApp Business app + hashChat, ek hi number par",
         ],
       },
       business: {
@@ -537,7 +538,7 @@ const roman: Copy = {
       },
       {
         q: "Kya yeh WhatsApp Business app ki jagah lega?",
-        a: `Zaroori nahi. Jo number aap WhatsApp Business app mein chala rahe hain, wohi hashChat se jor sakte hain — app phone par chalti rehti hai. Meta ise coexistence kehta hai. Ya chahein to naya number sirf hashChat ke liye rakh lein. App se bheje gaye messages free hi rehte hain; hashChat se bheje gaye messages par Meta ke aam rates lagte hain. Meta ki kuch shartein bhi hain: app ka version ${coexistence.minAppVersion} ya naya ho; jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain; aur WhatsApp Web jaise linked devices dobara link karne parte hain (Windows wali WhatsApp app link nahi ho sakti).`,
+        a: `Zaroori nahi. Jo number aap WhatsApp Business app mein chala rahe hain, wohi hashChat se jor sakte hain (Pro aur Business plan mein) — app phone par chalti rehti hai. Meta ise coexistence kehta hai. Ya chahein to naya number sirf hashChat ke liye rakh lein. App se bheje gaye messages free hi rehte hain; hashChat se bheje gaye messages par Meta ke aam rates lagte hain. Meta ki kuch shartein bhi hain: app ka version ${coexistence.minAppVersion} ya naya ho; jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain; aur WhatsApp Web jaise linked devices dobara link karne parte hain (Windows wali WhatsApp app link nahi ho sakti).`,
       },
       {
         q: "Message bhejne ka koi alag kharcha hai?",
@@ -683,7 +684,7 @@ const en: Copy = {
       "Hello — I have a question about WhatsApp business verification and the green tick.",
   },
   keepApp: {
-    eyebrow: "New · Business plan",
+    eyebrow: "New · Pro & Business plans",
     title: "Keep your WhatsApp Business app — same number",
     lead: "Moving to hashChat no longer means giving up the app: connect the number you already use in the WhatsApp Business app — Meta calls this coexistence.",
     points: {
@@ -809,6 +810,7 @@ const en: Copy = {
           "No-code flows",
           "AI replies",
           "Public API",
+          "Shared WhatsApp: the WhatsApp Business app and hashChat on one number",
         ],
       },
       business: {
@@ -863,7 +865,7 @@ const en: Copy = {
       },
       {
         q: "Does this replace the WhatsApp Business app?",
-        a: `It doesn't have to. You can connect the number you already use in the WhatsApp Business app and keep using the app on your phone — Meta calls this coexistence. Or use a new number only for hashChat. Messages you send from the app stay free; messages sent through hashChat follow Meta's normal pricing. Meta sets a few conditions: the app must be version ${coexistence.minAppVersion} or newer; once connected, the app's broadcast lists, disappearing messages and view-once messages switch off; and linked devices such as WhatsApp Web have to be linked again (WhatsApp for Windows can't be linked).`,
+        a: `It doesn't have to. On the Pro and Business plans you can connect the number you already use in the WhatsApp Business app and keep using the app on your phone — Meta calls this coexistence. Or use a new number only for hashChat. Messages you send from the app stay free; messages sent through hashChat follow Meta's normal pricing. Meta sets a few conditions: the app must be version ${coexistence.minAppVersion} or newer; once connected, the app's broadcast lists, disappearing messages and view-once messages switch off; and linked devices such as WhatsApp Web have to be linked again (WhatsApp for Windows can't be linked).`,
       },
       {
         q: "Is there a separate cost to send messages?",
@@ -1009,7 +1011,7 @@ const ur: Copy = {
       "السلام علیکم — واٹس ایپ بزنس ویریفکیشن اور گرین ٹک کے بارے میں پوچھنا تھا۔",
   },
   keepApp: {
-    eyebrow: "نیا · Business پلان",
+    eyebrow: "نیا · Pro اور Business پلان",
     title: "اپنی واٹس ایپ بزنس ایپ رکھیں — اسی نمبر پر",
     lead: "hashChat پر آنے کے لیے اب ایپ چھوڑنی نہیں پڑتی: وہی نمبر جوڑیں جو آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں — میٹا اسے coexistence کہتا ہے۔",
     points: {
@@ -1135,6 +1137,7 @@ const ur: Copy = {
           "بغیر کوڈ کے فلو",
           "AI جواب",
           "پبلک API",
+          "شیئرڈ واٹس ایپ: واٹس ایپ بزنس ایپ اور hashChat ایک ہی نمبر پر",
         ],
       },
       business: {
@@ -1189,7 +1192,7 @@ const ur: Copy = {
       },
       {
         q: "کیا یہ واٹس ایپ بزنس ایپ کی جگہ لے گا؟",
-        a: `ضروری نہیں۔ جو نمبر آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں، وہی hashChat سے جوڑ سکتے ہیں — ایپ فون پر چلتی رہتی ہے۔ میٹا اسے coexistence کہتا ہے۔ یا چاہیں تو نیا نمبر صرف hashChat کے لیے رکھ لیں۔ ایپ سے بھیجے گئے پیغامات مفت ہی رہتے ہیں؛ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔ میٹا کی کچھ شرائط بھی ہیں: ایپ کا ورژن ${coexistence.minAppVersion} یا اس سے نیا ہو؛ جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں؛ اور واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں (ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی)۔`,
+        a: `ضروری نہیں۔ جو نمبر آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں، وہی hashChat سے جوڑ سکتے ہیں (Pro اور Business پلان میں) — ایپ فون پر چلتی رہتی ہے۔ میٹا اسے coexistence کہتا ہے۔ یا چاہیں تو نیا نمبر صرف hashChat کے لیے رکھ لیں۔ ایپ سے بھیجے گئے پیغامات مفت ہی رہتے ہیں؛ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔ میٹا کی کچھ شرائط بھی ہیں: ایپ کا ورژن ${coexistence.minAppVersion} یا اس سے نیا ہو؛ جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں؛ اور واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں (ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی)۔`,
       },
       {
         q: "پیغام بھیجنے کا کوئی الگ خرچ ہے؟",

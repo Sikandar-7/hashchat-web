@@ -99,7 +99,7 @@ const COMPARISON = [
 const FAQ = [
   {
     q: "Can I use the same number on both the app and the API?",
-    a: "Yes. Meta calls it coexistence, and hashChat supports it: you connect the number you already use in the WhatsApp Business app and keep using the app on your phone. The app has to be version 2.24.17 or newer. Once connected, its broadcast lists switch off, and so do disappearing and view-once messages. Linked devices such as WhatsApp Web have to be linked again. Without coexistence, a normal migration still takes the number off the app, and moving back means migrating again.",
+    a: "Yes, on hashChat's Pro and Business plans. Meta calls it coexistence: you connect the number you already use in the WhatsApp Business app and keep using the app on your phone. The app has to be version 2.24.17 or newer. Once connected, its broadcast lists switch off, and so do disappearing and view-once messages. Linked devices such as WhatsApp Web have to be linked again. Without coexistence, a normal migration still takes the number off the app, and moving back means migrating again.",
   },
   {
     q: "Will I lose my old chats when I migrate?",
@@ -341,7 +341,7 @@ export default function ApiVsAppPage() {
               Keeping the app: coexistence
             </h3>
             <p className="mt-3 leading-relaxed text-ink-muted">
-              hashChat supports what Meta calls coexistence. You connect the
+              On the Pro and Business plans, hashChat supports what Meta calls coexistence. You connect the
               number you already use in the WhatsApp Business app, and the app
               keeps working on your phone. In hashChat, open{" "}
               <span className="text-ink">Settings → WhatsApp</span> and choose{" "}
