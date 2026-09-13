@@ -12,9 +12,18 @@ import { founder, site, waLink } from "@/lib/content";
  * and saying so is what makes the rest of the page believable. The page
  * earns its keep on the two facts the market keeps quiet about: a
  * broadcast list only reaches people who already saved your number, and
- * a number cannot be on the app and the API at the same time. Both are
- * the reasons people outgrow the free app, and neither is obvious until
- * it has already cost someone a campaign.
+ * moving a number to the API changes what happens to the app it is on.
+ * Both are the reasons people outgrow the free app, and neither is
+ * obvious until it has already cost someone a campaign.
+ *
+ * Until 2026-09-13 this page said a number could never be on the app
+ * and the API at once. That stopped being true for hashChat when Meta's
+ * coexistence went live on it: the number a business already uses in
+ * the WhatsApp Business app connects, and the app keeps working on the
+ * phone. An ordinary migration still takes the number off the app and
+ * brings no history, so the page says both -- a reader has to know
+ * which one they are choosing. Every coexistence line here has been
+ * seen working live; add nothing about it that has not.
  *
  * English, like the pricing guide — that is how this comparison is
  * searched for. The landing page stays Roman Urdu.
@@ -22,7 +31,9 @@ import { founder, site, waLink } from "@/lib/content";
 
 const PAGE_PATH = "/whatsapp-business-api-vs-business-app";
 const PAGE_URL = `${site.url}${PAGE_PATH}`;
-const UPDATED = "2026-08-18";
+const PUBLISHED = "2026-08-18";
+/** Last real change to what the page says. Keep sitemap.ts in step. */
+const UPDATED = "2026-09-13";
 
 export const metadata: Metadata = {
   // Root template appends " — hashChat"; keep this side under ~49 so the
@@ -87,11 +98,11 @@ const COMPARISON = [
 const FAQ = [
   {
     q: "Can I use the same number on both the app and the API?",
-    a: "No. A number lives on one or the other. Moving it to the API means the WhatsApp Business app stops working for that number, and moving back means going through the migration again. This is the step people underestimate, so plan it for a quiet day rather than mid-campaign.",
+    a: "Yes. Meta calls it coexistence, and hashChat supports it: you connect the number you already use in the WhatsApp Business app and keep using the app on your phone. The app has to be version 2.24.17 or newer. Once connected, its broadcast lists switch off, and so do disappearing and view-once messages. Linked devices such as WhatsApp Web have to be linked again. Without coexistence, a normal migration still takes the number off the app, and moving back means migrating again.",
   },
   {
     q: "Will I lose my old chats when I migrate?",
-    a: "Chat history does not transfer into the API. Export what you need from the app first, and expect to start with a clean inbox on the other side. Contacts you can bring over as a CSV.",
+    a: "On a normal migration, yes. Chat history does not transfer into the API, so export what you need from the app first. Contacts you can bring over as a CSV. Coexistence is different: when you connect, up to six months of past one-to-one chats come into hashChat, under the names saved in your phone's contacts. Old photos, voice notes and files show as labels such as [photo], not the files. Group chats are not synced, and past chats come in only once, at connect time.",
   },
   {
     q: "Why does my broadcast only reach a few people?",
@@ -117,7 +128,7 @@ export default function ApiVsAppPage() {
         headline: "WhatsApp Business API vs WhatsApp Business App",
         description:
           "Where the free WhatsApp Business app stops working, what the API adds, and what switching costs.",
-        datePublished: UPDATED,
+        datePublished: PUBLISHED,
         dateModified: UPDATED,
         inLanguage: "en-PK",
         // Attributed to the person, not just the brand. The @id resolves
@@ -289,10 +300,14 @@ export default function ApiVsAppPage() {
             </h2>
             <ol className="mt-4 space-y-3 text-ink-muted">
               <li className="leading-relaxed">
-                <strong className="text-ink">1. Free the number.</strong> A
-                number can be on the app or the API, never both. If it is
-                currently on the Business app, that app stops working for it
-                once it moves.
+                <strong className="text-ink">
+                  1. Decide what happens to the app.
+                </strong>{" "}
+                On a normal migration a number lives on the app or the API,
+                not both: the Business app stops working for it once it
+                moves. Coexistence is the exception — the number goes on the
+                API and the app keeps working on your phone. Or put a new
+                number on the API and leave the app where it is.
               </li>
               <li className="leading-relaxed">
                 <strong className="text-ink">2. Verify the business.</strong>{" "}
@@ -312,9 +327,61 @@ export default function ApiVsAppPage() {
               </li>
             </ol>
             <p className="mt-5 leading-relaxed text-ink-muted">
-              Chat history does not come across, so export anything you need
-              from the app first. Contacts do, as a CSV.
+              On a normal migration, chat history does not come across, so
+              export anything you need from the app first. Contacts do, as a
+              CSV.
             </p>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              Keeping the app: coexistence
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              hashChat supports what Meta calls coexistence. You connect the
+              number you already use in the WhatsApp Business app, and the app
+              keeps working on your phone. In hashChat, open{" "}
+              <span className="text-ink">Settings → WhatsApp</span> and choose{" "}
+              <span className="text-ink">
+                Connect my WhatsApp Business app number
+              </span>
+              . Log in with Facebook, enter the number, then scan a QR code
+              with the WhatsApp Business app.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Up to six months of past one-to-one chats come into hashChat
+              when you connect, under the names saved in your phone&rsquo;s
+              contacts. Old photos, voice notes and files show as labels such
+              as [photo], not the files. Group chats are not synced, and past
+              chats come in only once, at connect time.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Meta sets the conditions, and they are worth reading first:
+            </p>
+            <ul className="mt-4 space-y-3 leading-relaxed text-ink-muted">
+              <li>
+                <strong className="text-ink">App version.</strong> The
+                WhatsApp Business app has to be 2.24.17 or newer.
+              </li>
+              <li>
+                <strong className="text-ink">What switches off.</strong> The
+                app&rsquo;s broadcast lists, and disappearing and view-once
+                messages.
+              </li>
+              <li>
+                <strong className="text-ink">Linked devices.</strong> WhatsApp
+                Web and other linked devices are unlinked and have to be
+                linked again. WhatsApp for Windows and WearOS cannot be
+                linked.
+              </li>
+              <li>
+                <strong className="text-ink">Speed.</strong> Sending on the
+                number is limited to 20 messages a second.
+              </li>
+              <li>
+                <strong className="text-ink">Pricing.</strong> Messages you
+                send from the app stay free. Messages sent through hashChat
+                follow Meta&rsquo;s normal pricing.
+              </li>
+            </ul>
           </section>
 
           <section>

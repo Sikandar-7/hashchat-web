@@ -455,7 +455,7 @@ const roman: Copy = {
       },
       {
         q: "Kya yeh WhatsApp Business app ki jagah lega?",
-        a: "Yeh WhatsApp Business API par chalta hai, jo aapke number ko poori team ke liye khol deta hai. Ek hi number par kai log ek saath kaam kar sakte hain — jo normal WhatsApp app mein mumkin nahi.",
+        a: "Zaroori nahi. Jo number aap WhatsApp Business app mein chala rahe hain, wohi hashChat se jor sakte hain — app phone par chalti rehti hai. Meta ise coexistence kehta hai. Ya chahein to naya number sirf hashChat ke liye rakh lein. App se bheje gaye messages free hi rehte hain; hashChat se bheje gaye messages par Meta ke aam rates lagte hain. Meta ki kuch shartein bhi hain: app ka version 2.24.17 ya naya ho; jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain; aur WhatsApp Web jaise linked devices dobara link karne parte hain (Windows wali WhatsApp app link nahi ho sakti).",
       },
       {
         q: "Message bhejne ka koi alag kharcha hai?",
@@ -731,7 +731,7 @@ const en: Copy = {
       },
       {
         q: "Does this replace the WhatsApp Business app?",
-        a: "It runs on the WhatsApp Business API, which opens your number up to the whole team. Several people can work on one number at the same time — something the ordinary app cannot do.",
+        a: "It doesn't have to. You can connect the number you already use in the WhatsApp Business app and keep using the app on your phone — Meta calls this coexistence. Or use a new number only for hashChat. Messages you send from the app stay free; messages sent through hashChat follow Meta's normal pricing. Meta sets a few conditions: the app must be version 2.24.17 or newer; once connected, the app's broadcast lists, disappearing messages and view-once messages switch off; and linked devices such as WhatsApp Web have to be linked again (WhatsApp for Windows can't be linked).",
       },
       {
         q: "Is there a separate cost to send messages?",
@@ -1007,7 +1007,7 @@ const ur: Copy = {
       },
       {
         q: "کیا یہ واٹس ایپ بزنس ایپ کی جگہ لے گا؟",
-        a: "یہ واٹس ایپ بزنس API پر چلتا ہے، جو آپ کے نمبر کو پوری ٹیم کے لیے کھول دیتا ہے۔ ایک ہی نمبر پر کئی لوگ ایک ساتھ کام کر سکتے ہیں — جو عام واٹس ایپ ایپ میں ممکن نہیں۔",
+        a: "ضروری نہیں۔ جو نمبر آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں، وہی hashChat سے جوڑ سکتے ہیں — ایپ فون پر چلتی رہتی ہے۔ میٹا اسے coexistence کہتا ہے۔ یا چاہیں تو نیا نمبر صرف hashChat کے لیے رکھ لیں۔ ایپ سے بھیجے گئے پیغامات مفت ہی رہتے ہیں؛ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔ میٹا کی کچھ شرائط بھی ہیں: ایپ کا ورژن 2.24.17 یا اس سے نیا ہو؛ جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں؛ اور واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں (ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی)۔",
       },
       {
         q: "پیغام بھیجنے کا کوئی الگ خرچ ہے؟",
