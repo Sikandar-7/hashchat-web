@@ -208,6 +208,22 @@ export const TRIAL_DAYS = 3;
 export const CURRENCY = "PKR";
 
 // ------------------------------------------------------------
+// Coexistence — the WhatsApp Business app and hashChat on one number.
+//
+// Live on hashChat since 2026-09-13 and tested end to end. Only what
+// has been seen working goes here; nothing about it reaches the site
+// before that. The history window is Meta's. The button label is the
+// app's own, quoted in English on every page because that is what the
+// screen says.
+// ------------------------------------------------------------
+export const coexistence = {
+  /** Past one-to-one chats Meta sends, once, at connect time. */
+  historyDays: 180,
+  /** The option in hashChat under Settings → WhatsApp. */
+  connectLabel: "Connect my WhatsApp Business app number",
+} as const;
+
+// ------------------------------------------------------------
 // Meta's messaging limits.
 //
 // Read off Meta's own developer docs, not off a competitor's blog —

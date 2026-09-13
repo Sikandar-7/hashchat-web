@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { legal, legalAddressLine, site } from "@/lib/content";
+import { coexistence, legal, legalAddressLine, site } from "@/lib/content";
 
 /**
  * The privacy policy, and the URL Meta's app settings point at.
@@ -33,6 +33,13 @@ import { legal, legalAddressLine, site } from "@/lib/content";
  * bring-your-own-key assistant in src/lib/ai/). The same companies are
  * listed as processors in Meta's App Review data-handling answers, so
  * if the app starts sending data somewhere new, both change together.
+ *
+ * The two coexistence rows (added 2026-09-13) describe what the app
+ * stores when a business connects its WhatsApp Business app number:
+ * past messages as text with their time and direction, media as a text
+ * label rather than the file, and the app's contacts in a table of
+ * their own (whatsapp_app_contacts) used only to name chats. If the
+ * import changes, these rows change with it.
  */
 
 const PAGE_PATH = "/privacy";
@@ -72,6 +79,19 @@ const DATA = [
       "Messages sent and received on your connected WhatsApp Business number, the phone numbers and names of the people who message you, and any media in those chats.",
     why: "This is the product. Without it there is no shared inbox, no contact record and no conversation history.",
     keep: "Until you delete it, or until the account closes.",
+  },
+  {
+    what: "Past chats from the WhatsApp Business app",
+    detail: `Only if a business connects the number it uses in that app. Up to ${coexistence.historyDays} days of past one-to-one chats: the text of each message, its time, and whether it was sent or received. Photos, voice notes and files are kept as a text label such as “[photo]” — the files are not fetched. Group chats are not included.`,
+    why: "To show the business its own earlier conversations in the inbox.",
+    keep: "Like other messages: until you delete it, or until the account closes.",
+  },
+  {
+    what: "The WhatsApp Business app's contacts",
+    detail:
+      "On the same connection: the name and number of each contact in the app, including people who have never chatted with the business. Kept in a separate list for each account.",
+    why: "Only to show the right name on a chat. Nobody becomes a contact in hashChat unless they have a chat with the business.",
+    keep: "Until the contact is removed in the app, you delete it, or the account closes.",
   },
   {
     what: "Meta Platform Data",
@@ -208,7 +228,8 @@ export default function PrivacyPage() {
               Where a business uses {site.name} to talk to its own customers,
               that business is the controller of those conversations and{" "}
               {site.name} processes them on its instructions. If you messaged a
-              business and want your data removed, ask that business first — they
+              business, or are saved in the contacts of its WhatsApp Business
+              app, and want your data removed, ask that business first — they
               can delete it themselves, and they are the ones who decide.
             </p>
           </section>
@@ -302,6 +323,43 @@ export default function PrivacyPage() {
                 when you ask.
               </li>
             </ul>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              If a business connects its WhatsApp Business app number
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              A business can keep using the WhatsApp Business app on its phone
+              and connect the same number to {site.name} — Meta calls this
+              coexistence. When it chooses{" "}
+              <span className="text-ink">
+                &ldquo;{coexistence.connectLabel}&rdquo;
+              </span>
+              , Meta sends us two things from that app, both in the table
+              above: up to {coexistence.historyDays} days of past
+              one-to-one chats, requested once, at connect time; and the
+              app&rsquo;s contact list, which follows the app — a contact
+              removed there is removed here too.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              We use them only to show the business its own past conversations
+              and the right names in its inbox. Neither goes to anyone not
+              already named under &ldquo;Who else sees it&rdquo; below, and
+              both are kept like the rest of the inbox: until deleted, or until
+              the account closes.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              To stop it, the business disconnects in the WhatsApp Business
+              app:{" "}
+              <span className="text-ink">
+                Settings → Account → Business Platform → Disconnect
+              </span>
+              . To have what already came across removed, use the{" "}
+              <Link href="/data-deletion" className="text-brand-sky hover:underline">
+                data deletion page
+              </Link>
+              .
+            </p>
+
             <p className="mt-5 leading-relaxed text-ink-muted">
               Our use of information received from Meta APIs adheres to the{" "}
               <a
