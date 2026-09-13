@@ -210,7 +210,9 @@ interface Copy {
     eyebrow: string;
     title: string;
     lead: string;
-    popular: string;
+    /** Badge on the highlighted plan. Our advice, not a sales figure —
+     *  "most popular" was a claim nothing on hand could back up. */
+    recommended: string;
     perMonth: string;
     members: string;
     contacts: string;
@@ -452,7 +454,7 @@ const roman: Copy = {
     eyebrow: "Pricing",
     title: "Saaf pricing, koi chhupi hui baat nahi",
     lead: `Har plan ${TRIAL_HOURS} ghante free se shuru hota hai. Card ki zaroorat nahi — pasand na aaye to bas chhor dein.`,
-    popular: "Sab se zyada liya jata hai",
+    recommended: "Recommended",
     perMonth: "/month",
     members: "Team members",
     contacts: "Contacts",
@@ -779,7 +781,7 @@ const en: Copy = {
     eyebrow: "Pricing",
     title: "Plain pricing, nothing hidden",
     lead: `Every plan starts with ${TRIAL_HOURS} hours free. No card needed — if it isn't for you, just walk away.`,
-    popular: "Most popular",
+    recommended: "Recommended",
     perMonth: "/month",
     members: "Team members",
     contacts: "Contacts",
@@ -1106,7 +1108,7 @@ const ur: Copy = {
     eyebrow: "قیمت",
     title: "صاف قیمت، کوئی چھپی ہوئی بات نہیں",
     lead: `ہر پلان ${TRIAL_HOURS} گھنٹے مفت سے شروع ہوتا ہے۔ کارڈ کی ضرورت نہیں — پسند نہ آئے تو بس چھوڑ دیں۔`,
-    popular: "سب سے زیادہ لیا جاتا ہے",
+    recommended: "ہمارا مشورہ",
     perMonth: "/ماہ",
     members: "ٹیم ممبرز",
     contacts: "رابطے",
