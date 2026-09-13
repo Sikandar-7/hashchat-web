@@ -167,44 +167,49 @@ export const stepKeys = ["01", "02", "03"] as const;
 // enforce_member_limit_on_insert on profiles, enforce_contact_limit_on_insert
 // on contacts, and enforce_broadcast_msg_limit_on_insert on
 // broadcast_recipients. That is exactly why they belong on a public page
-// — a Basic customer sending their 2,001st broadcast message this month
+// — a Basic customer sending their 251st broadcast message this month
 // gets a hard error, and send time is the worst moment to learn that.
 //
 // NB: read prices off the live `plans` table, never from memory. This
 // file said 2,000 for Basic from launch until Aug 2026; the product had
-// always charged 1,500.
+// always charged 1,500. On 2026-09-13 the owner set 2,000 / 3,500 /
+// 6,500 with 2 / 4 / unlimited members and 250 / 2,000 / unlimited
+// broadcast messages, and the plans table was changed to match (the
+// product's migration 064) before this file was.
 // ------------------------------------------------------------
 export const plans = [
   {
     slug: "basic",
     name: "Basic",
-    price: 1500,
-    members: 3,
+    price: 2000,
+    members: 2,
     contacts: 1000,
-    broadcasts: 2000,
+    broadcasts: 250,
     highlight: false,
   },
   {
     slug: "pro",
     name: "Pro",
     price: 3500,
-    members: 10,
+    members: 4,
     contacts: 10000,
-    broadcasts: 10000,
+    broadcasts: 2000,
     highlight: true,
   },
   {
     slug: "business",
     name: "Business",
-    price: 7000,
-    members: 25,
+    price: 6500,
+    members: null, // unlimited
     contacts: null, // unlimited
     broadcasts: null, // unlimited
     highlight: false,
   },
 ] as const;
 
-export const TRIAL_DAYS = 3;
+/** The free trial, in hours since 2026-09-13 (the product's migration 063).
+ *  It was 3 days here while the product had already cut it to 1. */
+export const TRIAL_HOURS = 12;
 export const CURRENCY = "PKR";
 
 // ------------------------------------------------------------
@@ -219,9 +224,18 @@ export const CURRENCY = "PKR";
 export const coexistence = {
   /** Past one-to-one chats Meta sends, once, at connect time. */
   historyDays: 180,
-  /** The option in hashChat under Settings → WhatsApp. */
+  /** The same window in the unit the landing page speaks in. */
+  historyMonths: 6,
+  /** Oldest WhatsApp Business app version Meta accepts for this. */
+  minAppVersion: "2.24.17",
+  /** Where the option lives in hashChat, and its exact label. */
+  settingsPath: "Settings → WhatsApp",
   connectLabel: "Connect my WhatsApp Business app number",
 } as const;
+
+/** The landing page's three "keep your app" points, in render order.
+ *  Keys the icons and the copy, like `featureKeys`. */
+export const keepAppPointKeys = ["app", "history", "free"] as const;
 
 // ------------------------------------------------------------
 // Meta's messaging limits.

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { founder, site, waLink } from "@/lib/content";
+import { TRIAL_HOURS, founder, plans, site, waLink } from "@/lib/content";
 
 /**
  * The decision every buyer makes before they shop for a platform.
@@ -333,7 +333,11 @@ export default function ApiVsAppPage() {
               CSV.
             </p>
 
-            <h3 className="mt-8 font-display text-lg font-semibold">
+            {/* The landing page's "keep your app" section links here. */}
+            <h3
+              id="coexistence"
+              className="mt-8 scroll-mt-20 font-display text-lg font-semibold"
+            >
               Keeping the app: coexistence
             </h3>
             <p className="mt-3 leading-relaxed text-ink-muted">
@@ -453,7 +457,7 @@ export default function ApiVsAppPage() {
               >
                 Meta bills you directly
               </Link>{" "}
-              with nothing added on top. From PKR 1,500 a month, 3 days free.
+              with nothing added on top. From PKR {plans[0].price.toLocaleString("en-PK")} a month, {TRIAL_HOURS} hours free.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a

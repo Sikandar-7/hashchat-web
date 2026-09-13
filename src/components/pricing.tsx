@@ -46,7 +46,9 @@ export function Pricing({ locale }: { locale: Locale }) {
             <dl className="mt-6 grid grid-cols-2 gap-3 border-y border-line py-4 text-sm">
               <div>
                 <dt className="text-ink-faint">{c.members}</dt>
-                <dd className="mt-0.5 font-semibold">{p.members}</dd>
+                <dd className="mt-0.5 font-semibold">
+                  {p.members === null ? c.unlimited : p.members}
+                </dd>
               </div>
               <div>
                 <dt className="text-ink-faint">{c.contacts}</dt>
@@ -61,6 +63,16 @@ export function Pricing({ locale }: { locale: Locale }) {
                     ? c.unlimited
                     : fmt.format(p.broadcasts)}
                 </dd>
+                {/* The ceiling is ours; every message under it is still
+                    billed by Meta, straight to the customer's own card.
+                    Said on the card, where the number is read, not only
+                    in the box below. */}
+                <a
+                  href="#meta-charges"
+                  className="mt-1 block text-xs text-ink-faint underline-offset-2 hover:text-ink-muted hover:underline"
+                >
+                  {c.broadcastsMetaNote}
+                </a>
               </div>
             </dl>
 
@@ -96,7 +108,10 @@ export function Pricing({ locale }: { locale: Locale }) {
           all advertise "0% markup". hashChat connects to the customer's
           own WABA, so it is never in that chain at all — a stronger
           position, and one the page wasn't making. */}
-      <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-line bg-surface/60 p-6 sm:p-7">
+      <div
+        id="meta-charges"
+        className="mx-auto mt-10 max-w-3xl scroll-mt-20 rounded-2xl border border-line bg-surface/60 p-6 sm:p-7"
+      >
         <h3 className="font-display text-base font-semibold">
           {c.metaTitle}
         </h3>

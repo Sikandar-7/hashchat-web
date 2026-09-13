@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { founder, site, waLink } from "@/lib/content";
+import { TRIAL_HOURS, founder, plans, site, waLink } from "@/lib/content";
 
 /**
  * The highest-demand query in this market, answered properly.
@@ -382,9 +382,9 @@ export default function PricingGuidePage() {
               Meta&rsquo;s bill goes straight to you and we never sit in the middle
               of it. You pay us for the software — a shared team inbox,
               contacts, pipelines, broadcasts and automations — starting at
-              PKR 1,500 a month, with a {""}
+              PKR {plans[0].price.toLocaleString("en-PK")} a month, with a {""}
               <Link href="/#pricing" className="text-brand-sky hover:underline">
-                3-day free trial
+                {TRIAL_HOURS}-hour free trial
               </Link>
               .
             </p>

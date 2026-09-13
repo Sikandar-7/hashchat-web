@@ -29,7 +29,7 @@
  * TypeScript error rather than a blank card on a live page.
  */
 
-import { TRIAL_DAYS, site } from "./content";
+import { TRIAL_HOURS, coexistence, site } from "./content";
 
 export type Locale = "roman" | "en" | "ur";
 
@@ -101,6 +101,8 @@ type FeatureKey =
 
 type StepKey = "01" | "02" | "03";
 type PlanKey = "basic" | "pro" | "business";
+/** Same ids as `keepAppPointKeys` in content.ts. */
+type KeepAppPointKey = "app" | "history" | "free";
 
 interface Copy {
   meta: { title: string; description: string };
@@ -115,6 +117,11 @@ interface Copy {
     language: string;
   };
   hero: {
+    /** The announcement pill above the headline; links to #keep-app. */
+    newTag: string;
+    newText: string;
+    /** The free-trial line. It was the pill above the headline until
+     *  the announcement took that spot; it now sits under the CTAs. */
     badge: string;
     titleLead: string;
     titleAccent: string;
@@ -170,6 +177,23 @@ interface Copy {
     cta: string;
     ctaMessage: string;
   };
+  /** Coexistence: keeping the WhatsApp Business app on the same number. */
+  keepApp: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    points: Record<KeepAppPointKey, { title: string; body: string }>;
+    howLabel: string;
+    /** The words either side of the settings path. The path itself is
+     *  the app's own English label, from content.ts, set LTR. */
+    howBefore: string;
+    howAfter: string;
+    notesLabel: string;
+    notes: readonly string[];
+    cta: string;
+    ctaMessage: string;
+    guideLink: string;
+  };
   features: {
     eyebrow: string;
     title: string;
@@ -191,6 +215,8 @@ interface Copy {
     members: string;
     contacts: string;
     broadcasts: string;
+    /** Under each plan's broadcast ceiling: Meta bills every message itself. */
+    broadcastsMetaNote: string;
     unlimited: string;
     cta: string;
     plans: Record<PlanKey, { tagline: string; includes: readonly string[] }>;
@@ -248,7 +274,9 @@ const roman: Copy = {
     language: "Zubaan",
   },
   hero: {
-    badge: `${TRIAL_DAYS} din free — card ki zaroorat nahi`,
+    newTag: "Naya",
+    newText: "WhatsApp Business app bhi chalti rahe",
+    badge: `${TRIAL_HOURS} ghante free — card ki zaroorat nahi`,
     titleLead: "Poori team ka",
     titleAccent: "ek WhatsApp inbox",
     lead: "Customers ke messages ab ek banday ke phone mein nahi atkte. Contacts, sales pipeline, broadcasts aur automations — sab ek jagah, poori team ke liye.",
@@ -328,6 +356,40 @@ const roman: Copy = {
     ctaMessage:
       "Assalam o alaikum — WhatsApp business verification aur green tick ke bare mein poochna tha.",
   },
+  keepApp: {
+    eyebrow: "Naya · Business plan",
+    title: "Apni WhatsApp Business app rakhein — usi number par",
+    lead: "hashChat par aane ke liye ab app chhorni nahi parti: wohi number jorein jo aap WhatsApp Business app mein chala rahe hain — Meta ise coexistence kehta hai.",
+    points: {
+      app: {
+        title: "App chalti rehti hai",
+        body: "Na app hatani, na nayi SIM. WhatsApp Business app usi number par aapke phone mein chalti rehti hai.",
+      },
+      history: {
+        title: "Purani chats bhi aa jati hain",
+        body: `Pichle ${coexistence.historyMonths} maheene tak ki one-to-one chats, aur contacts mein save naam, jorte waqt hashChat mein aa jate hain.`,
+      },
+      free: {
+        title: "App ke messages free hi rehte hain",
+        body: "App se bheje gaye messages ka ab bhi koi kharcha nahi. hashChat se bheje gaye messages par Meta ke aam rates lagte hain.",
+      },
+    },
+    howLabel: "Kaise jorein",
+    howBefore: "hashChat mein ",
+    howAfter:
+      " kholein, Facebook se login karein, number likhein, phir WhatsApp Business app se QR code scan karein.",
+    notesLabel: "Pehle yeh jaan lein",
+    notes: [
+      `WhatsApp Business app ka version ${coexistence.minAppVersion} ya naya hona chahiye.`,
+      "Jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain.",
+      "WhatsApp Web jaise linked devices dobara link karne parte hain. Windows wali WhatsApp app link nahi ho sakti.",
+      "Group chats nahi aatin. Purani photos, voice notes aur files sirf label ki shakal mein aati hain, file nahi.",
+    ],
+    cta: "Is bare mein poochein",
+    ctaMessage:
+      "Assalam o alaikum — main apni WhatsApp Business app rakhte hue usi number par hashChat chalana chahta hoon.",
+    guideLink: "Poori tafseel parhein (English guide)",
+  },
   features: {
     eyebrow: "Features",
     title: "Sab kuch ek jagah",
@@ -374,11 +436,11 @@ const roman: Copy = {
     items: {
       "01": {
         title: "Account banayein",
-        body: `Email se sign up karein. ${TRIAL_DAYS} din free — card ki zaroorat nahi.`,
+        body: `Email se sign up karein. ${TRIAL_HOURS} ghante free — card ki zaroorat nahi.`,
       },
       "02": {
         title: "WhatsApp jorein",
-        body: "Apna WhatsApp Business number connect karein. Aapka number, aapka account — hum beech mein nahi aate.",
+        body: "Naya number, ya wohi jo aapki WhatsApp Business app mein chal raha hai — app chalti rehti hai. Aapka number, aapka account — hum beech mein nahi aate.",
       },
       "03": {
         title: "Team ko bulayein",
@@ -389,14 +451,15 @@ const roman: Copy = {
   pricing: {
     eyebrow: "Pricing",
     title: "Saaf pricing, koi chhupi hui baat nahi",
-    lead: `Har plan ${TRIAL_DAYS} din free se shuru hota hai. Card ki zaroorat nahi — pasand na aaye to bas chhor dein.`,
+    lead: `Har plan ${TRIAL_HOURS} ghante free se shuru hota hai. Card ki zaroorat nahi — pasand na aaye to bas chhor dein.`,
     popular: "Sab se zyada liya jata hai",
     perMonth: "/month",
     members: "Team members",
     contacts: "Contacts",
     broadcasts: "Broadcast messages / month",
+    broadcastsMetaNote: "+ har message ka charge Meta alag leta hai, aap ke apne card se",
     unlimited: "Unlimited",
-    cta: `${TRIAL_DAYS} din free try karein`,
+    cta: `${TRIAL_HOURS} ghante free try karein`,
     plans: {
       basic: {
         tagline: "Chhote setups ke liye",
@@ -411,7 +474,11 @@ const roman: Copy = {
       pro: {
         tagline: "Barhti hui teams ke liye",
         includes: [
-          "Basic ka sab kuch",
+          "Shared inbox",
+          "Contacts + tags + custom fields",
+          "Sales pipelines",
+          "Broadcasts",
+          "Android app",
           "Automations (keyword auto-reply)",
           "No-code flows",
           "AI jawab",
@@ -421,8 +488,17 @@ const roman: Copy = {
       business: {
         tagline: "Bari teams ke liye",
         includes: [
-          "Pro ka sab kuch",
-          "Unlimited contacts aur broadcasts",
+          "Shared inbox",
+          "Contacts + tags + custom fields",
+          "Sales pipelines",
+          "Broadcasts",
+          "Android app",
+          "Automations (keyword auto-reply)",
+          "No-code flows",
+          "AI jawab",
+          "Public API",
+          "Shared WhatsApp: WhatsApp Business app + hashChat, ek hi number par",
+          "Unlimited team members, contacts aur broadcasts",
           "Priority support",
         ],
       },
@@ -461,7 +537,7 @@ const roman: Copy = {
       },
       {
         q: "Kya yeh WhatsApp Business app ki jagah lega?",
-        a: "Zaroori nahi. Jo number aap WhatsApp Business app mein chala rahe hain, wohi hashChat se jor sakte hain — app phone par chalti rehti hai. Meta ise coexistence kehta hai. Ya chahein to naya number sirf hashChat ke liye rakh lein. App se bheje gaye messages free hi rehte hain; hashChat se bheje gaye messages par Meta ke aam rates lagte hain. Meta ki kuch shartein bhi hain: app ka version 2.24.17 ya naya ho; jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain; aur WhatsApp Web jaise linked devices dobara link karne parte hain (Windows wali WhatsApp app link nahi ho sakti).",
+        a: `Zaroori nahi. Jo number aap WhatsApp Business app mein chala rahe hain, wohi hashChat se jor sakte hain — app phone par chalti rehti hai. Meta ise coexistence kehta hai. Ya chahein to naya number sirf hashChat ke liye rakh lein. App se bheje gaye messages free hi rehte hain; hashChat se bheje gaye messages par Meta ke aam rates lagte hain. Meta ki kuch shartein bhi hain: app ka version ${coexistence.minAppVersion} ya naya ho; jorne ke baad app ki broadcast lists, disappearing messages aur view-once messages band ho jate hain; aur WhatsApp Web jaise linked devices dobara link karne parte hain (Windows wali WhatsApp app link nahi ho sakti).`,
       },
       {
         q: "Message bhejne ka koi alag kharcha hai?",
@@ -469,7 +545,7 @@ const roman: Copy = {
       },
       {
         q: "Free trial mein kya milta hai?",
-        a: `${TRIAL_DAYS} din, poora product, bina card ke. Trial khatam hone par aap plan chun sakte hain — aapka data waise ka waisa rehta hai.`,
+        a: `${TRIAL_HOURS} ghante, poora product, bina card ke. Trial khatam hone par aap plan chun sakte hain — aapka data waise ka waisa rehta hai.`,
       },
       {
         q: "Payment kaise karni hoti hai?",
@@ -483,7 +559,7 @@ const roman: Copy = {
   },
   cta: {
     title: "Aaj hi shuru karein",
-    lead: `${TRIAL_DAYS} din free. Card ki zaroorat nahi. Setup dus minute ka hai.`,
+    lead: `${TRIAL_HOURS} ghante free. Card ki zaroorat nahi. Setup dus minute ka hai.`,
     primary: "Free trial shuru karein",
     secondary: "Pricing dekhein",
   },
@@ -525,7 +601,9 @@ const en: Copy = {
     language: "Language",
   },
   hero: {
-    badge: `${TRIAL_DAYS} days free — no card needed`,
+    newTag: "New",
+    newText: "Keep your WhatsApp Business app",
+    badge: `${TRIAL_HOURS} hours free — no card needed`,
     titleLead: "One WhatsApp inbox for",
     titleAccent: "your whole team",
     lead: "Customer messages stop getting stuck on one person's phone. Contacts, sales pipeline, broadcasts and automations — in one place, for everyone.",
@@ -604,6 +682,40 @@ const en: Copy = {
     ctaMessage:
       "Hello — I have a question about WhatsApp business verification and the green tick.",
   },
+  keepApp: {
+    eyebrow: "New · Business plan",
+    title: "Keep your WhatsApp Business app — same number",
+    lead: "Moving to hashChat no longer means giving up the app: connect the number you already use in the WhatsApp Business app — Meta calls this coexistence.",
+    points: {
+      app: {
+        title: "The app keeps working",
+        body: "Nothing to uninstall, no new SIM. The WhatsApp Business app stays on your phone, on the same number.",
+      },
+      history: {
+        title: "Your past chats come too",
+        body: `Up to ${coexistence.historyMonths} months of one-to-one chats, and the names saved in your contacts, come into hashChat when you connect.`,
+      },
+      free: {
+        title: "App messages stay free",
+        body: "Messages you send from the app still cost nothing. Messages sent through hashChat follow Meta's normal pricing.",
+      },
+    },
+    howLabel: "How to connect",
+    howBefore: "In hashChat, open ",
+    howAfter:
+      ", log in with Facebook, enter the number, then scan the QR code with the WhatsApp Business app.",
+    notesLabel: "Worth knowing first",
+    notes: [
+      `The WhatsApp Business app has to be version ${coexistence.minAppVersion} or newer.`,
+      "Once connected, the app's broadcast lists, disappearing messages and view-once messages switch off.",
+      "Linked devices such as WhatsApp Web have to be linked again. WhatsApp for Windows can't be linked.",
+      "Group chats are not synced. Old photos, voice notes and files come in as labels, not as the files.",
+    ],
+    cta: "Ask about this",
+    ctaMessage:
+      "Hello — I want to keep my WhatsApp Business app and use hashChat on the same number.",
+    guideLink: "Read the full details",
+  },
   features: {
     eyebrow: "Features",
     title: "Everything in one place",
@@ -650,11 +762,11 @@ const en: Copy = {
     items: {
       "01": {
         title: "Create an account",
-        body: `Sign up with your email. ${TRIAL_DAYS} days free — no card needed.`,
+        body: `Sign up with your email. ${TRIAL_HOURS} hours free — no card needed.`,
       },
       "02": {
         title: "Connect WhatsApp",
-        body: "Connect your own WhatsApp Business number. Your number, your account — we never sit in the middle.",
+        body: "Use a new number, or the one already on your WhatsApp Business app — the app keeps working. Your number, your account; we never sit in the middle.",
       },
       "03": {
         title: "Invite your team",
@@ -665,14 +777,15 @@ const en: Copy = {
   pricing: {
     eyebrow: "Pricing",
     title: "Plain pricing, nothing hidden",
-    lead: `Every plan starts with ${TRIAL_DAYS} days free. No card needed — if it isn't for you, just walk away.`,
+    lead: `Every plan starts with ${TRIAL_HOURS} hours free. No card needed — if it isn't for you, just walk away.`,
     popular: "Most popular",
     perMonth: "/month",
     members: "Team members",
     contacts: "Contacts",
     broadcasts: "Broadcast messages / month",
+    broadcastsMetaNote: "+ Meta charges each message separately, on your own card",
     unlimited: "Unlimited",
-    cta: `Try ${TRIAL_DAYS} days free`,
+    cta: `Try ${TRIAL_HOURS} hours free`,
     plans: {
       basic: {
         tagline: "For small setups",
@@ -687,7 +800,11 @@ const en: Copy = {
       pro: {
         tagline: "For growing teams",
         includes: [
-          "Everything in Basic",
+          "Shared inbox",
+          "Contacts + tags + custom fields",
+          "Sales pipelines",
+          "Broadcasts",
+          "Android app",
           "Automations (keyword auto-reply)",
           "No-code flows",
           "AI replies",
@@ -697,8 +814,17 @@ const en: Copy = {
       business: {
         tagline: "For larger teams",
         includes: [
-          "Everything in Pro",
-          "Unlimited contacts and broadcasts",
+          "Shared inbox",
+          "Contacts + tags + custom fields",
+          "Sales pipelines",
+          "Broadcasts",
+          "Android app",
+          "Automations (keyword auto-reply)",
+          "No-code flows",
+          "AI replies",
+          "Public API",
+          "Shared WhatsApp: the WhatsApp Business app and hashChat on one number",
+          "Unlimited team members, contacts and broadcasts",
           "Priority support",
         ],
       },
@@ -737,7 +863,7 @@ const en: Copy = {
       },
       {
         q: "Does this replace the WhatsApp Business app?",
-        a: "It doesn't have to. You can connect the number you already use in the WhatsApp Business app and keep using the app on your phone — Meta calls this coexistence. Or use a new number only for hashChat. Messages you send from the app stay free; messages sent through hashChat follow Meta's normal pricing. Meta sets a few conditions: the app must be version 2.24.17 or newer; once connected, the app's broadcast lists, disappearing messages and view-once messages switch off; and linked devices such as WhatsApp Web have to be linked again (WhatsApp for Windows can't be linked).",
+        a: `It doesn't have to. You can connect the number you already use in the WhatsApp Business app and keep using the app on your phone — Meta calls this coexistence. Or use a new number only for hashChat. Messages you send from the app stay free; messages sent through hashChat follow Meta's normal pricing. Meta sets a few conditions: the app must be version ${coexistence.minAppVersion} or newer; once connected, the app's broadcast lists, disappearing messages and view-once messages switch off; and linked devices such as WhatsApp Web have to be linked again (WhatsApp for Windows can't be linked).`,
       },
       {
         q: "Is there a separate cost to send messages?",
@@ -745,7 +871,7 @@ const en: Copy = {
       },
       {
         q: "What do I get in the free trial?",
-        a: `${TRIAL_DAYS} days, the whole product, no card. When the trial ends you pick a plan — your data stays exactly as it is.`,
+        a: `${TRIAL_HOURS} hours, the whole product, no card. When the trial ends you pick a plan — your data stays exactly as it is.`,
       },
       {
         q: "How do I pay?",
@@ -759,7 +885,7 @@ const en: Copy = {
   },
   cta: {
     title: "Start today",
-    lead: `${TRIAL_DAYS} days free. No card needed. Setup takes ten minutes.`,
+    lead: `${TRIAL_HOURS} hours free. No card needed. Setup takes ten minutes.`,
     primary: "Start free trial",
     secondary: "See pricing",
   },
@@ -801,7 +927,9 @@ const ur: Copy = {
     language: "زبان",
   },
   hero: {
-    badge: `${TRIAL_DAYS} دن مفت — کارڈ کی ضرورت نہیں`,
+    newTag: "نیا",
+    newText: "واٹس ایپ بزنس ایپ بھی چلتی رہے",
+    badge: `${TRIAL_HOURS} گھنٹے مفت — کارڈ کی ضرورت نہیں`,
     titleLead: "پوری ٹیم کا",
     titleAccent: "ایک واٹس ایپ اِن باکس",
     lead: "کسٹمرز کے پیغامات اب کسی ایک شخص کے فون میں نہیں رکتے۔ رابطے، سیلز پائپ لائن، براڈکاسٹ اور آٹومیشن — سب ایک جگہ، پوری ٹیم کے لیے۔",
@@ -880,6 +1008,40 @@ const ur: Copy = {
     ctaMessage:
       "السلام علیکم — واٹس ایپ بزنس ویریفکیشن اور گرین ٹک کے بارے میں پوچھنا تھا۔",
   },
+  keepApp: {
+    eyebrow: "نیا · Business پلان",
+    title: "اپنی واٹس ایپ بزنس ایپ رکھیں — اسی نمبر پر",
+    lead: "hashChat پر آنے کے لیے اب ایپ چھوڑنی نہیں پڑتی: وہی نمبر جوڑیں جو آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں — میٹا اسے coexistence کہتا ہے۔",
+    points: {
+      app: {
+        title: "ایپ چلتی رہتی ہے",
+        body: "نہ ایپ ہٹانی، نہ نئی سِم۔ واٹس ایپ بزنس ایپ اسی نمبر پر آپ کے فون میں چلتی رہتی ہے۔",
+      },
+      history: {
+        title: "پرانی چیٹس بھی آ جاتی ہیں",
+        body: `پچھلے ${coexistence.historyMonths} ماہ تک کی انفرادی چیٹس، اور رابطوں میں محفوظ نام، جوڑتے وقت hashChat میں آ جاتے ہیں۔`,
+      },
+      free: {
+        title: "ایپ کے پیغامات مفت ہی رہتے ہیں",
+        body: "ایپ سے بھیجے گئے پیغامات کا اب بھی کوئی خرچ نہیں۔ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔",
+      },
+    },
+    howLabel: "کیسے جوڑیں",
+    howBefore: "hashChat میں ",
+    howAfter:
+      " کھولیں، فیس بک سے لاگ اِن کریں، نمبر لکھیں، پھر واٹس ایپ بزنس ایپ سے QR کوڈ اسکین کریں۔",
+    notesLabel: "پہلے یہ جان لیں",
+    notes: [
+      `واٹس ایپ بزنس ایپ کا ورژن ${coexistence.minAppVersion} یا اس سے نیا ہونا چاہیے۔`,
+      "جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں۔",
+      "واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں۔ ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی۔",
+      "گروپ چیٹس نہیں آتیں۔ پرانی تصویریں، وائس نوٹس اور فائلیں صرف لیبل کی شکل میں آتی ہیں، فائل نہیں۔",
+    ],
+    cta: "اِس بارے میں پوچھیں",
+    ctaMessage:
+      "السلام علیکم — میں اپنی واٹس ایپ بزنس ایپ رکھتے ہوئے اسی نمبر پر hashChat چلانا چاہتا ہوں۔",
+    guideLink: "پوری تفصیل پڑھیں — گائیڈ (انگریزی)",
+  },
   features: {
     eyebrow: "خصوصیات",
     title: "سب کچھ ایک جگہ",
@@ -926,11 +1088,11 @@ const ur: Copy = {
     items: {
       "01": {
         title: "اکاؤنٹ بنائیں",
-        body: `ای میل سے سائن اپ کریں۔ ${TRIAL_DAYS} دن مفت — کارڈ کی ضرورت نہیں۔`,
+        body: `ای میل سے سائن اپ کریں۔ ${TRIAL_HOURS} گھنٹے مفت — کارڈ کی ضرورت نہیں۔`,
       },
       "02": {
         title: "واٹس ایپ جوڑیں",
-        body: "اپنا واٹس ایپ بزنس نمبر جوڑیں۔ آپ کا نمبر، آپ کا اکاؤنٹ — ہم بیچ میں نہیں آتے۔",
+        body: "نیا نمبر، یا وہی جو آپ کی واٹس ایپ بزنس ایپ میں چل رہا ہے — ایپ چلتی رہتی ہے۔ آپ کا نمبر، آپ کا اکاؤنٹ — ہم بیچ میں نہیں آتے۔",
       },
       "03": {
         title: "ٹیم کو بلائیں",
@@ -941,14 +1103,15 @@ const ur: Copy = {
   pricing: {
     eyebrow: "قیمت",
     title: "صاف قیمت، کوئی چھپی ہوئی بات نہیں",
-    lead: `ہر پلان ${TRIAL_DAYS} دن مفت سے شروع ہوتا ہے۔ کارڈ کی ضرورت نہیں — پسند نہ آئے تو بس چھوڑ دیں۔`,
+    lead: `ہر پلان ${TRIAL_HOURS} گھنٹے مفت سے شروع ہوتا ہے۔ کارڈ کی ضرورت نہیں — پسند نہ آئے تو بس چھوڑ دیں۔`,
     popular: "سب سے زیادہ لیا جاتا ہے",
     perMonth: "/ماہ",
     members: "ٹیم ممبرز",
     contacts: "رابطے",
     broadcasts: "براڈکاسٹ پیغامات / ماہ",
+    broadcastsMetaNote: "+ ہر پیغام کا چارج میٹا الگ لیتا ہے، آپ کے اپنے کارڈ سے",
     unlimited: "لامحدود",
-    cta: `${TRIAL_DAYS} دن مفت آزمائیں`,
+    cta: `${TRIAL_HOURS} گھنٹے مفت آزمائیں`,
     plans: {
       basic: {
         tagline: "چھوٹے سیٹ اپ کے لیے",
@@ -963,7 +1126,11 @@ const ur: Copy = {
       pro: {
         tagline: "بڑھتی ہوئی ٹیموں کے لیے",
         includes: [
-          "Basic کا سب کچھ",
+          "مشترکہ اِن باکس",
+          "رابطے + ٹیگز + کسٹم فیلڈز",
+          "سیلز پائپ لائن",
+          "براڈکاسٹ",
+          "اینڈرائیڈ ایپ",
           "آٹومیشن (کی ورڈ خودکار جواب)",
           "بغیر کوڈ کے فلو",
           "AI جواب",
@@ -973,8 +1140,17 @@ const ur: Copy = {
       business: {
         tagline: "بڑی ٹیموں کے لیے",
         includes: [
-          "Pro کا سب کچھ",
-          "لامحدود رابطے اور براڈکاسٹ",
+          "مشترکہ اِن باکس",
+          "رابطے + ٹیگز + کسٹم فیلڈز",
+          "سیلز پائپ لائن",
+          "براڈکاسٹ",
+          "اینڈرائیڈ ایپ",
+          "آٹومیشن (کی ورڈ خودکار جواب)",
+          "بغیر کوڈ کے فلو",
+          "AI جواب",
+          "پبلک API",
+          "شیئرڈ واٹس ایپ: واٹس ایپ بزنس ایپ اور hashChat ایک ہی نمبر پر",
+          "لامحدود ٹیم ممبرز، رابطے اور براڈکاسٹ",
           "ترجیحی سپورٹ",
         ],
       },
@@ -1013,7 +1189,7 @@ const ur: Copy = {
       },
       {
         q: "کیا یہ واٹس ایپ بزنس ایپ کی جگہ لے گا؟",
-        a: "ضروری نہیں۔ جو نمبر آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں، وہی hashChat سے جوڑ سکتے ہیں — ایپ فون پر چلتی رہتی ہے۔ میٹا اسے coexistence کہتا ہے۔ یا چاہیں تو نیا نمبر صرف hashChat کے لیے رکھ لیں۔ ایپ سے بھیجے گئے پیغامات مفت ہی رہتے ہیں؛ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔ میٹا کی کچھ شرائط بھی ہیں: ایپ کا ورژن 2.24.17 یا اس سے نیا ہو؛ جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں؛ اور واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں (ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی)۔",
+        a: `ضروری نہیں۔ جو نمبر آپ واٹس ایپ بزنس ایپ میں چلا رہے ہیں، وہی hashChat سے جوڑ سکتے ہیں — ایپ فون پر چلتی رہتی ہے۔ میٹا اسے coexistence کہتا ہے۔ یا چاہیں تو نیا نمبر صرف hashChat کے لیے رکھ لیں۔ ایپ سے بھیجے گئے پیغامات مفت ہی رہتے ہیں؛ hashChat سے بھیجے گئے پیغامات پر میٹا کے عام ریٹ لگتے ہیں۔ میٹا کی کچھ شرائط بھی ہیں: ایپ کا ورژن ${coexistence.minAppVersion} یا اس سے نیا ہو؛ جوڑنے کے بعد ایپ کی براڈکاسٹ لسٹیں، خود مٹنے والے پیغامات اور ایک بار دیکھے جانے والے پیغامات بند ہو جاتے ہیں؛ اور واٹس ایپ ویب جیسی لنکڈ ڈیوائسز دوبارہ لنک کرنی پڑتی ہیں (ونڈوز والی واٹس ایپ ایپ لنک نہیں ہو سکتی)۔`,
       },
       {
         q: "پیغام بھیجنے کا کوئی الگ خرچ ہے؟",
@@ -1021,7 +1197,7 @@ const ur: Copy = {
       },
       {
         q: "مفت ٹرائل میں کیا ملتا ہے؟",
-        a: `${TRIAL_DAYS} دن، پورا پروڈکٹ، بغیر کارڈ کے۔ ٹرائل ختم ہونے پر آپ پلان چن سکتے ہیں — آپ کا ڈیٹا ویسے کا ویسا رہتا ہے۔`,
+        a: `${TRIAL_HOURS} گھنٹے، پورا پروڈکٹ، بغیر کارڈ کے۔ ٹرائل ختم ہونے پر آپ پلان چن سکتے ہیں — آپ کا ڈیٹا ویسے کا ویسا رہتا ہے۔`,
       },
       {
         q: "ادائیگی کیسے کرنی ہوتی ہے؟",
@@ -1035,7 +1211,7 @@ const ur: Copy = {
   },
   cta: {
     title: "آج ہی شروع کریں",
-    lead: `${TRIAL_DAYS} دن مفت۔ کارڈ کی ضرورت نہیں۔ سیٹ اپ دس منٹ کا ہے۔`,
+    lead: `${TRIAL_HOURS} گھنٹے مفت۔ کارڈ کی ضرورت نہیں۔ سیٹ اپ دس منٹ کا ہے۔`,
     primary: "مفت ٹرائل شروع کریں",
     secondary: "قیمت دیکھیں",
   },

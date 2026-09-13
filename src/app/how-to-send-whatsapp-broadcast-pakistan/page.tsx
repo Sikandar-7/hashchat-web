@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { founder, site, waLink } from "@/lib/content";
+import { TRIAL_HOURS, founder, plans, site, waLink } from "@/lib/content";
 
 /**
  * The fourth query the ad research surfaced, and the one that costs
@@ -498,7 +498,7 @@ export default function BroadcastGuidePage() {
               >
                 Meta bills you directly
               </Link>{" "}
-              with nothing added on top. From PKR 1,500 a month, 3 days free.
+              with nothing added on top. From PKR {plans[0].price.toLocaleString("en-PK")} a month, {TRIAL_HOURS} hours free.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a

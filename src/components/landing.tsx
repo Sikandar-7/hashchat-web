@@ -4,6 +4,7 @@ import { Faq } from "@/components/faq";
 import { Features } from "@/components/features";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
+import { KeepApp } from "@/components/keep-app";
 import { Pricing } from "@/components/pricing";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -38,6 +39,10 @@ export function Landing({ locale }: { locale: Locale }) {
         {/* Straight after the hero: it is the problem this market
             actually searches for, so it earns the position. */}
         <BanProblem locale={locale} />
+        {/* Right behind it: the ban section makes the case against the
+            app, and this answers the objection that raises — keeping
+            the app is now possible. The hero's "New" pill lands here. */}
+        <KeepApp locale={locale} />
         <Features locale={locale} />
         <HowItWorks locale={locale} />
         <Pricing locale={locale} />

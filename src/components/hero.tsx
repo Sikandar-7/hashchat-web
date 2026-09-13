@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 import { site, waLink } from "@/lib/content";
 import { t, type Locale } from "@/lib/i18n";
@@ -31,10 +31,23 @@ export function Hero({ locale }: { locale: Locale }) {
 
       <div className="mx-auto max-w-6xl px-5 pb-20 pt-8 sm:pb-28 sm:pt-10">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5 text-xs font-medium text-ink-muted">
-            <span className="size-1.5 rounded-full bg-brand-teal" />
-            {c.badge}
-          </p>
+          {/* What is new, above the headline and linked to the section
+              that explains it. Coexistence lived only in the FAQ at the
+              bottom, and "can I keep my WhatsApp Business app?" is the
+              question that decides whether someone moves at all. */}
+          <a
+            href="#keep-app"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-teal/40 bg-brand-teal/10 py-1 pe-3 ps-1 text-xs font-medium text-ink transition-colors hover:border-brand-teal/70 hover:bg-brand-teal/15"
+          >
+            <span className="brand-gradient rounded-full px-2 py-0.5 text-[11px] font-semibold text-white">
+              {c.newTag}
+            </span>
+            {c.newText}
+            <ArrowRight
+              className="size-3.5 shrink-0 text-brand-teal rtl:rotate-180"
+              aria-hidden
+            />
+          </a>
 
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl">
             {c.titleLead}{" "}
@@ -68,7 +81,15 @@ export function Hero({ locale }: { locale: Locale }) {
             </a>
           </div>
 
-          <p className="mt-5 text-sm text-ink-faint">
+          {/* The free trial, right under the button it applies to. It
+              was the pill above the headline until the announcement took
+              that spot. */}
+          <p className="mt-5 flex items-center justify-center gap-2 text-sm text-ink-muted">
+            <span className="size-1.5 shrink-0 rounded-full bg-brand-teal" />
+            {c.badge}
+          </p>
+
+          <p className="mt-2 text-sm text-ink-faint">
             {c.footnote}{" "}
             <span className="text-ink-muted" dir="ltr">
               {site.whatsappDisplay}
