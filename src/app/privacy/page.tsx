@@ -27,6 +27,12 @@ import { legal, legalAddressLine, site } from "@/lib/content";
  * actually is, and the contact address is a mailbox that receives mail
  * today. Nothing is aspirational -- if the product changes, this page
  * changes with it, and the date at the top moves.
+ *
+ * The notification and AI lines mirror what the app actually sends
+ * (personal-wa-crm: the push call in the WhatsApp webhook, and the
+ * bring-your-own-key assistant in src/lib/ai/). The same companies are
+ * listed as processors in Meta's App Review data-handling answers, so
+ * if the app starts sending data somewhere new, both change together.
  */
 
 const PAGE_PATH = "/privacy";
@@ -265,8 +271,9 @@ export default function PrivacyPage() {
                   We use it only to provide the service.
                 </strong>{" "}
                 Platform Data is used to run the shared inbox, contacts,
-                pipelines, broadcasts and automations for the business it
-                belongs to — and for nothing else.
+                pipelines, broadcasts, automations and, when the business
+                turns it on, AI replies for the business it belongs to — and
+                for nothing else.
               </li>
               <li>
                 <strong className="text-ink">We do not sell it.</strong> Not to
@@ -337,6 +344,29 @@ export default function PrivacyPage() {
                 servers that run {site.name} and hold its database.
               </li>
               <li>
+                <strong className="text-ink">Google, for notifications.</strong>{" "}
+                If you use the {site.name} Android app with notifications turned
+                on, each new message — and any alert about your WhatsApp number —
+                reaches your phone through Firebase Cloud Messaging, a Google
+                service. The notification carries the sender&rsquo;s name or
+                number and the message text, and Google delivers it over its own
+                global network.
+              </li>
+              <li>
+                <strong className="text-ink">
+                  OpenAI or Anthropic, only if a business turns on AI.
+                </strong>{" "}
+                The AI reply assistant stays off until a business switches it on
+                and adds its own API key from one of these providers. From then
+                on, to draft or send a reply, {site.name} sends that provider the
+                business&rsquo;s instructions, the recent text messages of the
+                conversation being answered, and any matching text from the
+                business&rsquo;s knowledge base. Photos, voice notes and other
+                media are not sent. The provider handles this under the
+                business&rsquo;s own account and terms, and {site.name} does not
+                use conversations to train any AI model.
+              </li>
+              <li>
                 <strong className="text-ink">Nobody else</strong> — unless the
                 law requires it, or you ask us to.
               </li>
@@ -355,6 +385,12 @@ export default function PrivacyPage() {
               On servers in {legal.dataRegion}. If you are messaging from
               Pakistan or anywhere else, your data crosses a border to get
               there, and by using {site.name} you accept that transfer.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Two things leave that server: notifications, which travel through
+              Google&rsquo;s Firebase network to your phone, and — only when a
+              business turns on AI — the text sent to the AI provider it chose,
+              which processes it on that provider&rsquo;s own infrastructure.
             </p>
             <p className="mt-4 leading-relaxed text-ink-muted">
               Connections to the site and the app are encrypted in transit with
