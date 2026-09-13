@@ -10,12 +10,16 @@
  *
  * Three locales, and why these three:
  *
- *   roman — the default at `/`. Kept as the root URL because that is
- *           what is already indexed, and because it is how this market
- *           actually writes. Moving it to `/roman` to make the routing
- *           tidier would throw away the ranking the page has.
- *   en    — the language buyers type their searches in, and the one an
- *           overseas or enterprise reader expects.
+ *   en    — the default at `/` since 2026-09-13. The language buyers
+ *           type their searches in, and the one an overseas or
+ *           enterprise reader expects. Until that date the root was
+ *           Roman Urdu, kept there because it was what was already
+ *           indexed. That trade-off stopped paying: the site was about
+ *           four weeks old, so little ranking was at stake, and the
+ *           people searching arrive in English. The old `/en` URL
+ *           redirects here permanently (next.config.ts).
+ *   roman — `/roman`. How this market actually writes, and the site's
+ *           original copy.
  *   ur    — proper Urdu script, right-to-left. Not a transliteration of
  *           the Roman version: the register is different, so it is
  *           written rather than converted.
@@ -29,7 +33,7 @@ import { TRIAL_DAYS, site } from "./content";
 
 export type Locale = "roman" | "en" | "ur";
 
-export const DEFAULT_LOCALE: Locale = "roman";
+export const DEFAULT_LOCALE: Locale = "en";
 
 export interface LocaleMeta {
   code: Locale;
@@ -46,23 +50,25 @@ export interface LocaleMeta {
   ogLocale: string;
 }
 
+// Order is the switcher's order, and `localeMeta` falls back to the
+// first entry — so the default goes first.
 export const LOCALES: readonly LocaleMeta[] = [
-  {
-    code: "roman",
-    label: "Roman Urdu",
-    short: "RU",
-    href: "/",
-    dir: "ltr",
-    htmlLang: "ur-Latn-PK",
-    ogLocale: "en_PK",
-  },
   {
     code: "en",
     label: "English",
     short: "EN",
-    href: "/en",
+    href: "/",
     dir: "ltr",
     htmlLang: "en",
+    ogLocale: "en_PK",
+  },
+  {
+    code: "roman",
+    label: "Roman Urdu",
+    short: "RU",
+    href: "/roman",
+    dir: "ltr",
+    htmlLang: "ur-Latn-PK",
     ogLocale: "en_PK",
   },
   {
@@ -1057,9 +1063,9 @@ export const t = (locale: Locale): Copy => copy[locale] ?? copy[DEFAULT_LOCALE];
 /**
  * hreflang map for `alternates.languages`.
  *
- * `x-default` points at the root rather than the English page: a reader
- * whose language we do not serve lands where the market that actually
- * buys this product reads.
+ * `x-default` points at the root, which is English since 2026-09-13.
+ * That is also the right fallback for a reader whose language we do not
+ * serve: English is the one of our three they are most likely to read.
  */
 export const hrefLangs = Object.fromEntries([
   ...LOCALES.map((l) => [l.htmlLang, new URL(l.href, site.url).toString()]),

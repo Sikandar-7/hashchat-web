@@ -8,10 +8,13 @@ import { LanguageSwitcher } from "./language-switcher";
 export function SiteNav({ locale }: { locale: Locale }) {
   const c = t(locale).nav;
   const home = localeMeta(locale).href;
-  // Anchors are relative to the locale's own page, so a link from /ur
-  // scrolls down /ur rather than throwing the reader back to the Roman
-  // Urdu page mid-read.
-  const at = (hash: string) => `${home === "/" ? "" : home}${hash}`;
+  // Anchors point at the locale's own page, so a link from /ur scrolls
+  // down /ur rather than throwing the reader onto another language
+  // mid-read. Always with the path, never a bare "#features": the guides
+  // and legal pages render this nav too, and a bare hash there points at
+  // a section that page does not have. On the landing page itself the
+  // browser treats "/#features" as a same-page jump.
+  const at = (hash: string) => `${home}${hash}`;
   const links = [
     { href: at("#features"), label: c.features },
     { href: at("#how"), label: c.how },

@@ -15,8 +15,9 @@ import { founder, site, waLink } from "@/lib/content";
  * structurally cannot write.
  *
  * Written in English because that is how this query is typed, even by
- * buyers who would rather read Roman Urdu. The landing page stays
- * Roman Urdu; this is the door people come in through.
+ * buyers who would rather read Roman Urdu; this is the door people come
+ * in through. Since 2026-09-13 the landing page at / is English too,
+ * with Roman Urdu at /roman.
  */
 
 const PAGE_PATH = "/whatsapp-business-api-pricing-pakistan";

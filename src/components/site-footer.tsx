@@ -7,7 +7,8 @@ import { localeMeta, t, type Locale } from "@/lib/i18n";
 export function SiteFooter({ locale }: { locale: Locale }) {
   const c = t(locale).footer;
   const home = localeMeta(locale).href;
-  const at = (hash: string) => `${home === "/" ? "" : home}${hash}`;
+  // With the path, never a bare hash -- see site-nav.tsx.
+  const at = (hash: string) => `${home}${hash}`;
   return (
     <footer className="border-t border-line/60 py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 sm:flex-row sm:items-center sm:justify-between">

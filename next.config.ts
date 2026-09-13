@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
+  // /en was the English landing page until 2026-09-13, when English took
+  // the root. Permanent (308), so shared links and the index entry for
+  // /en pass to / instead of dying.
+  async redirects() {
+    return [{ source: "/en", destination: "/", permanent: true }];
+  },
 };
 
 export default nextConfig;

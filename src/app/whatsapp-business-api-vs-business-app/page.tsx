@@ -26,7 +26,8 @@ import { founder, site, waLink } from "@/lib/content";
  * seen working live; add nothing about it that has not.
  *
  * English, like the pricing guide — that is how this comparison is
- * searched for. The landing page stays Roman Urdu.
+ * searched for. Since 2026-09-13 the landing page at / is English too,
+ * with Roman Urdu at /roman and Urdu at /ur.
  */
 
 const PAGE_PATH = "/whatsapp-business-api-vs-business-app";

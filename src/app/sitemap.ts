@@ -16,6 +16,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // tells a crawler they are translations of each other rather than
     // three pages competing for the same query — without it, the usual
     // outcome is two of them being treated as duplicates.
+    //
+    // English is the root since 2026-09-13 and Roman Urdu is /roman. /en
+    // is gone from here on purpose: it is a redirect now, and a sitemap
+    // should list only URLs that answer 200.
     {
       url: site.url,
       lastModified: new Date(),
@@ -24,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: hrefLangs },
     },
     {
-      url: `${site.url}/en`,
+      url: `${site.url}/roman`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
