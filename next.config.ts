@@ -38,7 +38,20 @@ const nextConfig: NextConfig = {
   // the root. Permanent (308), so shared links and the index entry for
   // /en pass to / instead of dying.
   async redirects() {
-    return [{ source: "/en", destination: "/", permanent: true }];
+    return [
+      { source: "/en", destination: "/", permanent: true },
+      // The hashChat Android app opens Quick Connect links through this
+      // domain: the app loads its own host (app.hashchat.uk) inside its
+      // WebView, where Facebook Login cannot run, and hands any other host
+      // to the phone's browser. The link's token sits in the #fragment,
+      // which the browser keeps across this redirect and never sends to a
+      // server. Temporary (307) — it is a hop, not a moved page.
+      {
+        source: "/connect",
+        destination: "https://app.hashchat.uk/connect",
+        permanent: false,
+      },
+    ];
   },
 };
 
