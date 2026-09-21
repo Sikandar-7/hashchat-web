@@ -54,7 +54,7 @@ export const site = {
 export const founder = {
   name: "Sikandar Abbas",
   jobTitle: "Founder & Full Stack Developer",
-  url: "https://portfolio-five-black-18.vercel.app",
+  url: "https://sikandarabbas.com",
   sameAs: ["https://github.com/Sikandar-7"],
 } as const;
 
