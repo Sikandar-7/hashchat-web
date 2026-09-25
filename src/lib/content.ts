@@ -212,6 +212,10 @@ export const plans = [
 export const TRIAL_HOURS = 12;
 export const CURRENCY = "PKR";
 
+/** One-time setup charge on every plan, on top of the first month.
+ *  Set by the owner on 2026-09-25. */
+export const SETUP_FEE = 3000;
+
 // ------------------------------------------------------------
 // Coexistence — the WhatsApp Business app and hashChat on one number.
 //

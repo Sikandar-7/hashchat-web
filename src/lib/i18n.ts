@@ -29,7 +29,7 @@
  * TypeScript error rather than a blank card on a live page.
  */
 
-import { TRIAL_HOURS, coexistence, site } from "./content";
+import { CURRENCY, SETUP_FEE, TRIAL_HOURS, coexistence, site } from "./content";
 
 export type Locale = "roman" | "en" | "ur";
 
@@ -214,6 +214,8 @@ interface Copy {
      *  "most popular" was a claim nothing on hand could back up. */
     recommended: string;
     perMonth: string;
+    /** Under each plan's price: the one-time setup fee. */
+    setupFee: string;
     members: string;
     contacts: string;
     broadcasts: string;
@@ -456,6 +458,7 @@ const roman: Copy = {
     lead: `Har plan ${TRIAL_HOURS} ghante free se shuru hota hai. Card ki zaroorat nahi — pasand na aaye to bas chhor dein.`,
     recommended: "Recommended",
     perMonth: "/month",
+    setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} setup fee (sirf ek baar)`,
     members: "Team members",
     contacts: "Contacts",
     broadcasts: "Broadcast messages / month",
@@ -783,6 +786,7 @@ const en: Copy = {
     lead: `Every plan starts with ${TRIAL_HOURS} hours free. No card needed — if it isn't for you, just walk away.`,
     recommended: "Recommended",
     perMonth: "/month",
+    setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} one-time setup fee`,
     members: "Team members",
     contacts: "Contacts",
     broadcasts: "Broadcast messages / month",
@@ -1110,6 +1114,7 @@ const ur: Copy = {
     lead: `ہر پلان ${TRIAL_HOURS} گھنٹے مفت سے شروع ہوتا ہے۔ کارڈ کی ضرورت نہیں — پسند نہ آئے تو بس چھوڑ دیں۔`,
     recommended: "ہمارا مشورہ",
     perMonth: "/ماہ",
+    setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} سیٹ اپ فیس (صرف ایک بار)`,
     members: "ٹیم ممبرز",
     contacts: "رابطے",
     broadcasts: "براڈکاسٹ پیغامات / ماہ",

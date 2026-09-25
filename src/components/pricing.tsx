@@ -42,6 +42,9 @@ export function Pricing({ locale }: { locale: Locale }) {
               </span>
               <span className="text-sm text-ink-muted">{c.perMonth}</span>
             </p>
+            <p className="mt-1 text-xs font-medium text-ink-muted">
+              {c.setupFee}
+            </p>
 
             <dl className="mt-6 grid grid-cols-2 gap-3 border-y border-line py-4 text-sm">
               <div>
