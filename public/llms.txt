@@ -34,12 +34,14 @@ switched on once the payment is verified.
 
 | Plan | Price | Team members | Contacts | Broadcast msgs/month |
 |---|---|---|---|---|
-| Basic | PKR 1,500 | 3 | 1,000 | 2,000 |
-| Pro | PKR 3,500 | 10 | 10,000 | 10,000 |
-| Business | PKR 7,000 | 25 | Unlimited | Unlimited |
+| Basic | PKR 2,000 | 2 | 1,000 | 250 |
+| Pro | PKR 3,500 | 4 | 10,000 | 2,000 |
+| Business | PKR 6,500 | Unlimited | Unlimited | Unlimited |
 
-Pro adds automations, flows, AI replies and API access. Business adds
-unlimited contacts and priority support.
+Every plan also has a one-time setup fee of PKR 3,000.
+
+Pro adds automations, flows, AI replies and API access. Business makes
+members, contacts and broadcasts unlimited and adds priority support.
 
 Payment is by bank transfer, JazzCash or Easypaisa, confirmed by
 uploading a receipt.
