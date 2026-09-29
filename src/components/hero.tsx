@@ -81,9 +81,8 @@ export function Hero({ locale }: { locale: Locale }) {
             </a>
           </div>
 
-          {/* The free trial, right under the button it applies to. It
-              was the pill above the headline until the announcement took
-              that spot. */}
+          {/* The setup note, right under the buttons. It was the pill
+              above the headline until the announcement took that spot. */}
           <p className="mt-5 flex items-center justify-center gap-2 text-sm text-ink-muted">
             <span className="size-1.5 shrink-0 rounded-full bg-brand-teal" />
             {c.badge}

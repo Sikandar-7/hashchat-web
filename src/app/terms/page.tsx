@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { CURRENCY, TRIAL_HOURS, legal, legalAddressLine, site } from "@/lib/content";
+import { CURRENCY, legal, legalAddressLine, site } from "@/lib/content";
 
 /**
  * Terms of service, and the page that carries the registered address.
@@ -276,12 +276,12 @@ export default function TermsPage() {
 
           <section>
             <h2 className="font-display text-2xl font-bold">
-              6. Trial, fees and payment
+              6. Fees and payment
             </h2>
             <p className="mt-4 leading-relaxed text-ink-muted">
-              New accounts get {TRIAL_HOURS} hours free, with no card required to
-              start. After that a plan is payable in advance for each billing
-              period, in {CURRENCY}. Current prices are on the{" "}
+              A plan is payable in advance for each billing period, in{" "}
+              {CURRENCY}. The Service is available once your payment for a plan
+              has been verified. Current prices are on the{" "}
               <Link href="/#pricing" className="text-brand-sky hover:underline">
                 pricing section
               </Link>{" "}

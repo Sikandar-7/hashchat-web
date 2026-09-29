@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
-import { TRIAL_HOURS, founder, plans, site, waLink } from "@/lib/content";
+import { founder, plans, site, waLink } from "@/lib/content";
 
 /**
  * The decision every buyer makes before they shop for a platform.
@@ -457,14 +457,14 @@ export default function ApiVsAppPage() {
               >
                 Meta bills you directly
               </Link>{" "}
-              with nothing added on top. From PKR {plans[0].price.toLocaleString("en-PK")} a month, {TRIAL_HOURS} hours free.
+              with nothing added on top. From PKR {plans[0].price.toLocaleString("en-PK")} a month.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href={`${site.appUrl}/signup`}
                 className="brand-gradient rounded-xl px-5 py-3 text-center text-sm font-semibold text-white"
               >
-                Start free trial
+                Create account
               </a>
               <a
                 href={waLink(

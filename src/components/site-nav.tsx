@@ -74,7 +74,7 @@ export function SiteNav({ locale }: { locale: Locale }) {
             href={`${site.appUrl}/signup`}
             className="rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-bg transition-opacity hover:opacity-90"
           >
-            {c.trial}
+            {c.getStarted}
           </a>
         </div>
       </nav>

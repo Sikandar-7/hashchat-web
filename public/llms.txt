@@ -28,8 +28,9 @@ at once — something the standard WhatsApp Business app does not allow.
 
 ## Pricing
 
-Prices are monthly, in Pakistani Rupees. Every plan starts with a
-3-day free trial that does not require a card.
+Prices are monthly, in Pakistani Rupees. To start, you sign up, pick
+a plan and pay (bank transfer, JazzCash or Easypaisa); the plan is
+switched on once the payment is verified.
 
 | Plan | Price | Team members | Contacts | Broadcast msgs/month |
 |---|---|---|---|---|

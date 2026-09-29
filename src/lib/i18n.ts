@@ -2,7 +2,7 @@
  * Every word on the landing page, in three languages.
  *
  * The split with `content.ts` is deliberate and load-bearing: that file
- * owns the *facts* (prices, ceilings, trial length, URLs, the phone
+ * owns the *facts* (prices, ceilings, URLs, the phone
  * number) and this one owns the *words*. A price still lives in exactly
  * one place, so translating the site cannot make it lie in one language
  * and tell the truth in another — which is the way multilingual
@@ -29,7 +29,7 @@
  * TypeScript error rather than a blank card on a live page.
  */
 
-import { CURRENCY, SETUP_FEE, TRIAL_HOURS, coexistence, site } from "./content";
+import { CURRENCY, SETUP_FEE, coexistence, site } from "./content";
 
 export type Locale = "roman" | "en" | "ur";
 
@@ -113,15 +113,15 @@ interface Copy {
     verify: string;
     faq: string;
     signIn: string;
-    trial: string;
+    getStarted: string;
     language: string;
   };
   hero: {
     /** The announcement pill above the headline; links to #keep-app. */
     newTag: string;
     newText: string;
-    /** The free-trial line. It was the pill above the headline until
-     *  the announcement took that spot; it now sits under the CTAs. */
+    /** The one-line setup note under the CTAs (it was the pill above the
+     *  headline until the announcement took that spot). No trial since 29 Sep 2026. */
     badge: string;
     titleLead: string;
     titleAccent: string;
@@ -274,17 +274,17 @@ const roman: Copy = {
     verify: "Verification",
     faq: "FAQ",
     signIn: "Sign in",
-    trial: "Free trial",
+    getStarted: "Shuru karein",
     language: "Zubaan",
   },
   hero: {
     newTag: "Naya",
     newText: "WhatsApp Business app bhi chalti rahe",
-    badge: `${TRIAL_HOURS} ghante free — card ki zaroorat nahi`,
+    badge: "Dus minute mein setup — aapka apna WhatsApp number",
     titleLead: "Poori team ka",
     titleAccent: "ek WhatsApp inbox",
     lead: "Customers ke messages ab ek banday ke phone mein nahi atkte. Contacts, sales pipeline, broadcasts aur automations — sab ek jagah, poori team ke liye.",
-    ctaPrimary: "Free trial shuru karein",
+    ctaPrimary: "Account banayein",
     ctaWhatsapp: "WhatsApp par baat karein",
     whatsappMessage:
       "Assalam o alaikum — hashChat ke bare mein maloomat chahiye.",
@@ -440,7 +440,7 @@ const roman: Copy = {
     items: {
       "01": {
         title: "Account banayein",
-        body: `Email se sign up karein. ${TRIAL_HOURS} ghante free — card ki zaroorat nahi.`,
+        body: "Email se sign up karein, plan chunein aur payment ki screenshot upload kar dein.",
       },
       "02": {
         title: "WhatsApp jorein",
@@ -455,7 +455,7 @@ const roman: Copy = {
   pricing: {
     eyebrow: "Pricing",
     title: "Saaf pricing, koi chhupi hui baat nahi",
-    lead: `Har plan ${TRIAL_HOURS} ghante free se shuru hota hai. Card ki zaroorat nahi — pasand na aaye to bas chhor dein.`,
+    lead: "Plan chunein, payment karein — usi din kaam shuru. Koi lamba contract nahi, jab chahein chhor dein.",
     recommended: "Recommended",
     perMonth: "/month",
     setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} setup fee (sirf ek baar)`,
@@ -464,7 +464,7 @@ const roman: Copy = {
     broadcasts: "Broadcast messages / month",
     broadcastsMetaNote: "+ har message ka charge Meta alag leta hai, aap ke apne card se",
     unlimited: "Unlimited",
-    cta: `${TRIAL_HOURS} ghante free try karein`,
+    cta: "Yeh plan lein",
     plans: {
       basic: {
         tagline: "Chhote setups ke liye",
@@ -550,8 +550,8 @@ const roman: Copy = {
         a: "Haan, aur woh Meta leta hai — hum nahi. Meta har message par charge karta hai aur rate is par hai ke message kis qism ka hai. Pakistan mein takreeban: marketing (broadcast, offers) ~Rs 13 per message; utility (order update, reminder) ~Rs 2.8 per message. Sab se ahem: customer ke apne message ka jawab agar 24 ghante ke andar diya jaye to woh bilkul FREE hai — automations, auto-replies aur team ke jawab sab isi mein aate hain. Yeh rates Meta khud waqtan fauqtan badalta rehta hai.",
       },
       {
-        q: "Free trial mein kya milta hai?",
-        a: `${TRIAL_HOURS} ghante, poora product, bina card ke. Trial khatam hone par aap plan chun sakte hain — aapka data waise ka waisa rehta hai.`,
+        q: "Shuru kaise karein?",
+        a: "Email se account banayein, plan chunein aur payment ki screenshot upload kar dein. Hum verify kar ke plan chalu kar dete hain — phir apna WhatsApp number jor lein. Setup dus minute ka hai.",
       },
       {
         q: "Payment kaise karni hoti hai?",
@@ -565,8 +565,8 @@ const roman: Copy = {
   },
   cta: {
     title: "Aaj hi shuru karein",
-    lead: `${TRIAL_HOURS} ghante free. Card ki zaroorat nahi. Setup dus minute ka hai.`,
-    primary: "Free trial shuru karein",
+    lead: "Setup dus minute ka hai. Plan chunein aur aaj hi poori team ko ek inbox par le aayein.",
+    primary: "Account banayein",
     secondary: "Pricing dekhein",
   },
   footer: {
@@ -603,17 +603,17 @@ const en: Copy = {
     verify: "Verification",
     faq: "FAQ",
     signIn: "Sign in",
-    trial: "Free trial",
+    getStarted: "Get started",
     language: "Language",
   },
   hero: {
     newTag: "New",
     newText: "Keep your WhatsApp Business app",
-    badge: `${TRIAL_HOURS} hours free — no card needed`,
+    badge: "Set up in ten minutes — on your own WhatsApp number",
     titleLead: "One WhatsApp inbox for",
     titleAccent: "your whole team",
     lead: "Customer messages stop getting stuck on one person's phone. Contacts, sales pipeline, broadcasts and automations — in one place, for everyone.",
-    ctaPrimary: "Start free trial",
+    ctaPrimary: "Create account",
     ctaWhatsapp: "Talk to us on WhatsApp",
     whatsappMessage: "Hello — I'd like to know more about hashChat.",
     footnote: "Your own WhatsApp number · Built in Lahore ·",
@@ -768,7 +768,7 @@ const en: Copy = {
     items: {
       "01": {
         title: "Create an account",
-        body: `Sign up with your email. ${TRIAL_HOURS} hours free — no card needed.`,
+        body: "Sign up with your email, pick a plan and upload your payment screenshot.",
       },
       "02": {
         title: "Connect WhatsApp",
@@ -783,7 +783,7 @@ const en: Copy = {
   pricing: {
     eyebrow: "Pricing",
     title: "Plain pricing, nothing hidden",
-    lead: `Every plan starts with ${TRIAL_HOURS} hours free. No card needed — if it isn't for you, just walk away.`,
+    lead: "Pick a plan, pay, and you're live the same day. No long contract — leave whenever you like.",
     recommended: "Recommended",
     perMonth: "/month",
     setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} one-time setup fee`,
@@ -792,7 +792,7 @@ const en: Copy = {
     broadcasts: "Broadcast messages / month",
     broadcastsMetaNote: "+ Meta charges each message separately, on your own card",
     unlimited: "Unlimited",
-    cta: `Try ${TRIAL_HOURS} hours free`,
+    cta: "Choose this plan",
     plans: {
       basic: {
         tagline: "For small setups",
@@ -878,8 +878,8 @@ const en: Copy = {
         a: "Yes, and Meta charges it — not us. Meta charges per message and the rate depends on the message type. In Pakistan, roughly: marketing (broadcasts, offers) ~Rs 13 per message; utility (order updates, reminders) ~Rs 2.8 per message. The important part: replying to a customer's own message within 24 hours is completely FREE — automations, auto-replies and your team's answers all fall inside that. Meta revises these rates from time to time.",
       },
       {
-        q: "What do I get in the free trial?",
-        a: `${TRIAL_HOURS} hours, the whole product, no card. When the trial ends you pick a plan — your data stays exactly as it is.`,
+        q: "How do I get started?",
+        a: "Create an account with your email, pick a plan and upload your payment screenshot. We verify it and switch your plan on — then connect your WhatsApp number. Setup takes about ten minutes.",
       },
       {
         q: "How do I pay?",
@@ -893,8 +893,8 @@ const en: Copy = {
   },
   cta: {
     title: "Start today",
-    lead: `${TRIAL_HOURS} hours free. No card needed. Setup takes ten minutes.`,
-    primary: "Start free trial",
+    lead: "Setup takes ten minutes. Pick a plan and bring your whole team into one inbox today.",
+    primary: "Create account",
     secondary: "See pricing",
   },
   footer: {
@@ -931,17 +931,17 @@ const ur: Copy = {
     verify: "تصدیق",
     faq: "سوالات",
     signIn: "سائن اِن",
-    trial: "مفت ٹرائل",
+    getStarted: "شروع کریں",
     language: "زبان",
   },
   hero: {
     newTag: "نیا",
     newText: "واٹس ایپ بزنس ایپ بھی چلتی رہے",
-    badge: `${TRIAL_HOURS} گھنٹے مفت — کارڈ کی ضرورت نہیں`,
+    badge: "دس منٹ میں سیٹ اپ — آپ کا اپنا واٹس ایپ نمبر",
     titleLead: "پوری ٹیم کا",
     titleAccent: "ایک واٹس ایپ اِن باکس",
     lead: "کسٹمرز کے پیغامات اب کسی ایک شخص کے فون میں نہیں رکتے۔ رابطے، سیلز پائپ لائن، براڈکاسٹ اور آٹومیشن — سب ایک جگہ، پوری ٹیم کے لیے۔",
-    ctaPrimary: "مفت ٹرائل شروع کریں",
+    ctaPrimary: "اکاؤنٹ بنائیں",
     ctaWhatsapp: "واٹس ایپ پر بات کریں",
     whatsappMessage: "السلام علیکم — hashChat کے بارے میں معلومات چاہیے۔",
     footnote: "آپ کا اپنا واٹس ایپ نمبر · لاہور میں بنایا گیا ·",
@@ -1096,7 +1096,7 @@ const ur: Copy = {
     items: {
       "01": {
         title: "اکاؤنٹ بنائیں",
-        body: `ای میل سے سائن اپ کریں۔ ${TRIAL_HOURS} گھنٹے مفت — کارڈ کی ضرورت نہیں۔`,
+        body: "ای میل سے سائن اپ کریں، پلان چنیں اور ادائیگی کا اسکرین شاٹ اپ لوڈ کر دیں۔",
       },
       "02": {
         title: "واٹس ایپ جوڑیں",
@@ -1111,7 +1111,7 @@ const ur: Copy = {
   pricing: {
     eyebrow: "قیمت",
     title: "صاف قیمت، کوئی چھپی ہوئی بات نہیں",
-    lead: `ہر پلان ${TRIAL_HOURS} گھنٹے مفت سے شروع ہوتا ہے۔ کارڈ کی ضرورت نہیں — پسند نہ آئے تو بس چھوڑ دیں۔`,
+    lead: "پلان چنیں، ادائیگی کریں — اسی دن کام شروع۔ کوئی لمبا معاہدہ نہیں، جب چاہیں چھوڑ دیں۔",
     recommended: "ہمارا مشورہ",
     perMonth: "/ماہ",
     setupFee: `+ ${CURRENCY} ${SETUP_FEE.toLocaleString("en-PK")} سیٹ اپ فیس (صرف ایک بار)`,
@@ -1120,7 +1120,7 @@ const ur: Copy = {
     broadcasts: "براڈکاسٹ پیغامات / ماہ",
     broadcastsMetaNote: "+ ہر پیغام کا چارج میٹا الگ لیتا ہے، آپ کے اپنے کارڈ سے",
     unlimited: "لامحدود",
-    cta: `${TRIAL_HOURS} گھنٹے مفت آزمائیں`,
+    cta: "یہ پلان لیں",
     plans: {
       basic: {
         tagline: "چھوٹے سیٹ اپ کے لیے",
@@ -1206,8 +1206,8 @@ const ur: Copy = {
         a: "ہاں، اور وہ میٹا لیتا ہے — ہم نہیں۔ میٹا ہر پیغام پر چارج کرتا ہے اور ریٹ اس پر ہے کہ پیغام کس قسم کا ہے۔ پاکستان میں تقریباً: مارکیٹنگ (براڈکاسٹ، آفرز) ~13 روپے فی پیغام؛ یوٹیلیٹی (آرڈر اپ ڈیٹ، یاد دہانی) ~2.8 روپے فی پیغام۔ سب سے اہم: کسٹمر کے اپنے پیغام کا جواب اگر 24 گھنٹے کے اندر دیا جائے تو وہ بالکل مفت ہے — آٹومیشن، خودکار جواب اور ٹیم کے جواب سب اسی میں آتے ہیں۔ یہ ریٹ میٹا خود وقتاً فوقتاً بدلتا رہتا ہے۔",
       },
       {
-        q: "مفت ٹرائل میں کیا ملتا ہے؟",
-        a: `${TRIAL_HOURS} گھنٹے، پورا پروڈکٹ، بغیر کارڈ کے۔ ٹرائل ختم ہونے پر آپ پلان چن سکتے ہیں — آپ کا ڈیٹا ویسے کا ویسا رہتا ہے۔`,
+        q: "شروع کیسے کریں؟",
+        a: "ای میل سے اکاؤنٹ بنائیں، پلان چنیں اور ادائیگی کا اسکرین شاٹ اپ لوڈ کر دیں۔ ہم تصدیق کر کے پلان چالو کر دیتے ہیں — پھر اپنا واٹس ایپ نمبر جوڑ لیں۔ سیٹ اپ دس منٹ کا ہے۔",
       },
       {
         q: "ادائیگی کیسے کرنی ہوتی ہے؟",
@@ -1221,8 +1221,8 @@ const ur: Copy = {
   },
   cta: {
     title: "آج ہی شروع کریں",
-    lead: `${TRIAL_HOURS} گھنٹے مفت۔ کارڈ کی ضرورت نہیں۔ سیٹ اپ دس منٹ کا ہے۔`,
-    primary: "مفت ٹرائل شروع کریں",
+    lead: "سیٹ اپ دس منٹ کا ہے۔ پلان چنیں اور آج ہی پوری ٹیم کو ایک اِن باکس پر لے آئیں۔",
+    primary: "اکاؤنٹ بنائیں",
     secondary: "قیمت دیکھیں",
   },
   footer: {

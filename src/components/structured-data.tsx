@@ -6,7 +6,7 @@ import { localeMeta, t, type Locale } from "@/lib/i18n";
  *
  * The FAQPage block matters most here: assistants quote question/answer
  * pairs almost verbatim, so the answers people actually ask before
- * buying — who owns the number, what Meta charges, what the trial is —
+ * buying — who owns the number, what Meta charges, how to pay —
  * are the ones worth making machine-readable.
  *
  * Nothing is claimed that isn't true. There is deliberately no

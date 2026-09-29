@@ -2,8 +2,8 @@
  * Every claim the site makes, in one place.
  *
  * The numbers here are the live ones — plan prices and ceilings are what
- * the product's `plans` table actually holds, and the trial length is
- * what the signup trigger actually grants. Nothing here is aspirational;
+ * the product's `plans` table actually holds. There is no free trial
+ * (removed 29 Sep 2026) — don't advertise one. Nothing here is aspirational;
  * if a value changes in the product it has to change here too.
  *
  * NB: don't name an export `process` — it shadows the Node global and
@@ -207,9 +207,6 @@ export const plans = [
   },
 ] as const;
 
-/** The free trial, in hours since 2026-09-13 (the product's migration 063).
- *  It was 3 days here while the product had already cut it to 1. */
-export const TRIAL_HOURS = 12;
 export const CURRENCY = "PKR";
 
 /** One-time setup charge on every plan, on top of the first month.
