@@ -128,6 +128,7 @@ interface Copy {
     lead: string;
     ctaPrimary: string;
     ctaWhatsapp: string;
+    downloadApp: string;
     whatsappMessage: string;
     footnote: string;
   };
@@ -286,6 +287,7 @@ const roman: Copy = {
     lead: "Customers ke messages ab ek banday ke phone mein nahi atkte. Contacts, sales pipeline, broadcasts aur automations — sab ek jagah, poori team ke liye.",
     ctaPrimary: "Account banayein",
     ctaWhatsapp: "WhatsApp par baat karein",
+    downloadApp: "Android app download karein",
     whatsappMessage:
       "Assalam o alaikum — hashChat ke bare mein maloomat chahiye.",
     footnote: "Aapka apna WhatsApp number · Lahore se banaya gaya ·",
@@ -615,6 +617,7 @@ const en: Copy = {
     lead: "Customer messages stop getting stuck on one person's phone. Contacts, sales pipeline, broadcasts and automations — in one place, for everyone.",
     ctaPrimary: "Create account",
     ctaWhatsapp: "Talk to us on WhatsApp",
+    downloadApp: "Download the Android app",
     whatsappMessage: "Hello — I'd like to know more about hashChat.",
     footnote: "Your own WhatsApp number · Built in Lahore ·",
   },
@@ -943,6 +946,7 @@ const ur: Copy = {
     lead: "کسٹمرز کے پیغامات اب کسی ایک شخص کے فون میں نہیں رکتے۔ رابطے، سیلز پائپ لائن، براڈکاسٹ اور آٹومیشن — سب ایک جگہ، پوری ٹیم کے لیے۔",
     ctaPrimary: "اکاؤنٹ بنائیں",
     ctaWhatsapp: "واٹس ایپ پر بات کریں",
+    downloadApp: "اینڈرائیڈ ایپ ڈاؤن لوڈ کریں",
     whatsappMessage: "السلام علیکم — hashChat کے بارے میں معلومات چاہیے۔",
     footnote: "آپ کا اپنا واٹس ایپ نمبر · لاہور میں بنایا گیا ·",
   },

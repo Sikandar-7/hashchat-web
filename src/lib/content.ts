@@ -33,8 +33,8 @@ export const site = {
   // tell whether the one on their phone is the current one, and a
   // 5 MB download over mobile data deserves a warning before the tap.
   androidApk: "/hashChat.apk",
-  androidApkVersion: "1.1",
-  androidApkSize: "5.3 MB",
+  androidApkVersion: "1.2",
+  androidApkSize: "5.1 MB",
 } as const;
 
 /**

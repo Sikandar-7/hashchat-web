@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Download, MessageCircle } from "lucide-react";
 
 import { site, waLink } from "@/lib/content";
 import { t, type Locale } from "@/lib/i18n";
@@ -94,6 +94,21 @@ export function Hero({ locale }: { locale: Locale }) {
               {site.whatsappDisplay}
             </span>
           </p>
+
+          {/* The app the features and plans promise, one tap from the top
+              of the page instead of only in the footer. A direct APK (not
+              on Play yet), so version and size stay visible. */}
+          <a
+            href={site.androidApk}
+            download
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-brand-teal/60 hover:bg-surface-2"
+          >
+            <Download className="size-4 text-brand-teal" aria-hidden />
+            {c.downloadApp}
+            <span className="text-ink-faint" dir="ltr">
+              ({site.androidApkVersion} · {site.androidApkSize})
+            </span>
+          </a>
         </div>
 
         {/* Product surface. A framed panel rather than a floating
