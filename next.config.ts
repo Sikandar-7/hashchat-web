@@ -40,6 +40,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/en", destination: "/", permanent: true },
+      // The old APK's address (v1.x, the web-view app). Links to it were
+      // shared around; send them to the download page for the current app.
+      { source: "/hashChat.apk", destination: "/download", permanent: false },
       // The hashChat Android app opens Quick Connect links through this
       // domain: the app loads its own host (app.hashchat.uk) inside its
       // WebView, where Facebook Login cannot run, and hands any other host
