@@ -11,13 +11,13 @@
  * shows our own "go ad-free" card. The same card fills a slot AdSense leaves
  * empty.
  */
-export type AdSlot = "sidebar" | "mobile";
+export type AdSlot = "sidebar" | "mobile" | "top";
 
 export const adsense: { client: string; slots: Record<AdSlot, string> } = {
   // "ca-pub-…" from AdSense → Account → Settings.
   client: "",
   // Ad unit ids from AdSense → Ads → By ad unit (one per placement).
-  slots: { sidebar: "", mobile: "" },
+  slots: { sidebar: "", mobile: "", top: "" },
 };
 
 /** Only the panel may frame /ad-frame (see next.config.ts). */

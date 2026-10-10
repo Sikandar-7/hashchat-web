@@ -63,11 +63,13 @@ export function AdsenseUnit({
         style={
           slot === "mobile"
             ? { display: "inline-block", width: "100%", height: 50 }
+            : slot === "top"
+            ? { display: "block", width: "100%", height: 60 }
             : { display: "block", width: "100%", height: "100%" }
         }
         data-ad-client={client}
         data-ad-slot={unit}
-        {...(slot === "sidebar" ? { "data-ad-format": "rectangle" } : {})}
+        {...(slot === "sidebar" ? { "data-ad-format": "rectangle" } : slot === "top" ? { "data-ad-format": "horizontal" } : {})}
       />
     </>
   );

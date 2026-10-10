@@ -7,7 +7,7 @@ import { HouseAd } from "./house-ad";
 
 /**
  * One ad slot of the hashChat panel, framed by app.hashchat.uk (see
- * lib/ads.ts for why it lives here). `?slot=sidebar|mobile` picks the size,
+ * lib/ads.ts for why it lives here). `?slot=sidebar|mobile|top` picks the size,
  * `?theme=dark|light` matches the panel's colours. Not a page anyone should
  * land on, so it stays out of search.
  */
@@ -22,7 +22,7 @@ export default async function AdFrame({
   searchParams: Promise<{ slot?: string; theme?: string }>;
 }) {
   const sp = await searchParams;
-  const slot: AdSlot = sp.slot === "mobile" ? "mobile" : "sidebar";
+  const slot: AdSlot = sp.slot === "mobile" || sp.slot === "top" ? sp.slot : "sidebar";
   const dark = sp.theme !== "light";
   const unit = adsense.client ? adsense.slots[slot] : "";
   const house = <HouseAd slot={slot} dark={dark} upgradeUrl={`${PANEL_ORIGIN}/subscription`} />;

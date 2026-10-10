@@ -21,6 +21,50 @@ export function HouseAd({ slot, dark, upgradeUrl }: { slot: AdSlot; dark: boolea
     : { bg: "#ffffff", border: "#e4e6ea", text: "#0b0d10", muted: "#5f6670", green: "#16a34a", onGreen: "#ffffff" };
   const font = "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif";
 
+  if (slot === "top") {
+    // The strip above the panel's header on desktop.
+    return (
+      <a
+        href={upgradeUrl}
+        target="_blank"
+        rel="noopener"
+        onClick={openBilling}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 16,
+          height: "100%",
+          padding: "0 20px",
+          background: c.bg,
+          color: c.text,
+          textDecoration: "none",
+          fontFamily: font,
+        }}
+      >
+        <span
+          style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, textTransform: "uppercase", color: c.green }}
+        >
+          hashChat Business
+        </span>
+        <span style={{ fontSize: 14, fontWeight: 600 }}>No ads. Unlimited team and contacts.</span>
+        <span style={{ fontSize: 13, color: c.muted }}>Plus automations, flows, AI and the API.</span>
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: 600,
+            background: c.green,
+            color: c.onGreen,
+            borderRadius: 999,
+            padding: "6px 14px",
+          }}
+        >
+          Upgrade
+        </span>
+      </a>
+    );
+  }
+
   if (slot === "mobile") {
     return (
       <a
