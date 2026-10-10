@@ -32,9 +32,9 @@ export const site = {
   // sideloaded APK never auto-updates, so a reader has to be able to
   // tell whether the one on their phone is the current one, and a
   // 20+ MB download over mobile data deserves a warning before the tap.
-  androidApk: "/hashchat-v2.0.0.apk",
-  androidApkVersion: "2.0.0",
-  androidApkSize: "22.6 MB",
+  androidApk: "/hashchat-v2.1.0.apk",
+  androidApkVersion: "2.1.0",
+  androidApkSize: "24.6 MB",
 } as const;
 
 /**
