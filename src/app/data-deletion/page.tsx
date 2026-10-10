@@ -23,6 +23,12 @@ import { legal, site, waLink } from "@/lib/content";
  *
  * The timelines here are promises. Do not lengthen them casually and do
  * not shorten them to look good -- somebody will hold us to them.
+ *
+ * Google Play's account-deletion policy points here too (Data safety →
+ * Delete account URL), which is why the page names the Android app and
+ * the developer, has a route for a team member's own login, and says
+ * what happens on the phone and to AdMob's data (added 2026-10-10). The
+ * in-app deletions it names are the ones the Android app actually has.
  */
 
 const PAGE_PATH = "/data-deletion";
@@ -50,9 +56,15 @@ export const metadata: Metadata = {
 const REMOVED = [
   "Your account, your workspace, and every team member in it.",
   "Every conversation, message and media file in the inbox.",
+  "Call history.",
   "Every contact, note, tag and pipeline record.",
+  "Quick replies and custom fields.",
   "Broadcasts, automations, flows and message templates you created here.",
+  "AI Agent settings, including any stored AI provider keys and the knowledge base.",
+  "API keys, MCP access and webhooks.",
+  "Profile photos.",
   "The connection to your WhatsApp Business Account, and the tokens that let us send on your behalf.",
+  "The notification tokens of every device signed in to the account.",
 ] as const;
 
 export default function DataDeletionPage() {
@@ -110,6 +122,15 @@ export default function DataDeletionPage() {
           Your conversations and contacts are yours. Here is how to have all of
           it removed from {site.name} — what to send, what goes, and how long it
           takes.
+        </p>
+
+        <p className="mt-4 leading-relaxed text-ink-muted">
+          This page is for the {site.name} website, web app and Android app (on
+          Google Play, published by {site.company}, operated by{" "}
+          <span className="text-ink" dir="ltr">
+            {legal.entity}
+          </span>
+          ).
         </p>
 
         <p className="mt-4 text-sm text-ink-faint">
@@ -198,24 +219,47 @@ export default function DataDeletionPage() {
               nothing is restored from them except to recover from a failure, and
               a deleted account is deleted again if it ever is.
             </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Server logs (IP address, device and browser details, errors) are
+              kept in a small rolling log that is overwritten automatically once
+              it reaches its size limit, so entries are normally gone within
+              days.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              <strong className="text-ink">On your phone.</strong> Signing out
+              of the Android app deletes its cached chats and contacts, and
+              uninstalling the app deletes everything it stored on the device.
+            </p>
           </section>
 
           <section>
             <h2 className="font-display text-2xl font-bold">
               Deleting only part of it
             </h2>
-            {/* Deliberately phrased around the request, not around a
-                button. Whether the product has a self-serve delete for a
-                given object is a moving target; this page is the one a
-                reviewer tests, so it promises only the route we control.
-                The second sentence stays true either way. */}
+            {/* Phrased around the request first: that is the route we
+                control, and this page is the one a reviewer tests. The
+                in-app steps below are the ones the Android app has today
+                (checked 2026-10-10) -- if a delete action moves or goes,
+                that paragraph changes with it. */}
             <p className="mt-4 leading-relaxed text-ink-muted">
               You do not have to close the account to remove data. Ask us for a
               partial deletion instead — a single contact, one conversation, a
               date range, one number, one team member — and we handle it on the
-              same terms and the same timeline as a full one. Where {site.name}{" "}
-              already lets you delete something yourself, that removal happens
-              straight away.
+              same terms and the same timeline as a full one.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              In the Android app: long-press a chat in the Inbox →{" "}
+              <span className="text-ink">Delete chat</span> or{" "}
+              <span className="text-ink">Delete contact</span>. In Contacts:
+              select contacts → delete. These are removed immediately.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              <strong className="text-ink">Only your own login.</strong> If you
+              are a team member and not the workspace owner, email us from your
+              login address asking to delete your user account. We remove your
+              login, profile and device notification tokens. Messages you sent
+              stay in the workspace, because they belong to the business, unless
+              the owner asks us to remove them too.
             </p>
           </section>
 
@@ -273,8 +317,19 @@ export default function DataDeletionPage() {
                 <strong className="text-ink">
                   Records we are required to keep.
                 </strong>{" "}
-                Invoices and payment records, for as long as the law requires.
-                These hold billing details, not your conversations or contacts.
+                Invoices and payment records, kept for as long as Pakistani tax
+                and company law requires (up to 10 years). These hold billing
+                details, not your conversations or contacts.
+              </li>
+              <li>
+                <strong className="text-ink">Advertising data.</strong> Ads in
+                the Android app (on the Basic and Pro plans) come from Google
+                AdMob, and Google holds that data under its own policy. You can
+                reset or delete your advertising ID in{" "}
+                <span className="text-ink">
+                  Android Settings → Privacy → Ads
+                </span>{" "}
+                (or <span className="text-ink">Google → Ads</span>).
               </li>
               <li>
                 <strong className="text-ink">

@@ -40,6 +40,16 @@ import { coexistence, legal, legalAddressLine, site } from "@/lib/content";
  * label rather than the file, and the app's contacts in a table of
  * their own (whatsapp_app_contacts) used only to name chats. If the
  * import changes, these rows change with it.
+ *
+ * The Android app section, the AdMob lines in "Who else sees it", and
+ * the token and call rows (added 2026-10-10) are what Google Play
+ * checks against the app's Data safety form. They mirror the Play build
+ * of hashchat-android: FCM and AdMob are its only third-party services,
+ * AdMob runs only on the Basic and Pro plans, there is no camera,
+ * storage, location or contacts permission, and allowBackup is false.
+ * If the app gains an SDK or a permission, this page and the Data
+ * safety form change together. The server-log row describes a rolling
+ * log capped by size, not by age -- there is no day count to promise.
  */
 
 const PAGE_PATH = "/privacy";
@@ -101,11 +111,25 @@ const DATA = [
     keep: "Until the account closes or you disconnect the number.",
   },
   {
+    what: "Call records",
+    detail:
+      "For each WhatsApp voice call: the time, the direction, the status, which team member answered, and the customer's number and name. Never the audio.",
+    why: "To show calls in the conversation history.",
+    keep: "Like other messages: until you delete the conversation, or until the account closes.",
+  },
+  {
+    what: "Device notification tokens",
+    detail:
+      "In the Android app: the Firebase Cloud Messaging token of each device you are signed in on, linked to your account.",
+    why: "To send notifications and incoming-call alerts to your devices.",
+    keep: "Until you sign out on that device, or until the account is deleted.",
+  },
+  {
     what: "Technical records",
     detail:
       "Sign-in times, IP addresses, browser and device information, and server error logs.",
     why: "To keep the service running, investigate faults, and detect abuse of an account.",
-    keep: "Rolling logs, kept for a short operational window and then discarded.",
+    keep: "A small rolling log that is overwritten automatically once it reaches its size limit, so entries are normally gone within days.",
   },
 ] as const;
 
@@ -385,6 +409,127 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="font-display text-2xl font-bold">
+              The Android app
+            </h2>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              The {site.name} Android app contains no analytics or
+              crash-reporting SDK. The only third-party services built into it
+              are Google Firebase Cloud Messaging (notifications) and, on
+              ad-supported plans, Google AdMob (ads). The Google Play version of
+              the app has no in-app purchases or payment screens.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              It asks for these permissions: notifications, microphone (voice
+              notes and calls), and the call permissions needed to ring and
+              keep a call connected. It does not ask for location, contacts,
+              SMS, call log, camera, or storage permissions.
+            </p>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              Advertising in the Android app
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              Workspaces on the Basic and Pro plans see ads in the {site.name}{" "}
+              Android app. Workspaces on the Business plan see none. The ads are
+              served by Google AdMob, a Google service. To show and measure ads,
+              the Google Mobile Ads SDK in the app collects, directly from your
+              device: your device&rsquo;s advertising ID and app set ID, your IP
+              address (which Google may use to estimate your general location),
+              interactions with the app and the ads (such as app launches, taps
+              and ad views), and diagnostic information about the app and the
+              SDK.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Google uses this data for advertising, analytics and fraud
+              prevention under{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-sky hover:underline"
+              >
+                its own privacy policy
+              </a>{" "}
+              and explains how at{" "}
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-sky hover:underline"
+              >
+                How Google uses information from sites or apps that use our
+                services
+              </a>
+              . Google keeps it under its own retention policy. In
+              the European Economic Area and the United Kingdom, Google&rsquo;s
+              consent form is shown before any ad is requested. You can reset or
+              delete your advertising ID at any time in your phone&rsquo;s
+              Android settings.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Your conversations, contacts and other workspace data are never
+              given to AdMob or used for advertising.
+            </p>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              Microphone, voice notes and calls
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              The app asks for microphone access only when you record a voice
+              note or take or place a WhatsApp voice call. A voice note is
+              recorded only while you are recording. It is kept in the
+              app&rsquo;s private cache until it is sent, and is then stored and
+              delivered like any other message media.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              WhatsApp voice calls in {site.name} are live. The audio is
+              streamed in real time between your phone and WhatsApp&rsquo;s
+              (Meta&rsquo;s) call servers, does not pass through{" "}
+              {site.name}&rsquo;s servers, and is not recorded or stored by{" "}
+              {site.name}. We keep a record of each call (time, direction,
+              status, which team member answered, and the customer&rsquo;s
+              number and name) as part of the conversation history.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              During a call the app runs a phone-call foreground service, so the
+              call keeps working while the screen is off. An incoming call can
+              show a full-screen call screen over the lock screen.
+            </p>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              Camera, photos, videos and files
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              The app does not have access to your photo gallery or your files.
+              When you choose to attach something, Android&rsquo;s own photo
+              picker or file picker opens, and the app receives only the item
+              you select. When you take a photo, Android&rsquo;s camera app
+              takes it and gives it to {site.name}. The app has no camera
+              permission of its own.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              Photos, videos, documents and audio you send, and those your
+              customers send you, are stored as part of the conversation and
+              kept like other messages. CSV and JSON files you import (contacts,
+              broadcasts, automations, flows) are read once to import their
+              contents.
+            </p>
+
+            <h3 className="mt-8 font-display text-lg font-semibold">
+              Data on your device
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              To open quickly and work on a weak connection, the Android app
+              keeps a copy of your recent chats, messages, contacts and tags in
+              its private storage on your phone. Other apps cannot read it. It
+              is deleted when you sign out and when you uninstall the app. Your
+              login session is stored encrypted with a key held in the Android
+              Keystore. App data is excluded from Android device backups.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold">
               Who else sees it
             </h2>
             <p className="mt-4 leading-relaxed text-ink-muted">
@@ -408,7 +553,14 @@ export default function PrivacyPage() {
                 reaches your phone through Firebase Cloud Messaging, a Google
                 service. The notification carries the sender&rsquo;s name or
                 number and the message text, and Google delivers it over its own
-                global network.
+                global network. To deliver notifications, the app registers your
+                device with Firebase Cloud Messaging. We store the resulting
+                device token on our servers, linked to your account. Firebase
+                also uses a per-installation identifier. We use these only to
+                send notifications and incoming-call alerts to the devices you
+                are signed in on. A device&rsquo;s token is deleted when you sign
+                out of the app on that device, and all tokens are deleted when
+                your account is deleted.
               </li>
               <li>
                 <strong className="text-ink">
@@ -425,13 +577,16 @@ export default function PrivacyPage() {
                 use conversations to train any AI model.
               </li>
               <li>
-                <strong className="text-ink">Nobody else</strong> — unless the
-                law requires it, or you ask us to.
+                <strong className="text-ink">Nobody else</strong>, apart from
+                Google AdMob as described under &ldquo;Advertising in the Android
+                app&rdquo;, and unless the law requires it or you ask us to.
               </li>
             </ul>
             <p className="mt-5 leading-relaxed text-ink-muted">
-              We do not sell data and we do not share it for anyone
-              else&rsquo;s marketing.
+              We do not sell data. Your conversations, contacts and workspace
+              data are never shared for anyone&rsquo;s marketing. The only
+              advertising data is what Google&rsquo;s AdMob SDK collects
+              directly on ad-supported plans, described above.
             </p>
           </section>
 
@@ -482,6 +637,18 @@ export default function PrivacyPage() {
                 how to delete your data
               </Link>
               .
+            </p>
+            <p className="mt-4 leading-relaxed text-ink-muted">
+              In the Android app, you can delete a chat or a contact yourself
+              (long-press it in the Inbox, or select contacts in the Contacts
+              tab), and it is removed immediately. To delete your whole account
+              and workspace, or only your own login as a team member, follow the
+              steps on the{" "}
+              <Link href="/data-deletion" className="text-brand-sky hover:underline">
+                data deletion page
+              </Link>
+              . Deletion requests are completed within 30 days, and backups roll
+              over within 90 days.
             </p>
           </section>
 
