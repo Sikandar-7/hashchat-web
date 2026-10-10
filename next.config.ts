@@ -18,8 +18,6 @@ const SECURITY_HEADERS = [
   // Stops a browser from second-guessing a declared content type —
   // the classic vector for a served asset being executed as script.
   { key: "X-Content-Type-Options", value: "nosniff" },
-  // Nothing here is meant to be framed; refusing removes clickjacking.
-  { key: "X-Frame-Options", value: "DENY" },
   // Send the origin to other sites, never the full path.
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   // The site asks for none of these; deny them so a future dependency
@@ -32,7 +30,21 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      // Nothing here is meant to be framed; refusing removes clickjacking...
+      { source: "/((?!ad-frame).*)", headers: [{ key: "X-Frame-Options", value: "DENY" }] },
+      // ...except the panel's ad slot (lib/ads.ts), which only the panel may frame.
+      {
+        source: "/ad-frame",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors https://app.hashchat.uk http://localhost:3000",
+          },
+        ],
+      },
+    ];
   },
   // /en was the English landing page until 2026-09-13, when English took
   // the root. Permanent (308), so shared links and the index entry for
