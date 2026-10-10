@@ -28,6 +28,25 @@ import { CURRENCY, legal, legalAddressLine, site } from "@/lib/content";
 const PAGE_PATH = "/terms";
 const PAGE_URL = `${site.url}${PAGE_PATH}`;
 
+/**
+ * Businesses WhatsApp does not allow (WhatsApp Business Policy, section 4),
+ * in plain words. The app's signup page and its own /terms show the same
+ * list (wacrm src/lib/legal/prohibited-businesses.ts); keep the two in step.
+ */
+const PROHIBITED_BUSINESSES = [
+  "Buying, selling or exchanging currency or crypto, binary options, and trading-signal or investment schemes",
+  "\"Online earning\" or work-from-home offers that charge a fee (handwriting or typing jobs), and multi-level marketing (MLM)",
+  "Payday loans, cash advances, peer-to-peer lending, debt collection and bail bonds",
+  "Betting, gambling, lottery and real-money games",
+  "Adult products or services, and dating services",
+  "Firearms, ammunition and explosives",
+  "Alcohol, tobacco, cigarettes and vapes",
+  "Drugs and medicines (prescription or otherwise), and medical or healthcare products",
+  "Live animals other than livestock (including pets), and endangered wildlife or plants",
+  "Hazardous goods and materials, and body parts or fluids",
+  "Anything fraudulent, misleading or deceptive: scams, fake documents, counterfeit goods",
+];
+
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: `The agreement between you and ${legal.entity} for the use of ${site.name} — what the service is, what you owe, what we owe, and how either side ends it.`,
@@ -272,6 +291,33 @@ export default function TermsPage() {
               You are responsible for the messages you send and for having a
               lawful basis to hold the contact data you upload.
             </p>
+
+            <h3
+              id="prohibited-businesses"
+              className="mt-8 font-display text-xl font-bold"
+            >
+              Businesses we cannot connect
+            </h3>
+            <p className="mt-3 leading-relaxed text-ink-muted">
+              WhatsApp&rsquo;s{" "}
+              <a
+                href="https://business.whatsapp.com/policy"
+                className="text-brand-teal underline-offset-2 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Business Policy
+              </a>{" "}
+              does not allow the following, whatever licence a business holds,
+              and Meta disables such accounts, often as soon as the number is
+              connected. We cannot connect them, and we may close a workspace
+              that turns out to be one of them:
+            </p>
+            <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-ink-muted">
+              {PROHIBITED_BUSINESSES.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
           </section>
 
           <section>
