@@ -64,12 +64,11 @@ export const founder = {
  * `entity` is the same string the footer prints and Meta's business
  * verification looks for -- it is never translated and never tidied.
  *
- * `address` is here because /privacy and /terms have to carry it: a
- * privacy policy without a postal address for the controller is not one,
- * and Meta's reviewer follows the URL to check the operator is real. It
- * is deliberately NOT in the sitewide footer -- see the note in
- * site-footer.tsx. It is a home address, so it appears on the two pages
- * that need it and nowhere else.
+ * `address` is city level only. The registered office is the owner's
+ * home, and on 2026-10-14 the owner asked for the street to come off the
+ * site: /privacy and /terms identify the controller by legal name, CUIN
+ * (the SECP registry holds the full address) and a working contact, and
+ * offer the postal address on request. Do not add the street back.
  *
  * `contact` is the mailbox that actually receives mail today, and it is
  * deliberately the SAME one the app's own /privacy, /terms and
@@ -92,7 +91,6 @@ export const legal = {
   /** SECP, Companies Act 2017, limited by shares. */
   incorporated: "30 January 2026",
   address: {
-    street: "h#22 st#06 BS winner gulshan bund road lahore",
     city: "Lahore",
     province: "Punjab",
     country: "Pakistan",
@@ -124,7 +122,6 @@ export const legal = {
 
 /** One line, for the places that print the address inline. */
 export const legalAddressLine = [
-  legal.address.street,
   legal.address.city,
   legal.address.province,
   legal.address.country,

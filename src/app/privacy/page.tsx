@@ -206,9 +206,13 @@ export default function PrivacyPage() {
               data controller for the information described on this page.
             </p>
             <div className="mt-6 rounded-2xl border border-line bg-surface/60 p-5 text-sm leading-relaxed text-ink-muted">
-              <p className="font-medium text-ink">Registered address</p>
+              <p className="font-medium text-ink">Registered in</p>
               <p className="mt-2" dir="ltr">
                 {legalAddressLine}
+              </p>
+              <p className="mt-1">
+                Our full postal address is on the SECP company register and is
+                available on request by email.
               </p>
               <p className="mt-4 font-medium text-ink">Contact</p>
               <p className="mt-2" dir="ltr">

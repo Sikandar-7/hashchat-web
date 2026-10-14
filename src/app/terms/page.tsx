@@ -6,12 +6,9 @@ import { SiteNav } from "@/components/site-nav";
 import { CURRENCY, legal, legalAddressLine, site } from "@/lib/content";
 
 /**
- * Terms of service, and the page that carries the registered address.
- *
- * site-footer.tsx says it plainly: the address came out of the sitewide
- * footer because it is a home address and the footer puts it on every
- * page -- "if some future verification really does want it on the site,
- * /terms is the place". This is that page. Do not move it back.
+ * Terms of service. The registered office is the owner's home, so this
+ * page (like /privacy) prints only the city and offers the postal address
+ * on request -- see `legal.address` in lib/content.ts.
  *
  * English only at a root-level slug, for the same reason as /privacy:
  * three translations of a contract are three contracts, and the first
@@ -140,9 +137,13 @@ export default function TermsPage() {
               using the service is <strong className="text-ink">you</strong>.
             </p>
             <div className="mt-6 rounded-2xl border border-line bg-surface/60 p-5 text-sm leading-relaxed text-ink-muted">
-              <p className="font-medium text-ink">Registered address</p>
+              <p className="font-medium text-ink">Registered in</p>
               <p className="mt-2" dir="ltr">
                 {legalAddressLine}
+              </p>
+              <p className="mt-1">
+                Our full postal address is on the SECP company register and is
+                available on request by email.
               </p>
               <p className="mt-4 font-medium text-ink">Contact</p>
               <p className="mt-2" dir="ltr">
