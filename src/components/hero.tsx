@@ -96,18 +96,16 @@ export function Hero({ locale }: { locale: Locale }) {
           </p>
 
           {/* The app the features and plans promise, one tap from the top
-              of the page instead of only in the footer. A direct APK (not
-              on Play yet), so version and size stay visible. */}
+              of the page instead of only in the footer. Google Play, which
+              installs and updates it; /download keeps the APK fallback. */}
           <a
-            href={site.androidApk}
-            download
+            href={site.playStore}
+            target="_blank"
+            rel="noopener"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-brand-teal/60 hover:bg-surface-2"
           >
             <Download className="size-4 text-brand-teal" aria-hidden />
             {c.downloadApp}
-            <span className="text-ink-faint" dir="ltr">
-              ({site.androidApkVersion} · {site.androidApkSize})
-            </span>
           </a>
         </div>
 

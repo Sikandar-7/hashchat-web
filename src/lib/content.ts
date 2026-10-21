@@ -27,11 +27,12 @@ export const site = {
   // already promise. Until now the site claimed it and gave no way to
   // get it.
   //
-  // Served from /public rather than a store link because it is not on
-  // Play yet. That makes the version and size part of the claim: a
-  // sideloaded APK never auto-updates, so a reader has to be able to
-  // tell whether the one on their phone is the current one, and a
-  // 20+ MB download over mobile data deserves a warning before the tap.
+  // On Google Play since 21 Oct 2026 (Pakistan only for now), which is now
+  // the main link: Play installs and updates it by itself. The APK in
+  // /public stays as the fallback for phones without Play; it is signed
+  // with the same key, so either one updates the other. Its version and
+  // size stay visible because a sideloaded APK never auto-updates.
+  playStore: "https://play.google.com/store/apps/details?id=com.sikandar.wacrm",
   androidApk: "/hashchat-v2.1.1.apk",
   androidApkVersion: "2.1.1",
   androidApkSize: "24.6 MB",

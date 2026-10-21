@@ -39,20 +39,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             {c.faq}
           </a>
           {/* The features list and every plan already promise an Android
-              app; until now nothing on the site handed it over. Not a
-              store link because it is not on Play yet — so the version
-              and the size are stated rather than hidden: a sideloaded
-              APK never auto-updates, and 5 MB on mobile data is worth
-              knowing before the tap. */}
+              app; this hands it over through Google Play. Phones without
+              Play get the APK from /download. */}
           <a
-            href={site.androidApk}
-            download
+            href={site.playStore}
+            target="_blank"
+            rel="noopener"
             className="text-ink-muted hover:text-ink"
           >
-            {c.android}{" "}
-            <span className="text-ink-faint" dir="ltr">
-              ({site.androidApkVersion} · {site.androidApkSize})
-            </span>
+            {c.android}
           </a>
           <a
             href={`${site.appUrl}/login`}

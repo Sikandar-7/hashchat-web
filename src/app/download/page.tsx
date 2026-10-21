@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { Download, Play } from "lucide-react";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -12,34 +12,35 @@ import { AutoDownload } from "./auto-download";
  * The Android app download page.
  *
  * The old hashChat app (a web view of app.hashchat.uk) shows an "update"
- * notice that sends people here: it hands any host other than its own to
- * the phone's browser, and only the browser can save a download. So this
- * page starts the download by itself, and keeps a button for when the
- * browser blocks the automatic one.
+ * notice that sends people here, in the phone's browser. Since 21 Oct 2026
+ * the app is on Google Play, so on an Android phone this page opens the
+ * Play listing by itself; Play installs it, or shows "Update" over the
+ * old app.
  *
- * The new app is signed with the same key and package name as the old
- * one, so Android installs it as an update over it — login and chats stay.
+ * Every build — Play's and the APK below — is signed with the same key and
+ * package name, so each installs as an update over the other: login and
+ * chats stay. The APK stays for phones without Google Play.
  */
 const PAGE_PATH = "/download";
 const PAGE_URL = `${site.url}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
   title: "Download the Android app",
-  description: `Download ${site.name} for Android — version ${site.androidApkVersion}, ${site.androidApkSize}.`,
+  description: `Get ${site.name} for Android on Google Play, or download the APK.`,
   alternates: { canonical: PAGE_URL },
 };
 
 const STEPS = [
-  "Open the file once it has downloaded.",
-  "If Android asks, allow your browser to install apps (“Install unknown apps”).",
+  "Tap “Get it on Google Play” — the Play Store opens on hashChat.",
   "Tap Install — or Update, if you already have hashChat. Your login and chats stay as they are.",
+  "Play keeps the app up to date from now on.",
 ] as const;
 
 export default function DownloadPage() {
   return (
     <>
       <SiteNav locale="en" />
-      <AutoDownload href={site.androidApk} />
+      <AutoDownload href={site.playStore} />
 
       <main className="mx-auto max-w-2xl px-5 py-16 sm:py-24">
         <p className="text-sm text-ink-faint">
@@ -54,21 +55,30 @@ export default function DownloadPage() {
         </h1>
 
         <p className="mt-5 text-lg leading-relaxed text-ink-muted">
-          Your download starts by itself. If it doesn&apos;t, tap the button
-          below.
+          hashChat is on Google Play. On an Android phone the Play Store opens
+          by itself; if it doesn&apos;t, tap the button below.
         </p>
 
-        <a
-          href={site.androidApk}
-          download
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-teal px-6 py-3 font-semibold text-black transition-opacity hover:opacity-90"
-        >
-          <Download className="size-5" aria-hidden />
-          Download hashChat
-          <span className="font-normal" dir="ltr">
-            ({site.androidApkVersion} · {site.androidApkSize})
-          </span>
-        </a>
+        <div className="mt-8 flex flex-col items-start gap-4">
+          <a
+            href={site.playStore}
+            className="inline-flex items-center gap-2 rounded-full bg-brand-teal px-6 py-3 font-semibold text-black transition-opacity hover:opacity-90"
+          >
+            <Play className="size-5 fill-current" aria-hidden />
+            Get it on Google Play
+          </a>
+          <a
+            href={site.androidApk}
+            download
+            className="inline-flex items-center gap-2 text-sm text-ink-muted underline-offset-4 hover:text-ink hover:underline"
+          >
+            <Download className="size-4" aria-hidden />
+            No Google Play on your phone? Download the APK
+            <span className="text-ink-faint" dir="ltr">
+              ({site.androidApkVersion} · {site.androidApkSize})
+            </span>
+          </a>
+        </div>
 
         <section className="mt-12 rounded-2xl border border-line bg-surface/60 p-7">
           <h2 className="font-display text-xl font-bold">Installing it</h2>
