@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PlayBadge } from "@/components/play-badge";
 import { site } from "@/lib/content";
 import { localeMeta, t, type Locale } from "@/lib/i18n";
 
@@ -26,6 +27,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-faint">
             {c.blurb}
           </p>
+          <PlayBadge className="mt-5" />
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
@@ -121,6 +123,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             LOVE &amp; JOY (SMC-PRIVATE) LIMITED
           </span>
           {c.legalAfter}
+        </p>
+        {/* Required alongside the Play badge (Google's badge guidelines). */}
+        <p className="mt-2" dir="ltr">
+          Google Play and the Google Play logo are trademarks of Google LLC.
         </p>
       </div>
     </footer>
