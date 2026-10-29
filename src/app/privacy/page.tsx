@@ -88,13 +88,13 @@ const DATA = [
     detail:
       "Messages sent and received on your connected WhatsApp Business number, the phone numbers and names of the people who message you, and any media in those chats.",
     why: "This is the product. Without it there is no shared inbox, no contact record and no conversation history.",
-    keep: "Until you delete it, or until the account closes.",
+    keep: "Until the account closes. Deleting a chat in the app removes it from your inbox; we keep a copy until the account closes, or erase it sooner if you ask us.",
   },
   {
     what: "Past chats from the WhatsApp Business app",
     detail: `Only if a business connects the number it uses in that app. Up to ${coexistence.historyDays} days of past one-to-one chats: the text of each message, its time, and whether it was sent or received. Photos, voice notes and files are kept as a text label such as “[photo]” — the files are not fetched. Group chats are not included.`,
     why: "To show the business its own earlier conversations in the inbox.",
-    keep: "Like other messages: until you delete it, or until the account closes.",
+    keep: "Like other messages: until the account closes, or sooner if you ask us to erase it.",
   },
   {
     what: "The WhatsApp Business app's contacts",
@@ -115,7 +115,7 @@ const DATA = [
     detail:
       "For each WhatsApp voice call: the time, the direction, the status, which team member answered, and the customer's number and name. Never the audio.",
     why: "To show calls in the conversation history.",
-    keep: "Like other messages: until you delete the conversation, or until the account closes.",
+    keep: "Like other messages: until the account closes, or sooner if you ask us to erase it.",
   },
   {
     what: "Device notification tokens",
@@ -643,9 +643,11 @@ export default function PrivacyPage() {
               .
             </p>
             <p className="mt-4 leading-relaxed text-ink-muted">
-              In the Android app, you can delete a chat or a contact yourself
-              (long-press it in the Inbox, or select contacts in the Contacts
-              tab), and it is removed immediately. To delete your whole account
+              In the Android app or the panel, you can delete a chat or a
+              contact yourself (long-press it in the Inbox, or select contacts
+              in the Contacts tab). It leaves your workspace immediately, but we
+              keep a copy on our servers until the account closes. To have it
+              erased for good, ask us for a partial deletion. To delete your whole account
               and workspace, or only your own login as a team member, follow the
               steps on the{" "}
               <Link href="/data-deletion" className="text-brand-sky hover:underline">

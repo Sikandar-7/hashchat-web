@@ -251,7 +251,10 @@ export default function DataDeletionPage() {
               In the Android app: long-press a chat in the Inbox →{" "}
               <span className="text-ink">Delete chat</span> or{" "}
               <span className="text-ink">Delete contact</span>. In Contacts:
-              select contacts → delete. These are removed immediately.
+              select contacts → delete. These leave your workspace immediately,
+              but we keep a copy on our servers until the account closes. To
+              have them erased for good, ask us for a partial deletion as
+              described above.
             </p>
             <p className="mt-4 leading-relaxed text-ink-muted">
               <strong className="text-ink">Only your own login.</strong> If you

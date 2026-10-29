@@ -118,7 +118,7 @@ export const legal = {
    */
   metaDomainVerification: "b2am2s63ti62l1iuhxa7j5e5zvucfu",
   /** Bump when the wording of /privacy or /terms actually changes. */
-  updated: "2026-10-10",
+  updated: "2026-10-30",
 } as const;
 
 /** One line, for the places that print the address inline. */
