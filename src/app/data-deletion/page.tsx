@@ -214,7 +214,8 @@ export default function DataDeletionPage() {
             </ul>
             <p className="mt-5 leading-relaxed text-ink-muted">
               Live data is removed within {DELETE_WITHIN_DAYS} days of a
-              confirmed request. Encrypted backups roll over on their own cycle,
+              confirmed request. Backups, which only our server staff can open,
+              roll over on their own cycle,
               so a copy can survive there for up to {BACKUPS_WITHIN_DAYS} days;
               nothing is restored from them except to recover from a failure, and
               a deleted account is deleted again if it ever is.
