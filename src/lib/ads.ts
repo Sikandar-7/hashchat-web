@@ -7,15 +7,16 @@
  * approves — and, being cross-origin, cannot read the panel's page: customer
  * names, phone numbers and chats stay out of reach of third-party code.
  *
- * Until the AdSense account is approved `client` stays empty and every slot
- * shows our own "go ad-free" card. The same card fills a slot AdSense leaves
- * empty.
+ * Until the site is approved and its ad units exist, `slots` stays empty and
+ * every slot shows our own "go ad-free" card. The same card fills a slot
+ * AdSense leaves empty. `client` also drives the verification tag in the root
+ * layout, and matches public/ads.txt and public/app-ads.txt.
  */
 export type AdSlot = "sidebar" | "mobile" | "top";
 
 export const adsense: { client: string; slots: Record<AdSlot, string> } = {
   // "ca-pub-…" from AdSense → Account → Settings.
-  client: "",
+  client: "ca-pub-8375793119069622",
   // Ad unit ids from AdSense → Ads → By ad unit (one per placement).
   slots: { sidebar: "", mobile: "", top: "" },
 };

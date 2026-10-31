@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Nastaliq_Urdu, Plus_Jakarta_Sans } from "next/font/google";
 
+import { adsense } from "@/lib/ads";
 import { legal } from "@/lib/content";
 
 import "./globals.css";
@@ -82,6 +83,7 @@ export const metadata: Metadata = {
   // for and what a client-injected tag would fail.
   other: {
     "facebook-domain-verification": legal.metaDomainVerification,
+    "google-adsense-account": adsense.client,
   },
 };
 
